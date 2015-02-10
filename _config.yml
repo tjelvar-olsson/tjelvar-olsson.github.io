@@ -4,7 +4,7 @@ relative_permalinks: true
 
 # Setup
 title:            Tjelvar Olsson
-tagline:          'Using computers to do better science'
+tagline:          'using computers to do better science'
 url:              http://tjelvarolsson.com
 paginate:         1
 baseurl:          /
