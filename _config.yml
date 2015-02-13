@@ -1,3 +1,7 @@
+# Dependencies
+
+pygments:            true
+
 # Permalinks
 permalink:           pretty
 relative_permalinks: true
