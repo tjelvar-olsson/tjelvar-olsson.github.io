@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Saving 16-bit tiff files using Python
+comments: true
 tags:
   - python
   - image analysis
