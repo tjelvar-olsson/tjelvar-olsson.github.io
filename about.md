@@ -1,6 +1,7 @@
 ---
 layout: page
-title: About
+title: About Me
+permalink: about
 ---
 
 My name is Tjelvar and I am a Swede enjoying life in Norwich.
