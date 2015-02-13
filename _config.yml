@@ -1,5 +1,5 @@
 # Permalinks
-permalink:           /blog/:title
+permalink:           pretty
 relative_permalinks: true
 
 # Setup
