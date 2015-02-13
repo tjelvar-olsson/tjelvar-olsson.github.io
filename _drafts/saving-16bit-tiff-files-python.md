@@ -18,7 +18,6 @@ To illustrate the problem let us create a white 50x50 pixel 16-bit image using
 >>> import numpy as np
 >>> ar = np.ones((50,50), dtype=np.uint16)
 >>> ar = ar * np.iinfo(np.uint16).max
-
 ```
 
 [PIL](http://www.pythonware.com/products/pil/)/[Pillow](https://pillow.readthedocs.org/)
@@ -30,7 +29,6 @@ simply, and helpfully, raises a ``TypeError``.
 Traceback (most recent call last):
 ...
 TypeError: Cannot handle this data type
-
 ```
 
 [SciPy](http://www.scipy.org/) does save the file, but it converts it to 8-bit.
@@ -46,7 +44,6 @@ tried to extract meaningful information from it.
 dtype('uint8')
 >>> np.max(ar2)
 0
-
 ```
 
 ### PyLibTiff to the rescue
@@ -68,7 +65,6 @@ Now let us look at how to save a file using PyLibTiff.
 >>> tiff = TIFF.open('libtiff.tiff', mode='w')
 >>> tiff.write_image(ar)
 >>> tiff.close()
-
 ```
 
 To show that everything is working as expected let us open the tiff file and
@@ -82,7 +78,6 @@ read in the image from it.
 dtype('uint16')
 >>> np.max(ar)
 65535
-
 ```
 
 

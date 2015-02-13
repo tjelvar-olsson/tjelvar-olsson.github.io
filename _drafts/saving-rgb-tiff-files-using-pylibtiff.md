@@ -25,7 +25,6 @@ a guess based upon how I would have liked the package to work.
 >>> tiff = TIFF.open('initial-test.tiff', 'w')
 >>> tiff.write_image([r, g, b])
 >>> tiff.close()
-
 ```
 
 To my surprise this created a tiff file without complaining. However,
@@ -52,7 +51,6 @@ revealed that the ``write_image()`` function has an argument named
 >>> tiff = TIFF.open('rgb-test.tiff', 'w')
 >>> tiff.write_image([r, g, b], write_rgb=True)
 >>> tiff.close()
-
 ```
 
 Inspecting the new file revealed that it was indeed an RGB tiff file!
