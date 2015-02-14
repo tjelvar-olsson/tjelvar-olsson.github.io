@@ -84,7 +84,7 @@ dtype('uint16')
 
 ### Other options
 
-Another options for working with 16-bit tiff files is
+Another option for working with 16-bit tiff files is
 [OpenCV-Python](http://docs.opencv.org/trunk/doc/py_tutorials/py_tutorials.html).
 I also believe that
 [tiffile.py](http://www.lfd.uci.edu/~gohlke/code/tifffile.py.html) can handle
