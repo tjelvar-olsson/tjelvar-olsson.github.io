@@ -4,19 +4,26 @@ title: About Me
 permalink: about/
 ---
 
-My name is Tjelvar and I am a Swede enjoying life in Norwich.
+My name is Tjelvar and I am a Swede enjoying life in Norwich. I help people
+use computers to do better science.
 
-I work as a scientific computing lab manager at the John Innes Centre, which
-involves providing scientific computing services and training as well as image
-analysis and software development.
+I work as a scientific computing lab manager at the John Innes Centre. It's a
+great place to work as I get to participate in cutting edge science and play
+with the latest technology. My role involves providing services and training in
+areas such as image analysis, bioinformatics and programming.
 
-I have a background in molecular modelling and biochemistry. Before joining the
-John Innes Centre I was as scientist at the Cambridge Crystallographic Data
-Centre where I was an agile product owner for their life-science software and
-databases.
+I did my undergraduate and PhD in biochemistry at University College London,
+where I spent most of my spare time practising Shorinji Kempo (a Japanese
+martial art).
 
-I am interested in how we can use computers and software to do better research
-and to make life easier for ourselves.
+After finishing my PhD I got a job as an applications scientist at the
+Cambridge Crystallographic Data Centre where I learnt lots about molecular
+modelling and software development. However, after six years Cambridge was no
+longer the city for me so I moved on to Norwich.
+
+I am interested in how science and technology impact individuals and society at
+large. In particular how we can use computers and software to do better
+research and make life easier for ourselves.
 
 I hope you find this blog useful.
 
