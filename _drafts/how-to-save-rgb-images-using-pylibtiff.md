@@ -64,3 +64,13 @@ Photometric Interpretation      : RGB
 ...
 ```
 
+## How is this useful?
+
+Microscopy data often contains several channels of information, red and green
+fluorescence are common, so it is useful to be able to save these to the red
+and green channels respectively.
+
+Furthermore, it can be a quick and dirty way of annotating regions of interest.
+For example say that you had information of interest in the red and green
+channels then you could use the blue channel to augment the image with
+additional annotations. 
