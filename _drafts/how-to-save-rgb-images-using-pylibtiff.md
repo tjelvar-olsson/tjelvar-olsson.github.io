@@ -1,20 +1,20 @@
 ---
 layout: post
-title: Saving RGB tiff files using PyLibTiff
+title: How to save RGB images using PyLibTiff
 tags:
   - python
   - image analysis
 ---
 
-In a [previous
-post]({% post_url saving-16bit-tiff-files-using-python %}) I showed
-how to read and write tiff files in Python using
-[PyLibTiff](https://code.google.com/p/pylibtiff/). Here I will illustrate how
-to use PyLibTiff to create an RGB tiff file.
+In the [previous post]({% post_url
+2015-02-13-saving-16bit-tiff-files-using-python %}) I showed how to read and
+write tiff files in Python using PyLibTiff. Here I will illustrate how to use
+PyLibTiff to create an RGB tiff file.
 
-The PyLibTiff on-line documentation is kind of minimal, so I started off by
-simply trying to save a list containing three ``numpy.arrays``. This was simply
-a guess based upon how I would have liked the package to work.
+The [PyLibTiff on-line documentation](https://code.google.com/p/pylibtiff/) is
+kind of minimal, so I started off by simply trying to save a list containing
+three ``numpy.arrays``. This was simply a guess based upon how I would have
+liked the package to work.
 
 ```python
 >>> import numpy as np
@@ -43,7 +43,7 @@ Photometric Interpretation      : BlackIsZero
 ```
 
 After some head scratching I started digging around in PyLibTiff's built in
-documentation using ``pydoc``. This documentation was very informative. It
+documentation using ``pydoc``. This was very informative. It
 revealed that the ``write_image()`` function has an argument named
 ``write_rgb``, which by default is set to ``None``.
 
