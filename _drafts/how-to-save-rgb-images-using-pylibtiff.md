@@ -12,9 +12,9 @@ write tiff files in Python using PyLibTiff. Here I will illustrate how to use
 PyLibTiff to create an RGB tiff file.
 
 The [PyLibTiff on-line documentation](https://code.google.com/p/pylibtiff/) is
-kind of minimal, so I started off by simply trying to save a list containing
-three ``numpy.arrays``. This was simply a guess based upon how I would have
-liked the package to work.
+minimal, so I started off by simply trying to save a list containing three
+``numpy.arrays``. This was a guess based upon how I would have liked the
+package to work.
 
 ```python
 >>> import numpy as np
@@ -71,6 +71,19 @@ fluorescence are common, so it is useful to be able to save these to the red
 and green channels respectively.
 
 Furthermore, it can be a quick and dirty way of annotating regions of interest.
-For example say that you had information of interest in the red and green
-channels then you could use the blue channel to augment the image with
-additional annotations. 
+Say for example that we wanted to visualise how a segmentation using the Canny
+edge detection algorithm followed by a binary filling of holes works in the
+context of the raw data one could use something along the lines of the code
+snippet below.
+
+```python
+>>> from skimage import data
+>>> from skimage.filter import canny, sobel
+>>> from scipy.ndimage import binary_fill_holes
+>>> coins = data.coins()
+>>> edges = np.array(canny(coins), dtype=np.uint8) * 255
+>>> filled = np.array(binary_fill_holes(edges), dtype=np.uint8) * 255
+>>> tiff = TIFF.open('canny-fill-holes-segmentation.tiff', 'w')
+>>> tiff.write_image([edges, filled, coins], write_rgb=True)
+>>> tiff.close()
+```
