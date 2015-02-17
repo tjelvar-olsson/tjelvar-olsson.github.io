@@ -89,7 +89,7 @@ snippet below.
 ```
 
 <figure>
-  <img src="/images/canny-fill-holes-segmentation.jpg" alt="Segmented coins">
+  !(Segmented coins)[/images/canny-fill-holes-segmentation.jpg]
   <figcaption>
     Figure illustrating the Canny edge detection algorithm followed
     by a binary filling of holes. The red, green and blue channels represent
