@@ -87,3 +87,13 @@ snippet below.
 >>> tiff.write_image([edges, filled, coins], write_rgb=True)
 >>> tiff.close()
 ```
+
+<figure>
+  <img src="/images/canny-fill-holes-segmentation.jpg" alt="Segmented coins">
+  <figcaption>
+    Figure illustrating the Canny edge detection algorithm followed
+    by a binary filling of holes. The red, green and blue channels represent
+    the initial edges, the segments identified and the raw data respectively.
+  </figcaption>
+</figure>
+
