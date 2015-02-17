@@ -88,4 +88,4 @@ snippet below.
 >>> tiff.close()
 ```
 
-!(Segmented coins)[/images/canny-fill-holes-segmentation.jpg]
+![Segmented coins](/images/canny-fill-holes-segmentation.jpg)
