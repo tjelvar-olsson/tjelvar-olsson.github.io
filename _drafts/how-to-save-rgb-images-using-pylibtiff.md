@@ -89,11 +89,14 @@ snippet below.
 ```
 
 <figure>
-  !(Segmented coins)[/images/canny-fill-holes-segmentation.jpg]
+
+!(Segmented coins)[/images/canny-fill-holes-segmentation.jpg]
+
   <figcaption>
     Figure illustrating the Canny edge detection algorithm followed
     by a binary filling of holes. The red, green and blue channels represent
     the initial edges, the segments identified and the raw data respectively.
   </figcaption>
+
 </figure>
 
