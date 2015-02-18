@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How to save RGB images using PyLibTiff
+comments: true
 tags:
   - python
   - image analysis
