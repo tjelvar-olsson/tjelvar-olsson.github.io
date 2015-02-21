@@ -31,8 +31,74 @@ However, if you are a scientist that has drifted into programming these are the
 three most important things that you can do to improve your productivity and
 the quality of your code.
 
+
 ## Use version control
 
+Using version control is one of the simplest ways of increasing your
+productivity. The reason being that it reduces your fear of changing existing
+code as you can always roll back to a previously working state. One of the tell
+tell signs that you need to use version control is if your project directory
+contains files named along the lines of the below (as you can tell I used to do
+this before I saw the light).
+
+```
+new_simulation.py
+older_simulation.py
+old_simulation.py
+simulation.py
+simumlation_100606.py
+test_simulation.py
+```
+When I started using version control
+(Subversion)[https://subversion.apache.org/] was the best open source tool
+available. However, it was difficult to set up and I was never sure I got it
+right. These days you have a choice of two largely equivalent systems
+(Git)[http://git-scm.com/] or (Mercurial)[http://mercurial.selenic.com/]. These
+are very easy to use and get started with.
+
+Here I will illustrate how to use Git from the command line. To start a new project.
+
+```
+git init simulation
+cd simulation
+```
+
+This creates a directory named ``simulation``, the files in this directory can
+now be managed by git. Suppose that we create a ``README`` file in this
+directory and want to add it to version control.
+
+```
+git add README
+```
+
+When a file is added it is staged to be committed. Let's commit it as a
+snapshot to version control.
+
+```
+git commit -m "Added README file."
+```
+
+That's it. You can keep using ``git add`` and ``git commit`` to add incremental
+changes to your code base until you find that you need to use some more
+powerful features of Git.
+
+If you already have a project that you want to start tracking using Git you can
+use the commands below.
+
+```
+cd my_existing_project
+git init
+git add "*"
+git commit -m "Initial file import."
+```
+
+Once you have got a little bit of familiarity with Git or Mercurial I would
+strongly recommend that you set up an account with
+(BitBucket)[https://bitbucket.org/] or (GitHub)[https://github.com/] and host
+your code there. This has several advantages: you can stop worrying about your
+computer crashing and losing all your work, you can access your code from any
+machine with an internet connection, you can collaborate with other people on
+your code.
 
 
 ## Write code so that it can be understood by someone less clever than yourself
