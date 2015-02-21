@@ -7,8 +7,8 @@ tags:
 ---
 
 Writing scientific code is not that different to writing any other type of code.
-What is different is that many people that end up coding during their PhD do
-not have or get any formal training in software development best practises.
+What is different is that many people that end up coding during their PhD rarely
+have or get any formal training in software development best practises.
 
 In my case it was very much a case of trail and error and picking things up as
 I went along. In the research group that I was in my peers were doing lab work
@@ -16,8 +16,7 @@ culturing cells and characterising proteins, so there was no one to discuss
 programming with. So I learnt by reading; reading blogs; reading magazines;
 reading books; reading other people's code. However, it was a slow process
 sorting the wheat from the chaff. Furthermore many of the things that I read
-about seemed a bit over the top if one was not working for a software
-development house.
+about seemed a bit over the top for a one man band.
 
 With hindsight I realise that another difficulty in learning software
 development best practises is that sometimes the most fundamental aspects of
@@ -50,11 +49,11 @@ simumlation_100606.py
 test_simulation.py
 ```
 When I started using version control
-(Subversion)[https://subversion.apache.org/] was the best open source tool
+[Subversion](https://subversion.apache.org/) was the best open source tool
 available. However, it was difficult to set up and I was never sure I got it
 right. These days you have a choice of two largely equivalent systems
-(Git)[http://git-scm.com/] or (Mercurial)[http://mercurial.selenic.com/]. These
-are very easy to use and get started with.
+[Git](http://git-scm.com/) or [Mercurial](http://mercurial.selenic.com/). These
+are very easy to set up and use.
 
 Here I will illustrate how to use Git from the command line. To start a new project.
 
@@ -80,7 +79,7 @@ git commit -m "Added README file."
 
 That's it. You can keep using ``git add`` and ``git commit`` to add incremental
 changes to your code base until you find that you need to use some more
-powerful features of Git.
+powerful features of Git, at which point you can learn more about it.
 
 If you already have a project that you want to start tracking using Git you can
 use the commands below.
@@ -94,7 +93,7 @@ git commit -m "Initial file import."
 
 Once you have got a little bit of familiarity with Git or Mercurial I would
 strongly recommend that you set up an account with
-(BitBucket)[https://bitbucket.org/] or (GitHub)[https://github.com/] and host
+[BitBucket](https://bitbucket.org/) or [GitHub](https://github.com/) and host
 your code there. This has several advantages: you can stop worrying about your
 computer crashing and losing all your work, you can access your code from any
 machine with an internet connection, you can collaborate with other people on
@@ -139,8 +138,6 @@ the intent not the actual code. In other words, I can read your code so I don't
 need it re-iterated using plain English. However, I cannot read your mind so
 please tell me what the intention was. Let us illustrate this with an example.
 
-Think of an example...
-
 Describing the architecture of the system is just a fancy way of saying that
 you should describe the how the components of your software interact with each
 other. Suppose for example that you were faced with a relatively simple code
@@ -159,20 +156,37 @@ and spent five minutes including the lines below in the README file, would it
 enable you to answer the questions above?
 
 ```
+README
+======
+
 parser.py     - module for parsing parameter files
 database.py   - module for storing results
 simulation.py - module for running simulations
 experiment.py - template for creating a new experiment
 
-The ``experiment.py`` template uses the parser to read in the parameters for
-the experiment. The parameters are then passed on to the simulation
-(``simulation.py``).  Note that when you instantiate the
-``simulation.Simulation`` class you need to provide it with a
-``database.Database`` instance. The latter will be used to write the simulation
+The ``experiment.py`` template uses the parser to read
+in the parameters for the experiment. The parameters
+are then passed on to the simulation (``simulation.py``).
+Note that when you instantiate the ``simulation.Simulation``
+class you need to provide it with a ``database.Database``
+instance. The latter will be used to write the simulation
 results to your database of choice.
 ```
 
-Something about coding style...
+I won't dwell too long on coding style. Basically be consistent and try to
+use the standard one for your language; i.e. if you code in Python use
+[PEP8](https://www.python.org/dev/peps/pep-0008/), if you write C code use
+[K&R](http://en.wikipedia.org/wiki/The_C_Programming_Language) style, and so
+forth.  If coding style interests you please read [Style is
+Substance](http://www.artima.com/weblogs/viewpost.jsp?thread=74230) by Ken
+Arnold.
 
 
 ## Write tests
+
+This is the most difficult of the tips outlined in this post. Writing good
+tests is hard, and continuing to write tests as your code base grows requires
+discipline. Furthermore, many scientific algorithms have a stochastic nature to
+them, which further compounds the situation.
+
+
