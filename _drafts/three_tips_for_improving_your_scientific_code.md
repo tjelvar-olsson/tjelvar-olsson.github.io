@@ -6,12 +6,12 @@ tags:
   - scientific computing
 ---
 
-Writing scientific code is not that different to writing any other type of code.
-What is different is that many people that end up coding during their PhD rarely
-have or get any formal training in software development best practises.
+Writing scientific code is not dissimilar to writing any other type of code.
+What is different is that many people that end up coding during their PhD do
+not have or get any formal training in software development best practises.
 
-In my case it was very much a case of trail and error and picking things up as
-I went along. In the research group that I was in my peers were doing lab work
+For me it was very much a case of trail and error and picking things up as I
+went along. In the research group that I was in my peers were doing lab work
 culturing cells and characterising proteins, so there was no one to discuss
 programming with. So I learnt by reading; reading blogs; reading magazines;
 reading books; reading other people's code. However, it was a slow process
@@ -36,7 +36,7 @@ the quality of your code.
 Using version control is one of the simplest ways of increasing your
 productivity. The reason being that it reduces your fear of changing existing
 code as you can always roll back to a previously working state. One of the tell
-tell signs that you need to use version control is if your project directory
+tale signs that you need to use version control is if your project directory
 contains files named along the lines of the below (as you can tell I used to do
 this before I saw the light).
 
@@ -100,7 +100,7 @@ machine with an internet connection, you can collaborate with other people on
 your code.
 
 
-## Write code so that it can be understood by someone less clever than yourself
+## Write code so that it can be understood by someone else
 
 One thing that is different when developing code in an academic environment is
 that it is not unusual to start a project from scratch. This is quite uncommon
@@ -136,7 +136,7 @@ or an integrated development environment.
 In terms of commenting your code the key is to realise that you should document
 the intent not the actual code. In other words, I can read your code so I don't
 need it re-iterated using plain English. However, I cannot read your mind so
-please tell me what the intention was. Let us illustrate this with an example.
+please tell me what the intention was.
 
 Describing the architecture of the system is just a fancy way of saying that
 you should describe the how the components of your software interact with each
@@ -189,4 +189,78 @@ tests is hard, and continuing to write tests as your code base grows requires
 discipline. Furthermore, many scientific algorithms have a stochastic nature to
 them, which further compounds the situation.
 
+First of all before you start writing tests make sure that you find a suitable
+testing framework so that you do not re-invente the wheel. For example if
+you are coding in Python you could use
+[Unittest](https://docs.python.org/2/library/unittest.html).
 
+If you already have code that is working but have no tests, start by adding
+some integration tests. In other words treat your software as a black box that
+given a set of inputs produce a set of outputs. Write an automated test that
+checks that this is true.
+
+Now once you go in and work on a particular unit of your code make sure that
+you write a test for that particular unit first, then make the change that you
+wanted to make.
+
+When the unit that you are testing is so isolated that it does not depend on
+any other code or systems (e.g. a database running in the background) then the
+test is referred to as a unit test.
+
+There are two advantages to unit tests over integration tests. They make it
+easier to identify which part of your code is broken when they fail. Secondly they
+run quicker than integration tests so you can have more of them.
+
+Why does the speed of the tests matter? Speed matters because once you have
+automated tests in place you need to run them often, at a minimum before every
+commit to version control.
+
+At this point I recommend that you get a copy of Martin Fowlers' book
+[Refactoring: Improving the Design of Existing
+Code](http://martinfowler.com/books/refactoring.html). As the title suggests it
+is about refactoring rather than testing. However, refactoring requires tests
+and the book gives loads of practical advice on how to improve existing code by
+writing tests and refactoring.
+
+If you are starting out with a clean slate (i.e. no existing code), I highly
+recommend that you start writing tests from the start. You could even go to the
+extreme and use [Test Driven
+Development](http://en.wikipedia.org/wiki/Test-driven_development), where you
+write a test before you write any code. Initially the test will fail and then
+you implement the code to make the test pass. 
+
+Test driven development is a bit more complicated than what I outlined above,
+notably it includes a step of refactoring. However I will not go into more
+detail here.  If test driven development sounds interesting and you are
+interested in web development as well I highly recommend Harry Percival's book
+[Test-Driven Development with
+Python](http://chimera.labs.oreilly.com/books/1234000000754).
+
+This all sounds like a lot of hard work, why do I need tests anyway? I won't
+dwell on this too much. However, if you don't have tests how can you have any
+confidence that your code is doing what it is supposed to do. Okay, so you have
+done manual testing and the results are as expected. Fine, now suppose that you
+want to add another feature how can you be sure that you will not introduce a
+bug somewhere else? Do you want to do all that manual testing again? If you do
+not have tests you will get to the stage where you are afraid to touch the code
+for fear of breaking it.
+
+## Summary
+
+This post turned out a bit longer than I initially thought. However the take
+home message is simple:
+
+- Use version control
+- Write code so that it can be understood by someone else
+- Write tests
+
+Using version control is easy: do it!
+
+Another person that is likely to need to get familiar with your code is *you in
+six months time* so be kind and make your code easy to understand.
+
+Writing good tests is hard, and the only way to learn is by practise (I'm still
+learning). However, do write them otherwise your code will hold you to ransom.
+
+If you already do all of the above, great I'm preaching to the converted,
+please forward this post to someone less experienced than yourself.
