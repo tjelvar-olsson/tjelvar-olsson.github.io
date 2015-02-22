@@ -7,26 +7,26 @@ tags:
 ---
 
 Writing scientific code is not dissimilar to writing any other type of code.
-What is different is that many people that end up coding during their PhD do
-not have or get any formal training in software development best practises.
+What is different is that many people who end up coding during their PhD do
+not have or get any formal training in software development best practices.
 
-For me it was very much a case of trail and error and picking things up as I
-went along. In the research group that I was in my peers were doing lab work
+For me it was very much a case of trial and error and picking things up as I
+went along. In the research group that I was in, my peers were doing lab work
 culturing cells and characterising proteins, so there was no one to discuss
 programming with. So I learnt by reading; reading blogs; reading magazines;
 reading books; reading other people's code. However, it was a slow process
 sorting the wheat from the chaff. Furthermore many of the things that I read
-about seemed a bit over the top for a one man band.
+seemed a bit over the top for a one man band.
 
 With hindsight I realise that another difficulty in learning software
-development best practises is that sometimes the most fundamental aspects of
+development best practices is that sometimes the most fundamental aspects of
 software development are not explicitly stated as they are taken for granted by
 everyone that uses them.
 
 Here are the three most valuable things that I have learnt both from my own
-trail and error and by working with great software developers since finishing
-my PhD. For anyone developing software professionally non of this will be new.
-However, if you are a scientist that has drifted into programming these are the
+trial and error and by working with great software developers since finishing
+my PhD. For anyone developing software professionally, none of this will be new.
+However, if you are a scientist who has drifted into programming, these are the
 three most important things that you can do to improve your productivity and
 the quality of your code.
 
@@ -34,9 +34,9 @@ the quality of your code.
 ## Use version control
 
 Using version control is one of the simplest ways of increasing your
-productivity. The reason being that it reduces your fear of changing existing
-code as you can always roll back to a previously working state. One of the tell
-tale signs that you need to use version control is if your project directory
+productivity. The reason is it reduces your fear of changing existing
+code as you can always roll back to a previously working state. One of the tell-tale
+signs that you need to use version control is if your project directory
 contains files named along the lines of the below (as you can tell I used to do
 this before I saw the light).
 
