@@ -96,7 +96,7 @@ strongly recommend that you set up an account with
 [BitBucket](https://bitbucket.org/) or [GitHub](https://github.com/) and host
 your code there. This has several advantages: you can stop worrying about your
 computer crashing and losing all your work, you can access your code from any
-machine with an internet connection, you can collaborate with other people on
+machine with an internet connection, and you can collaborate with other people on
 your code.
 
 
@@ -125,21 +125,22 @@ Then one realises that the results are not quite as expected and something is
 not quite right about the logic of the program. However, the logic of the
 program is not immediately clear...
 
-So go on name your variable ``temperature_increase`` instead of ``temp_inc`` or
+So go on, name your variable ``temperature_increase`` instead of ``temp_inc`` or
 ``ti``. You have to type a few more letters but you will gain so much more. By
-the way does ``temp`` stand for ``temporary`` or ``temperature`` and does
+the way, does ``temp`` stand for ``temporary`` or ``temperature`` and does
 ``inc`` stand for ``increment`` or ``increase``? Also, if you find that typing
 out long explicit names for variables, functions and classes is causing you
 frustration then you should go on the hunt for a better text editor (I use vim)
-or an integrated development environment.
+or an integrated development environment, that understands code and offers to
+complete names for you.
 
-In terms of commenting your code the key is to realise that you should document
+In terms of commenting your code, the key is to realise that you should document
 the intent not the actual code. In other words, I can read your code so I don't
 need it re-iterated using plain English. However, I cannot read your mind so
 please tell me what the intention was.
 
 Describing the architecture of the system is just a fancy way of saying that
-you should describe the how the components of your software interact with each
+you should describe how the components of your software interact with each
 other. Suppose for example that you were faced with a relatively simple code
 base that contained the files:
 
@@ -177,7 +178,7 @@ I won't dwell too long on coding style. Basically be consistent and try to
 use the standard one for your language; i.e. if you code in Python use
 [PEP8](https://www.python.org/dev/peps/pep-0008/), if you write C code use
 [K&R](http://en.wikipedia.org/wiki/The_C_Programming_Language) style, and so
-forth.  If coding style interests you please read [Style is
+forth.  If coding style interests you, please read [Style is
 Substance](http://www.artima.com/weblogs/viewpost.jsp?thread=74230) by Ken
 Arnold.
 
@@ -189,17 +190,17 @@ tests is hard, and continuing to write tests as your code base grows requires
 discipline. Furthermore, many scientific algorithms have a stochastic nature to
 them, which further compounds the situation.
 
-First of all before you start writing tests make sure that you find a suitable
+First of all, before you start writing tests, make sure that you find a suitable
 testing framework so that you do not re-invente the wheel. For example if
 you are coding in Python you could use
 [Unittest](https://docs.python.org/2/library/unittest.html).
 
 If you already have code that is working but have no tests, start by adding
-some integration tests. In other words treat your software as a black box that
-given a set of inputs produce a set of outputs. Write an automated test that
+some integration tests. In other words treat your software as a black box that,
+given a set of inputs, produces a known set of outputs. Write an automated test that
 checks that this is true.
 
-Now once you go in and work on a particular unit of your code make sure that
+Now once you go in and work on a particular unit of your code, make sure that
 you write a test for that particular unit first, then make the change that you
 wanted to make.
 
@@ -238,7 +239,7 @@ Python](http://chimera.labs.oreilly.com/books/1234000000754).
 
 This all sounds like a lot of hard work, why do I need tests anyway? I won't
 dwell on this too much. However, if you don't have tests how can you have any
-confidence that your code is doing what it is supposed to do. Okay, so you have
+confidence that your code is doing what it is supposed to do? Okay, so you have
 done manual testing and the results are as expected. Fine, now suppose that you
 want to add another feature how can you be sure that you will not introduce a
 bug somewhere else? Do you want to do all that manual testing again? If you do
@@ -259,8 +260,8 @@ Using version control is easy: do it!
 Another person that is likely to need to get familiar with your code is *you in
 six months time* so be kind and make your code easy to understand.
 
-Writing good tests is hard, and the only way to learn is by practise (I'm still
+Writing good tests is initially hard, and the only way to learn is by practise (I'm still
 learning). However, do write them otherwise your code will hold you to ransom.
 
-If you already do all of the above, great I'm preaching to the converted,
+If you already do all of the above, great, I'm preaching to the converted,
 please forward this post to someone less experienced than yourself.
