@@ -91,6 +91,10 @@ git add "*"
 git commit -m "Initial file import."
 ```
 
+Note that the command above will put all files in the project directory under
+version control so do not use it if your project directory contains machine
+generated files, for example output files from your program.
+
 Once you have got a little bit of familiarity with Git or Mercurial I would
 strongly recommend that you set up an account with
 [BitBucket](https://bitbucket.org/) or [GitHub](https://github.com/) and host
@@ -265,3 +269,9 @@ learning). However, do write them otherwise your code will hold you to ransom.
 
 If you already do all of the above, great, I'm preaching to the converted,
 please forward this post to someone less experienced than yourself.
+
+## Acknowledgements 
+
+I'd like to thank Clare Macrae
+([@ClareMacraeUK](https://twitter.com/ClareMacraeUK)) for helpful discussions
+and feedback.
