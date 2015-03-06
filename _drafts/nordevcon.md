@@ -21,11 +21,11 @@ official
 recognition](http://norfolkchamber.co.uk/knowledge/guest-blogs/how-build-innovation-and-tech-cluster-norfolk).
 
 The event was then official opened by Jon Skeet
-([@jonskeet](https://twitter.com/jonskeet)) giving the opening keynote all
-about passion! Jon started out on the premise that conferences are useful for
-connecting and inspiring people and this comes from passion. In fact Jon went
-as far as saying that conferences are about all about inspiration and not about
-learning.
+([@jonskeet](https://twitter.com/jonskeet)) giving the opening keynote, which
+was all about passion! Jon started out on the premise that conferences are
+useful for connecting and inspiring people and this comes from passion. In fact
+Jon went as far as saying that conferences are all about inspiration and not
+about learning.
 
 One take home message from Jon's talk was that we can not always work on things
 that we are passionate about. However, we can always strive to find something
@@ -65,7 +65,7 @@ teams will need to talk face-to-face.
 
 The third danger scenario was a team with no disagreement at all. Although a
 team with shared passion can really "motor along", what happens if the team was
-running in the wrong direction form the start? To avoid this scenario Jon's
+running in the wrong direction from the start? To avoid this scenario Jon's
 suggested solution was to take a step back and make sure that you think about
 the business value. What is the ultimate goal of the project? Will it make
 people happy?
@@ -73,14 +73,13 @@ people happy?
 After describing the dangers Jon did add the caveat that clearly the easy
 solutions outlined above are not at all easy in real life.
 
-Finally, Jon reminded us that we did not need to be good at something to be
-passionate about it. Then he gave us a challenge. The challenge was to bath in
+Finally, Jon gave us a challenge. The challenge was to bath in
 passion! If a speaker did not inspire us with passion we should leave the
-session and find passion somewhere else; and when we introduced ourselves to
+session and find passion somewhere else. When we introduced ourselves to
 each other in the breaks we should do so with passion!
 
-With those thoughts embedded in our minds we then went out to seek passion in
-the rest of the conference.
+With those thoughts embedded in our minds we then went out to seek our fortune
+in the rest of the conference.
 
 I had a great time! I met up with old friends and I made new friends. I had my
 appetite whet for [Docker](https://www.docker.com) by Dom Davis
@@ -88,14 +87,13 @@ appetite whet for [Docker](https://www.docker.com) by Dom Davis
 Ruth John ([@Rumyra](https://twitter.com/Rumyra)); via the medium of
 [VJing](http://en.wikipedia.org/wiki/VJing)! I was inspired by Seb Rose
 ([@sebrose](https://twitter.com/sebrose)) to write more and better tests. I had
-my eyes opened by Kevlin Henney
-([@KevlinHenney](https://twitter.com/KevlinHenney)) in terms of bad coding
-habits I had gotten myself into. It was great!
+minor revelations on how to improve my coding style during the talk by Kevlin
+Henney ([@KevlinHenney](https://twitter.com/KevlinHenney)). It was great!
 
 The day was sealed off by a fast and furious closing keynote by Harry Harold
 ([@harryharold](https://twitter.com/harryharold)) and Rupert Redington
 ([@rupertredington](https://twitter.com/rupertredington)). It was a audio
 visual bonanza, shining a light on the Agile manifesto, ending up in fireworks!
 
-It was a day of passion and I am already looking forward to next years
+It was a day filled with passion and I am already looking forward to next years
 instalment of NorDevCon!
