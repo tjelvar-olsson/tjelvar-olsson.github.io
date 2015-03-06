@@ -6,6 +6,8 @@ tags:
   - software development
 ---
 
+![NorDevCon 2015 closing keynote audio-visial bonanza.](http://photos1.meetupstatic.com/photos/event/3/a/1/1/event_434894865.jpeg)
+
 This years Norfolk Developer Conference (NorDevCon) took place on the 27th of
 Febrary and what a feast it was! The conference which traditionally has a heavy
 focus on Tech and Agile was this year bolstered by a new business track as well
