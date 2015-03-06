@@ -92,8 +92,8 @@ Ruth John ([@Rumyra](https://twitter.com/Rumyra)); via the medium of
 minor revelations on how to improve my coding style during the talk by Kevlin
 Henney ([@KevlinHenney](https://twitter.com/KevlinHenney)). It was great!
 
-The day was rounded off by a fast and furious closing keynote by Harry Harold
-([@harryharold](https://twitter.com/harryharold)) and Rupert Redington
+The day was rounded off by a fast and furious closing keynote by Harry Harrold
+([@harryharrold](https://twitter.com/harryharrold)) and Rupert Redington
 ([@rupertredington](https://twitter.com/rupertredington)). It was a
 audio-visual bonanza, shining a light on the Agile manifesto, ending up in
 fireworks!
