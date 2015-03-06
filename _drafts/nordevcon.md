@@ -95,5 +95,5 @@ The day was sealed off by a fast and furious closing keynote by Harry Harold
 ([@rupertredington](https://twitter.com/rupertredington)). It was a audio
 visual bonanza, shining a light on the Agile manifesto, ending up in fireworks!
 
-It was a day filled with passion and I am already looking forward to next years
+It was a day filled with passion and I am already looking forward to next year's
 instalment of NorDevCon!
