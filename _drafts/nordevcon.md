@@ -20,7 +20,7 @@ achievement and it was interesting to hear about [the journey that lead to the
 official
 recognition](http://norfolkchamber.co.uk/knowledge/guest-blogs/how-build-innovation-and-tech-cluster-norfolk).
 
-The event was then official opened by Jon Skeet
+The event was then officially opened by Jon Skeet
 ([@jonskeet](https://twitter.com/jonskeet)) giving the opening keynote, which
 was all about passion! Jon started out on the premise that conferences are
 useful for connecting and inspiring people and this comes from passion. In fact
@@ -29,7 +29,7 @@ about learning.
 
 One take home message from Jon's talk was that we can not always work on things
 that we are passionate about. However, we can always strive to find something
-interesting in the dullest of task. For example by trying to understand the
+interesting in the dullest of tasks. For example by trying to understand the
 problem space or by working out how to do something as well as possible. In
 other words be curious. If nothing else it will make you a more interesting
 person to work with. 
@@ -37,7 +37,7 @@ person to work with.
 How do you share and grow passion with people that you meet and work with? Jon
 suggested that you should listen, encourage, nurture and feed other people's
 passion. However, which ideas spread will be partly down to charisma. This
-means that we all have a role to make sure that this does not become to
+means that we all have a role to make sure that this does not become too
 unbalanced. In other words we all have a role in echoing what other people have
 done; to amplify other people's message without taking them over. One of the
 great benefits of nurturing passion is that a team with shared passion can
@@ -56,7 +56,7 @@ that person will feel that his/her opinions and suggestions are not appreciated
 and he/she may well start looking for a different place to work and the team
 will loose diversity.
 
-The second danger scenario identified was inter team disagreement. For example
+The second danger scenario identified was inter-team disagreement. For example
 the fast and furious team having to work with the really careful team. In this
 case you get positive feedback loops in both camps, where all the negative
 views are constantly being re-enforced by the people you trust, i.e. the people
@@ -73,7 +73,7 @@ people happy?
 After describing the dangers Jon did add the caveat that clearly the easy
 solutions outlined above are not at all easy in real life.
 
-Finally, Jon gave us a challenge. The challenge was to bath in
+Finally, Jon gave us a challenge. The challenge was to bathe in
 passion! If a speaker did not inspire us with passion we should leave the
 session and find passion somewhere else. When we introduced ourselves to
 each other in the breaks we should do so with passion!
@@ -90,10 +90,11 @@ Ruth John ([@Rumyra](https://twitter.com/Rumyra)); via the medium of
 minor revelations on how to improve my coding style during the talk by Kevlin
 Henney ([@KevlinHenney](https://twitter.com/KevlinHenney)). It was great!
 
-The day was sealed off by a fast and furious closing keynote by Harry Harold
+The day was rounded off by a fast and furious closing keynote by Harry Harold
 ([@harryharold](https://twitter.com/harryharold)) and Rupert Redington
-([@rupertredington](https://twitter.com/rupertredington)). It was a audio
-visual bonanza, shining a light on the Agile manifesto, ending up in fireworks!
+([@rupertredington](https://twitter.com/rupertredington)). It was a
+audio-visual bonanza, shining a light on the Agile manifesto, ending up in
+fireworks!
 
 It was a day filled with passion and I am already looking forward to next year's
 instalment of NorDevCon!
