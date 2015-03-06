@@ -4,6 +4,7 @@ title: Three essential tips for improving your scientific code
 comments: true
 tags:
   - scientific computing
+  - software development
 ---
 
 Writing scientific code is not dissimilar to writing any other type of code.
