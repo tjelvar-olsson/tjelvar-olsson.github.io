@@ -18,7 +18,7 @@ If you simply want to display an image you can achieve this using the
 
 ```python
 >>> from IPython.display import Image
->>> image = Image('tjelvar.png')
+>>> image = Image('tiny_tjelvar.png')
 >>> image
 ```
 
