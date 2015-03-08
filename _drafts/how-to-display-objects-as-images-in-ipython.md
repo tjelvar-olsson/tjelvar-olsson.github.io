@@ -22,7 +22,10 @@ If you simply want to display an image you can achieve this using the
 >>> image
 ```
 
-![Tiny image of tjelvar](/images/tiny_tjelvar.png)
+The last ``image`` call would result in the image below being displayed in the
+IPython qtconsole/notebook.
+
+![Tiny image of Tjelvar.](/images/tiny_tjelvar.png)
 
 However, suppose that you wanted to create an image representation of your own
 class. Let us illustrate this with the hypothetical example of an
@@ -42,15 +45,14 @@ class ImageFile(object):
 The usage of the class above would be along the lines of the below.
 
 ```python
->>> im_file = ImageFile('tjelvar.png')
+>>> im_file = ImageFile('tiny_tjelvar.png')
 >>> im_file
 ```
 
-![Thumbnail of tjelvar](/images/tjelvar.png)
+![Tiny image of Tjelvar.](/images/tiny_tjelvar.png)
 
 The example above would fall over if the file was not in png format. Let us
-make the code a little bit more robust by adding a naive check for the file
-format.
+make the code a little bit more robust by adding a naive file format check.
 
 ```python
 class ImageFile(object):
@@ -99,5 +101,5 @@ notebook.
   IPython](http://ipython.org/ipython-doc/dev/config/integrating.html)
 - [IPython rich display
   system](http://nbviewer.ipython.org/github/ipython/ipython/blob/1.x/examples/notebooks/Part%205%20-%20Rich%20Display%20System.ipynb)
-- [Using the IPython display protocol for you own
+- [Using the IPython display protocol for your own
   objects](http://nbviewer.ipython.org/github/ipython/ipython/blob/3607712653c66d63e0d7f13f073bde8c0f209ba8/docs/examples/notebooks/display_protocol.ipynb)
