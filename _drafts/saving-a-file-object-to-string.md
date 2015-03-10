@@ -53,9 +53,14 @@ image to disk and then read the contents of the file.
 
 The code above above is really ugly. What we want is something that can give us
 a relatively safe temporary file path and delete it once we are done with it.
-This is what Python's context managers are for. However, before we start
-working on an implementation let us specify the behaviour with a test. Add the
-code below to a file named ``tempfilepath.py``.
+This is what Python's context managers are for. Context managers are what lets
+you use the ``with`` statement for opening files etc, Jeff Preshing has
+written a nice tutorial on context mangers [The Python "with" Statement by
+Example](http://preshing.com/20110920/the-python-with-statement-by-example/).
+
+However, before we start working on an implementation let us specify the
+desired behaviour as a test. Add the code below to a file named
+``tempfilepath.py``.
 
 ```python
 if __name__ == "__main__":
@@ -154,7 +159,7 @@ AttributeError: 'NoneType' object has no attribute 'fpath'
 
 Can you work out what we need to do to fix this? This is a bit subtle, and it
 caught me out. The clue is that the ``tmp`` variable is ``NoneType``, whereas
-it should have been ``TemporaryFilePath``. This is due to the '__enter__'
+it should have been ``TemporaryFilePath``. This is due to the ``__enter__``
 function not returning anything. Let us fix it.
 
 ```python
@@ -252,9 +257,9 @@ class TemporaryFilePath(object):
 
 ```
 
-And that makes all the tests pass. However, it still has the ugly side-effect
-of hijacking the ``tmp.txt`` file. It is time to refactor the code to make it
-less nasty. Let us make use of the
+And that makes all the tests pass. However, this code still has the ugly
+side-effect of hijacking the ``tmp.txt`` file. It is time to refactor the code
+to make it less nasty. Let us make use of the
 [``tempfile``](https://docs.python.org/2/library/tempfile.html) module.
 
 ```python
@@ -280,7 +285,7 @@ able to save an image in png file format we need to be able to specify the
 suffix of the file name.
 
 At this stage it is very tempting to simply add the desired functionality and
-where test driven development really requires discipline. Let us be good
+it is where test driven development really requires discipline. Let us be good
 practitioners of TDD and add a test specifying the desired behaviour first.
 
 ```python
@@ -383,7 +388,7 @@ class TemporaryFilePath(object):
         os.unlink(self.fpath)
 ```
 
-And now all the tests pass. Below is all the code in all its glory.
+And now all the tests pass. Below is the code in all its glory.
 
 ```python
 import os
