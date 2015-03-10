@@ -13,7 +13,7 @@ For example the Python image module ``skimage.io`` has a function named
 [``imsave``](http://scikit-image.org/docs/dev/api/skimage.io.html#imsave) that
 takes a ``fname`` and ``arr`` arguments. However, what I wanted was a function
 that returned the content of the file as a byte string. In other words I wanted
-a the behaviour of the Python Image Library's
+the behaviour of the Python Image Library's
 [``PIL.Image.tobytes``](http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.tobytes)
 function. However, I could not find one in scikit-image.
 
@@ -38,7 +38,7 @@ Let's illustrate this using ``PIL``.
 
 However, one cannot use the approach above with ``skimage.io.imsave`` as it
 does not provide a means to specify the format (the format seems to be
-"automagially" determined from the file name). So we are forced to save the
+"automagically" determined from the file name). So we are forced to save the
 image to disk and then read the contents of the file.
 
 ```python
@@ -54,7 +54,7 @@ image to disk and then read the contents of the file.
 The code above above is really ugly. What we want is something that can give us
 a relatively safe temporary file path and delete it once we are done with it.
 This is what Python's context managers are for. Context managers are what lets
-you use the ``with`` statement for opening files etc, Jeff Preshing has
+you use the ``with`` statement for opening files etc. Jeff Preshing has
 written a nice tutorial on context mangers [The Python "with" Statement by
 Example](http://preshing.com/20110920/the-python-with-statement-by-example/).
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
 ```
 
 The code above will raise a ``NameError`` stating that the
-``TemporaryFilePath`` is not defined. Great now we can start adding an
+``TemporaryFilePath`` is not defined. Great, now we can start adding an
 implementation to make the tests pass. I will do this incrementally as it is a
 useful illustration of some of the aspects of test driven development (TDD).
 
@@ -280,7 +280,7 @@ class TemporaryFilePath(object):
         os.unlink(self.fpath)
 ```
 
-Great everything is working nicely. The only problem is that in order to be
+Great, everything is working nicely. The only problem is that in order to be
 able to save an image in png file format we need to be able to specify the
 suffix of the file name.
 
@@ -304,7 +304,7 @@ if __name__ == "__main__":
         
 ```
 
-Great we now have a failing test.
+Great, we now have a failing test.
 
 ```
 Traceback (most recent call last):
