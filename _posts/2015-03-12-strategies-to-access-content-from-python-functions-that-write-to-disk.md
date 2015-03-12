@@ -7,7 +7,7 @@ tags:
   - test driven development
 ---
 
-Have you ever worked with an API that has some sort of save to file function
+Have you ever worked with an API that has some sort of "save to file" function
 only to find yourself wanting a function that returns the content to a string?
 For example the Python image module ``skimage.io`` has a function named
 [``imsave``](http://scikit-image.org/docs/dev/api/skimage.io.html#imsave) that
