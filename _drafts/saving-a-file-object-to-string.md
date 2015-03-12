@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Saving a file object to string
+title: Strategies to access content from Python functions that write to disk
 comments: true
 tags:
   - python
