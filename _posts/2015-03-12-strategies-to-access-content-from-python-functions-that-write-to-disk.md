@@ -17,6 +17,8 @@ words I wanted the behaviour of the Python Image Library's
 [``PIL.Image.tobytes``](http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.tobytes)
 function. However, I could not find one in scikit-image.
 
+## Strategy 1: make use of ``StringIO``
+
 In these types of circumstances one can often make use of Python's built-in
 [``StringIO``](https://docs.python.org/2/library/stringio.html) module.
 Let's illustrate this using ``PIL``.
@@ -36,6 +38,8 @@ Let's illustrate this using ``PIL``.
 
 ```
 
+## Strategy 2: write, read, delete
+
 However, one cannot use the approach above with ``skimage.io.imsave`` as it
 does not provide a means to specify the format (the format seems to be
 "automagically" determined from the file name). So we are forced to save the
@@ -51,6 +55,8 @@ image to disk and then read the contents of the file.
 
 ```
 
+## Strategy 3: create a context manager
+
 The code above above is really ugly. What we want is something that can give us
 a relatively safe temporary file path and delete it once we are done with it.
 This is what Python's context managers are for. Context managers are what lets
@@ -58,8 +64,10 @@ you use the ``with`` statement for opening files etc. Jeff Preshing has
 written a nice tutorial on context mangers [The Python "with" Statement by
 Example](http://preshing.com/20110920/the-python-with-statement-by-example/).
 
-However, before we start working on an implementation let us specify the
-desired behaviour as a test. Add the code below to a file named
+Here I will use a test driven development (TDD) approach to illustrate how we
+can implement a context manager to help us work more safely with temporary file
+paths. So, before we start working on an implementation let us specify
+the desired behaviour as a test. Add the code below to a file named
 ``tempfilepath.py``.
 
 ```python
@@ -77,7 +85,7 @@ if __name__ == "__main__":
 The code above will raise a ``NameError`` stating that the
 ``TemporaryFilePath`` is not defined. Great, now we can start adding an
 implementation to make the tests pass. I will do this incrementally as it is a
-useful illustration of some of the aspects of test driven development (TDD).
+useful illustration of some of the aspects of TDD.
 
 ```python
 class TemporaryFilePath(object):
