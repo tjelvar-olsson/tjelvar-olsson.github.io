@@ -27,7 +27,7 @@ Let's illustrate this using ``PIL``.
 >>> from StringIO import StringIO
 >>> ar = np.zeros((50,50), dtype=np.uint8)  # The array we want to get a png byte string for.
 >>> img = Image.fromarray(ar)
->>> img = img.convert('RGB')  # We need to convert to RGB to save as PNG.
+>>> img = img.convert('RGB')  # Need to convert to RGB to save as PNG.
 >>> output = StringIO()
 >>> img.save(output, format="PNG")
 >>> contents = output.getvalue()
