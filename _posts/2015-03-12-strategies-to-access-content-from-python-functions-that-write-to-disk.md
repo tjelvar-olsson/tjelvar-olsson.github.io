@@ -11,9 +11,9 @@ Have you ever worked with an API that has some sort of "save to file" function
 only to find yourself wanting a function that returns the content to a string?
 For example the Python image module ``skimage.io`` has a function named
 [``imsave``](http://scikit-image.org/docs/dev/api/skimage.io.html#imsave) that
-takes a ``fname`` and ``arr`` arguments. However, what I wanted was a function
-that returned the content of the file as a byte string. In other words I wanted
-the behaviour of the Python Image Library's
+takes ``fname`` and ``arr`` as arguments and writes an image to disk. However,
+what I wanted was a function that returned the image as a byte string. In other
+words I wanted the behaviour of the Python Image Library's
 [``PIL.Image.tobytes``](http://pillow.readthedocs.org/en/latest/reference/Image.html#PIL.Image.Image.tobytes)
 function. However, I could not find one in scikit-image.
 
