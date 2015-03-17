@@ -74,7 +74,7 @@ with open('example.fasta') as fh:
         if line.startswith('>'):
             # We have encountered a description line. That means the start of a
             # new FASTA record.
-            if line.find('Q9Y233') != -1:  k
+            if line.find('Q9Y233') != -1:
                 # We have matched our search criteria.
                 match = True
             else:
@@ -139,15 +139,16 @@ the goodness of the new style class. There are more details on the [Python
 wiki](https://wiki.python.org/moin/NewClassVsClassicClass).
 
 Secondly, we make use of the "magic" method ``__init__``. This is used to create
-an instance of a class. Classes, objects, instances, what is up with all this
-terminology? What does it all mean?
+an instance of a class. *Classes, objects, instances, what is up with all this
+terminology? What does it all mean?*
 
-Okay, let us take slight detour. You can think of classes as molds, for example
+Okay, let us take a slight detour. You can think of classes as molds, for example
 a plastic bucket that you bring to the beach to make a sand castle. You fill
-the bucket with sand and tip it up-side down, pat it on the top and lift it.
+the bucket with sand and tip it up-side down, pat it on the top and lift it up.
 What remains is a tower made out of sand. This sand tower is an "instance" of
-your bucket "class". The term "object", as in object-oriented programming,
-tends to be used to refer to classes and instances interchangeably.
+your bucket "class". Finally, the term "object", as in object-oriented
+programming, tends to be used to refer to classes and instances
+interchangeably.
 
 Back to the ``__init__`` method, which is used to initialise an instance of
 the class. The instance created is accessible via the ``self`` argument. During
@@ -193,9 +194,9 @@ RVHTIPVCKEGIRGHTESCSCPLQQSPRADNSAPGTPTRKISASEFDRPLRPIVVKDSEG
 
 ```
 
-See Rafe Kettler's blog post [A Guide to Python's Magic
-Methods](http://www.rafekettler.com/magicmethods.html) for more details on
-"magic" methods.
+For more information on "magic" methods have a look at Rafe Kettler's blog post
+[A Guide to Python's Magic
+Methods](http://www.rafekettler.com/magicmethods.html).
 
 
 ## A FASTA parser object
@@ -227,7 +228,7 @@ class FastaParser(object):
 
 In the example above I have used the ``__iter__`` magic method. This basically
 defines the behaviour the class should display when called as an iterator. In
-this particular case we want it to yield FastaRecord instances as the FASTA
+this particular case we want it to ``yield`` ``FastaRecord`` instances as the FASTA
 file is parsed.
 
 ```python
@@ -279,7 +280,7 @@ class FastaRecord(object):
 ```
 
 Note the addition of the ``matches`` method above. Also, note that the
-addition of more functionality does not make the code any more difficult to
+addition of more functionality did not make the code any more difficult to
 understand.
 
 It is now trivial to write a script to do the analysis that we want.
@@ -292,16 +293,17 @@ for fasta_record in FastaParser('example.fasta'):
         print(fasta_record)
 ```
 
-Compare the descriptiveness of this code compared to that of the procedural
-example at the beginning of this post.
+Compare the descriptiveness of this code to that of the procedural example at
+the beginning of this post.
 
-But you had to write so much more code to get to this point, is it really worth it?
+*But you had to write so much more code to get to this point, is it really
+worth it?*
 
 I go back to the scenario outlined earlier in this post. Imagine that you had
 to extend the logic of the code to be able to filter based on the length of the
 sequence. Which code base would you rather use as a starting point? If you are
 unsure, try adding this functionality to both code bases to find out which one
-is easier.
+is more extensible.
 
 
 ## Try to avoid re-inventing the wheel
