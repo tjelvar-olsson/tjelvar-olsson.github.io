@@ -8,11 +8,19 @@ tags:
   - object-oriented programming
 ---
 
+<figure>
+  <img src="/images/sandcastle.jpg" alt="Sandcastle" />
+  <figcaption>
+  Using a bucket to create sandcastles. That is what object-oriented
+  programming is all about.
+  </figcaption>
+</figure>
+
 ## Introduction
 
 For anyone not familiar with object-oriented programming it can sometimes come
 across as something mysterious that is used by expert coders. Indeed, any
-respectable text book on object oriented programming will try to overwhelm the
+respectable text book on object-oriented programming will try to overwhelm the
 reader with concepts such as "abstraction", "encapsulation", "inheritance" and
 "polymorphism".
 
@@ -139,15 +147,17 @@ the goodness of the new style class. There are more details on the [Python
 wiki](https://wiki.python.org/moin/NewClassVsClassicClass).
 
 Secondly, we make use of the "magic" method ``__init__``. This is used to create
-an instance of a class. *Classes, objects, instances, what is up with all this
-terminology? What does it all mean?*
+an instance of a class.
 
-Okay, let us take a slight detour. You can think of classes as molds, for example
-a plastic bucket that you bring to the beach to make a sand castle. You fill
-the bucket with sand and tip it up-side down, pat it on the top and lift it up.
-What remains is a tower made out of sand. This sand tower is an "instance" of
-your bucket "class". Finally, the term "object", as in object-oriented
-programming, tends to be used to refer to classes and instances
+*Classes, objects, instances, what is up with all this terminology? What does
+it all mean?*
+
+Okay, let us take a slight detour. You can think of classes as moulds, for
+example a plastic bucket that you bring to the beach to make a sand castle. You
+fill the bucket with sand and tip it up-side down, pat it on the top and lift
+it up.  What remains is a tower made out of sand. This sand castle is an
+"instance" of your bucket "class". Finally, the term "object", as in
+object-oriented programming, tends to be used to refer to classes and instances
 interchangeably.
 
 Back to the ``__init__`` method, which is used to initialise an instance of
@@ -158,7 +168,6 @@ line.
 ```python
 >>> from fasta import FastaRecord
 >>> fasta_record = FastaRecord('>sp|O76074|PDE5A_HUMAN')
-
 ```
 
 Note that the ``fasta_record`` variable above is an instance of the
@@ -168,7 +177,6 @@ Note that the ``fasta_record`` variable above is an instance of the
 ```python
 >>> fasta_record.description
 '>sp|O76074|PDE5A_HUMAN'
-
 ```
 
 The ``add_sequence_line`` method simply adds a sequence line to the
@@ -177,11 +185,10 @@ The ``add_sequence_line`` method simply adds a sequence line to the
 ```python
 >>> fasta_record.add_sequence_line('MERAGPSFGQQRQQQQPQQQKQQQRDQDSVEAWLDDHWDFTFSYFVRKATREMVNAWFAE')
 >>> fasta_record.add_sequence_line('RVHTIPVCKEGIRGHTESCSCPLQQSPRADNSAPGTPTRKISASEFDRPLRPIVVKDSEG')
-
 ```
 
 Finally, we have the "magic" ``__repr__`` method. At this point you are
-probably screaming out load, what is a "magic" method? A "magic" method is
+probably screaming out loud, what is a "magic" method? A "magic" method is
 basically a way to make an object behave like a built-in Python object. For
 example the ``__repr__`` method is used to describe how the instance should be
 represented. Let us illustrate this below.
@@ -191,7 +198,6 @@ represented. Let us illustrate this below.
 >sp|O76074|PDE5A_HUMAN
 MERAGPSFGQQRQQQQPQQQKQQQRDQDSVEAWLDDHWDFTFSYFVRKATREMVNAWFAE
 RVHTIPVCKEGIRGHTESCSCPLQQSPRADNSAPGTPTRKISASEFDRPLRPIVVKDSEG
-
 ```
 
 For more information on "magic" methods have a look at Rafe Kettler's blog post
@@ -239,7 +245,6 @@ file is parsed.
 ...
 >sp|O76074|PDE5A_HUMAN cGMP-specific 3',5'-cyclic phosphodiesterase OS=Homo sapiens GN=PDE5A PE=1 SV=2
 >sp|Q9Y233|PDE10_HUMAN cAMP and cAMP-inhibited cGMP 3',5'-cyclic phosphodiesterase 10A OS=Homo sapiens GN=PDE10A PE=1 SV=1
-
 ```
 
 ## Back to grouping data and functionality
@@ -326,7 +331,7 @@ Furthermore, it can make your code more understandable and extensible.
 Finally, do not let your lack of knowledge about "polymorphism" and
 "inheritance" hold you back from making use of objects. Yes, these are
 interesting topics, and please do read up on them. However, they are not
-essential to your use of object oriented programming (at least not in Python).
+essential to your use of object-oriented programming (at least not in Python).
 
 I hope you find this post useful and that it has encouraged you to try out
 object-oriented programming. Send me a message if you need any help.
