@@ -7,6 +7,8 @@ permalink: about/
 My name is Tjelvar and I am a Swede enjoying life in Norwich. I help people
 use computers to do better science.
 
+![Tjelvar Olsson.](/images/tjelvar.jpg)
+
 I work as a scientific computing lab manager at the John Innes Centre. It's a
 great place to work as I get to participate in cutting edge science and play
 with the latest technology. My role involves providing services and training in
