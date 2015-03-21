@@ -2,6 +2,7 @@
 layout: page
 title: About Me
 permalink: about/
+tinyletter_signup: true
 ---
 
 My name is Tjelvar and I am a Swede enjoying life in Norwich. I help people

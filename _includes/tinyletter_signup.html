@@ -1,0 +1,14 @@
+{% if page.tinyletter_signup %}
+  <form style="border:1px solid #ccc;padding:3px;text-align:center;"
+        action="https://tinyletter.com/tjelvarolsson" method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://tinyletter.com/tjelvarolsson', 'popupwindow',
+                              'scrollbars=yes,width=800,height=600');return true">
+  <p>Subscribe to the free monthly newsletter!</p>
+  <p>
+     <input type="text" style="width:140px" name="email" id="tlemail" placeholder=" email@example.com" />
+     <input type="hidden" value="1" name="embed"/>
+     <input type="submit" value="Subscribe" />
+  </p>
+  <p><small><a href="https://tinyletter.com" target="_blank">powered by TinyLetter</a></small></p></form>
+{% endif %}

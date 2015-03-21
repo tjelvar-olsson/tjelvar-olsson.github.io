@@ -16,11 +16,15 @@
              <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
            {% endfor %}
 
+           &nbsp;&nbsp;&nbsp;
+           <small><a href="https://tinyletter.com/tjelvarolsson" target="_blank">Newsletter</a></small>
+
         </h3>
       </header>
 
       <main>
         {{ content }}
+        {% include tinyletter_signup.html %}
         {% include comments.html %}
       </main>
 
