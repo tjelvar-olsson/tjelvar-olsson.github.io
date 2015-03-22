@@ -80,18 +80,18 @@ with open('example.fasta') as fh:
     for line in fh:
         line = line.strip()  # Remove newline at the end of the line.
         if line.startswith('>'):
-            # We have encountered a description line. That means the start of a
-            # new FASTA record.
+            # We have encountered a description line.
+            # That means the start of a new FASTA record.
             if line.find('Q9Y233') != -1:
                 # We have matched our search criteria.
                 match = True
             else:
-                # We have encountered a new entry and it does not match the
-                # search criteria.
+                # We have encountered a new entry and it does
+                # not match the search criteria.
                 match = False
         if match:
-            # We are currently in a section of the FASTA file that matches our
-            # search criteria.
+            # We are currently in a section of the FASTA file
+            # that matches our search criteria.
             print(line)
 ```
 
