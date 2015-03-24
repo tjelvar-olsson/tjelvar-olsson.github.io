@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Seven exercises to get familiar with the Python debugger
+title: Five exercises to help you get familiar with the Python debugger
 comments: true
 tags:
   - python
@@ -12,17 +12,20 @@ tags:
 When one starts programming it is common to find oneself inserting ``print``
 statements all over the code when one finds that things are not working as
 expected. This is fine and can often be a quick way of finding out what is
-going on.
+going on. However, it can become tedious whenever the problem in question is
+non-trivial and one finds oneself repeatedly inserting yet another print
+statement before running the script yet again only to find that one still does
+not know what the problem is.
 
 There is a more powerful way of finding out what a program is doing: using a
 debugger. However, people often shy away from debuggers because of their arcane
-interface. This post contains seven exercises to help you master the Python
+interface. This post contains five exercises to help you master the Python
 debugger.
 
 ## Exercise 1: stepping through a program
 
 Let us start by stepping through a simple program. Copy and past the code
-snippet below into a file named ``pdb_exercies_1.py``.
+snippet below into a file named ``pdb_exercie_1.py``.
 
 ```python
 name = 'alice'
@@ -33,7 +36,7 @@ print(greeting)
 Now invoke the script using the python debugger using the command below.
 
 ```
-python -m pdb pdb_exercies_1.py
+python -m pdb pdb_exercie_1.py
 ```
 
 In the above ``pdb`` is three letter acronym for Python DeBugger. You should be greeted by the prompt below.
@@ -50,7 +53,7 @@ the prompt for interacting with the debugger (``(Pdb)``).
 Type in ``n`` (as in next) to execute the line displayed. You should now see the lines below.
 
 ```
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_1.py(2)<module>()
+> pdb_exercise_1.py(2)<module>()
 -> greeting = 'hello' + name
 ```
 
@@ -257,11 +260,141 @@ With a command name as argument, print help about that command
 
 ## Exercise 3: interacting with the program under inspection
 
-- use a script that generates an error
-- p
-- pp
-- changing the value of a variable
+Up until this point we have not actually had any errors in our scripts to
+correct. Let us change that. Copy and past the code below into a file named
+``pdb_exercise_2.py``.
 
+```python
+import sys
+
+def magic(x, y):
+    return x + y * 2
+
+x = sys.argv[1]
+y = sys.argv[1]
+
+answer = magic(x, y)
+print('The answer is: {}'.format(answer))
+```
+
+Suppose that we run this script with the inputs 1 and 50 expecting the result 101.
+
+```
+python pdb_exercise_3.py 1 50
+The answer is: 111
+```
+
+What is going on?
+
+Now rather than insert ``print`` statements all over the code to work out what is going on let us examine the code in the debugger.
+
+```
+python -m pdb pdb_exercise_3.py 1 50
+```
+
+Let us get to the point where we have access to the variables ``x`` and ``y``.
+
+```
+> pdb_exercise_3.py(1)<module>()
+-> import sys
+(Pdb) n
+> pdb_exercise_3.py(3)<module>()
+-> def magic(x, y):
+(Pdb) n
+> pdb_exercise_3.py(6)<module>()
+-> x = sys.argv[1]
+(Pdb) n
+> pdb_exercise_3.py(7)<module>()
+-> y = sys.argv[1]
+(Pdb) n
+> pdb_exercise_3.py(9)<module>()
+-> answer = magic(x, y)
+(Pdb) 
+```
+
+First of all let us see what attributes are available in the scope of the program. We can do this using ``p`` for print.
+
+```
+(Pdb) p dir()
+['__builtins__', '__file__', '__name__', '__package__', 'magic', 'sys', 'x', 'y']
+```
+
+There is also ``pp`` for pretty print.
+
+```
+(Pdb) pp dir()
+['__builtins__',
+ '__file__',
+ '__name__',
+ '__package__',
+ 'magic',
+ 'sys',
+ 'x',
+ 'y']
+```
+
+Okay, that is fine. So what is x?
+
+```
+(Pdb) p x
+'1'
+```
+
+Hey, that looks suspiciously like a string. Note that we can use raw Python within the debugger. Let us find out type x is.
+
+```
+(Pdb) type(x)
+<type 'str'>
+```
+
+The fact that we can execute Python within the debugger means that we can
+change the input variables dynamically.
+
+```
+(Pdb) x = int(x)
+(Pdb) y = int(y)
+```
+
+Let us just check the values before we run the program.
+
+```
+(Pdb) p x, y
+(1, 1)
+```
+
+What ``y`` is 1 not 50?
+
+Inspecting the code we find that I forgot to update the index when I copied the
+input parsing line (note line 7 in the code listing below).
+
+```
+(Pdb) l
+  4         return x + y * 2
+  5     
+  6     x = sys.argv[1]
+  7     y = sys.argv[1]
+  8     
+  9  -> answer = magic(x, y)
+ 10     print('The answer is: {}'.format(answer))
+[EOF]
+(Pdb) 
+```
+Ok, let us just change the value of ``y`` to 50 in the debugger before checking
+if the code works as expected by letting it run to completion.
+
+```
+(Pdb) y = 50
+(Pdb) c
+The answer is: 101
+The program finished and will be restarted
+> pdb_exercise_3.py(1)<module>()
+-> import sys
+(Pdb) 
+```
+
+Ok, so the example is a little bit naff. However, I hope it illustrates the
+power of working with the debugger, particularly if you are working on a more
+complicated code base.
 
 ## Exercise 4: using breakpoints
 
