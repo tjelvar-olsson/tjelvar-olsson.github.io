@@ -479,3 +479,13 @@ on.
 
 
 ## Exercise 5: Moving around the stack
+
+
+## Summary
+
+## Further reading
+
+- [Debugging in Python | Python Conquers The
+  Universe](https://pythonconquerstheuniverse.wordpress.com/2009/09/10/debugging-in-python/)
+- [Debugging Python Like a Boss - The Zapier Engineering
+  Blog](https://zapier.com/engineering/debugging-python-boss/)
