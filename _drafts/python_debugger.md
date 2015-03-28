@@ -398,3 +398,84 @@ complicated code base.
 
 ## Exercise 4: using breakpoints
 
+So far we have been stepping though a program from beginning to end. However,
+when working on larger programs this is often not practical. To simulate such a
+situation copy and paste the code below into a file named
+``pdb_exercise_4.py``.
+
+```python
+import time
+
+def slow_subtractor(a, b):
+    """Return a minus b."""
+    time.sleep(5)
+    return a - b
+
+some = slow_subtractor(12, 8)
+crazy = slow_subtractor(12, 78)
+scientific = slow_subtractor(56, 31)
+experiment = slow_subtractor(101, 64)
+
+total = some + crazy + scientific + experiment
+
+experimental_fraction = experiment / total
+```
+
+When we run this code we get a ``ZeroDivisionError``.
+
+```
+tjelvar@crunchbang:~/projects/tjelvar-olsson.github.io/_drafts$ python pdb_exercise_4.py
+Traceback (most recent call last):
+  File "pdb_exercise_4.py", line 15, in <module>
+    experimental_fraction = experiment / total
+ZeroDivisionError: integer division or modulo by zero
+```
+
+Stepping through the code in the debugger would be annoying as you would have
+to press ``n`` every time the ``slow_subtraction()`` function was called. Let
+us instead insert a breakpoint before the line that generates the error. This
+is achieved by importing the ``pdb`` module and using the ``pdb.set_trace()``
+function.
+
+```python
+import time
+import pdb
+
+def slow_subtractor(a, b):
+    """Return a minus b."""
+    time.sleep(5)
+    return a - b
+
+some = slow_subtractor(12, 8)
+crazy = slow_subtractor(12, 78)
+scientific = slow_subtractor(56, 31)
+experiment = slow_subtractor(101, 64)
+
+total = some + crazy + scientific + experiment
+
+pdb.set_trace()
+experimental_fraction = experiment / total
+```
+
+If we run the code now we get dumped into a debugger session before the
+offending line is executed.
+
+```
+python pdb_exercise_4.py
+> pdb_exercise_4.py(17)<module>()
+-> experimental_fraction = experiment / total
+(Pdb) p total
+0
+(Pdb) p some, crazy, scientific, experiment
+(4, -66, 25, 37)
+```
+
+Ok, so it looks like there is something funny going on with the ``crazy``
+variable. Perhaps the input arguments were given the wrong way around.
+
+The take home message is that setting breakpoints is a powerful way of getting
+to the point of interest in your code when you want to examine what is going
+on.
+
+
+## Exercise 5: Moving around the stack
