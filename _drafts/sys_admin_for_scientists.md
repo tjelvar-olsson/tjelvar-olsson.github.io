@@ -9,16 +9,18 @@ tags:
   - systems adminstration
 ---
 
+![Ansible playbook](/images/ansible-playbook.png)
+
 In any organisation systems administration is a big role, which entails making
-sure the systems everyone take for granted just work. Email, internet, etc -
-everything should just work 24/7.
+sure the systems everyone take for granted just work. Email, internet, etc;
+everything needs to function 24/7.
 
 But as computational scientists we need specialist software, written by and for
 scientists. This means that we often have to rely on ourselves to do some basic
 systems administration to install and manage scientific software.
 
-The question then arises: how can one effectively configure machines to run
-scientific software. Particularly as installing software written by other
+The question then arises: *how can one effectively configure machines to run
+scientific software?* Particularly as installing software written by other
 scientists can often be a tortuously painful process.
 
 In this post I will outline a method for producing work flows that result in
@@ -38,15 +40,15 @@ At this point we do not want to experiment with our production machine.
 Instead we will create a virtual machine on our desktop, which we will refer to
 as the testing machine. Depending on your interest in virtualisation you may
 already have heard of and used [VirtualBox](https://www.virtualbox.org). It is
-an easy to use tool for creating virtual machines.  If you have not already
-installed VirtualBox do so now ([VirtualBox
+a tool for creating virtual machines.  If you have not already installed
+VirtualBox do so now ([VirtualBox
 downloads](https://www.virtualbox.org/wiki/Downloads)).
 
-Rather than working with VirtualBox directly we will make use of a tool called
-[Vagrant](https://www.vagrantup.com). Vagrant is a command line tool for
+Rather than working with VirtualBox directly we will make use of
+[Vagrant](https://www.vagrantup.com). Vagrant is a command line utility for
 working with VirtualBox and other virtual machine providers such as VMWare and
-AWS. Here is a link to the ([Vagrant
-downloads](https://www.vagrantup.com/downloads.html)).
+AWS. Here is a link to the [Vagrant
+downloads](https://www.vagrantup.com/downloads.html).
 
 We are now in a position to create and work with virtual machines solely from
 the command line. Let us start by creating a Vagrant file for setting up a
@@ -58,7 +60,7 @@ $ vagrant init chef/centos-6.5
 
 The command above creates a file named ``Vagrant``, which in its most basic
 form simply specifies the Linux image to provision the virtual machine with. In
-this instance the image from
+this instance the image from:
 [atlas.hashicorp.com/chef/boxes/centos-6.5](https://atlas.hashicorp.com/chef/boxes/centos-6.5).
 Let us have a quick look at the ``Vagrant`` file.
 
@@ -81,10 +83,11 @@ $ vagrant ssh
 Last login: Fri Mar  7 16:57:20 2014 from 10.0.2.2
 [vagrant@localhost ~]$ pwd
 /home/vagrant
+```
 
-As you can see Vagrant has configured ssh to allow the vagrant user to login
-without a password.  Let's close the ssh connection and find more details about
-the ssh configuration.
+As you can see Vagrant has configured ssh to allow the ``vagrant`` user to
+login without a password.  Let's close the ssh connection and find more details
+about the ssh configuration.
 
 ```
 [vagrant@localhost ~]$ exit
@@ -144,8 +147,8 @@ or not commonly used. To see all subcommands, run the command
 `vagrant list-commands`.
 ```
 
-Note that the ``vagrant halt`` and ``vagrant destroy`` commands to stop and
-delete the vagrant machine respectively.
+Note the ``vagrant halt`` and ``vagrant destroy`` commands to stop and delete
+the vagrant machine respectively.
 
 
 ## Ansible - configure your virtual machine
@@ -168,7 +171,7 @@ notes](http://docs.ansible.com/intro_installation.html).
 Ansible uses the [YAML](http://yaml.org) file format.  Let us create
 a file named ``playbook.yml``.
 
-```yml
+```yaml
 ---
 # A basic playbook that simply checks who I logged in as.
 - hosts: all
@@ -217,7 +220,7 @@ Ansible comes with a whole host of built in modules. For example
 [yum](http://docs.ansible.com/yum_module.html),
 [apt](http://docs.ansible.com/apt_module.html) and
 [homebrew](http://docs.ansible.com/homebrew_module.html) are but a few of the
-operating system package managing modules. It also has
+modules for operating system package management. It also has
 [pip](http://docs.ansible.com/pip_module.html),
 [cpanm](http://docs.ansible.com/cpanm_module.html) and
 [gem](http://docs.ansible.com/gem_module.html) modules for managing Python
@@ -225,17 +228,17 @@ packages, Perl modules and Ruby gems respectively. There is also a vast array
 of [modules for working with
 files](http://docs.ansible.com/list_of_files_modules.html).  For more
 information check out the [Ansible module
-index](http://docs.ansible.com/modules_by_category.html)
+index](http://docs.ansible.com/modules_by_category.html).
 
 Below is a slightly more involved playbook for installing
 the ``Bio::Perl`` module. The playbook deals with a number of complications.
 It installs ``gcc`` to be able to compile some of the Perl
-modules. It also installs ``cpan`` and ``cpanm`` to make it easier to install
-Perl modules. Finally, ``Bio::Perl`` has some implicit dependencies that are
+modules. It installs ``cpan`` and ``cpanm`` to make it easier to install
+Perl modules. Further, ``Bio::Perl`` has some implicit dependencies that are
 not taken care of automatically when installing it using ``cpanm``, so the playbook
 installs these dependencies first.
 
-```
+```yaml
 ---
 - hosts: all
   sudo: True
@@ -278,7 +281,7 @@ installs these dependencies first.
       cpanm: name=Bio::Perl
 ```
 
-We can now test this Ansible playbook on the testing virtual machine.
+We can now try out this Ansible playbook on the testing virtual machine.
 
 ```
 $ vagrant provision
@@ -354,8 +357,8 @@ files in the ``.ssh`` directory on the production server. For more detail see, f
 Etel Sverdlov blog post on [How To Set Up SSH
 Keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2).
 
-Up until this point we have not used Ansible directly, we simply let Vagrant's
-built-in functionality make use of it. We will remedy that now.
+Up until this point we have not used Ansible directly, we have only used it
+through Vagrant. We will remedy that now.
 
 First of all Ansible needs to know about the machines that you want it to talk
 to. By default Ansible looks for these in ``/etc/ansible/hosts``.
@@ -367,10 +370,9 @@ then add this to a file named ``hosts``.
 scicomp.example.com
 ```
 
-A simple way to check that everything is working as it should is to make use of
-Ansible's [ping](http://docs.ansible.com/ping_module.html)  module. If
-everything is working as it should, you will see something along the lines of
-the below.
+A simple way to check that everything is setup as it should be is to make use
+of Ansible's [ping](http://docs.ansible.com/ping_module.html)  module. If
+everything is working you will see something along the lines of the below.
 
 ```
 $ ansible -i hosts -m ping scicomp.example.com
@@ -426,6 +428,8 @@ PLAY RECAP ********************************************************************
 scicomp.example.com        : ok=8    changed=5    unreachable=0    failed=0
 ```
 
+And now the production machine is configured with ``Bio::Perl``!
+
 ## A confession
 
 I did not actually have the IT department create a production machine for me
@@ -471,14 +475,20 @@ As a computational scientist you are likely to get exposed to systems
 administration to some extent. In particular for installing scientific
 software.
 
-In an ideal world you should try to make this as reproducible and automated as
-possible, because your machine will fall over at one point or another. When
-this happens you want to be in a position where you simply need to press a
-button to get your new machine configured will all the software that you need
-to work effectively.
+In an ideal world you should try to make the installation of your software as
+reproducible and automated as possible, because your machine will fall over at
+one point or another. When this happens you want to be in a position where you
+simply need to press a button to get your new machine configured with all the
+software that you need to work effectively.
 
-Vagrant is a tool for spinning up virtual machines from the command line and
-you can use it to test any scripts that you create to provision your machines.
+Vagrant is a tool for spinning up virtual machines from the command line.
+Virtual machines are great for testing scripts that you create to configure
+your machines.
 
-Ansible is a tool for scripting the configuration of your machines. It is very
-powerful, yet easy to use. Make it your friend!
+Ansible is a wonderful tool for scripting the configuration of your machines.
+It is very powerful, yet easy to use. Make it your friend!
+
+Finally, I highly recommend that you keep your Vagrant and Ansible files under
+version control. It will give you more confidence when experimenting with new
+setups and it provides a way for you to track the progression of your machines
+configurations.
