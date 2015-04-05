@@ -27,3 +27,8 @@ pages_list:
   About:            '/about/'
   Posts:            '/posts/'
   Feed:             '/atom.xml'
+
+# Allow URL redirects.
+# See also: https://help.github.com/articles/redirects-on-github-pages/
+gems:
+  - jekyll-redirect-from

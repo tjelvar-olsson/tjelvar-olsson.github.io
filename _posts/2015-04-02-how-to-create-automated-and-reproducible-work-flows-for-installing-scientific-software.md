@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Systems administration for scientists
+title: How to create automated and reproducible work flows for installing scientific software
+redirect_from: "/blog/systems-administration-for-scientists/"
 comments: true
 tags:
   - vagrant
