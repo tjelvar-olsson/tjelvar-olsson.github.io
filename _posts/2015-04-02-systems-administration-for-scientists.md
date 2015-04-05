@@ -58,11 +58,11 @@ CentOS 6.5 box.
 $ vagrant init chef/centos-6.5
 ```
 
-The command above creates a file named ``Vagrant``, which in its most basic
+The command above creates a file named ``Vagrantfile``, which in its most basic
 form simply specifies the Linux image to provision the virtual machine with. In
 this instance the image from:
 [atlas.hashicorp.com/chef/boxes/centos-6.5](https://atlas.hashicorp.com/chef/boxes/centos-6.5).
-Let us have a quick look at the ``Vagrant`` file.
+Let us have a quick look at the ``Vagrantfile`` file.
 
 ```ruby
 Vagrant.configure(2) do |config|
@@ -181,7 +181,7 @@ a file named ``playbook.yml``.
 ```
 
 To configure the Vagrant testing machine we simply need to update the
-``Vagrant`` file; inserting the provisioning section below.
+``Vagrantfile`` file; inserting the provisioning section below.
 
 ```ruby
 Vagrant.configure(2) do |config|
@@ -338,7 +338,7 @@ Let us commit our work to version control.
 
 ```
 $ git init
-$ git add Vagrant
+$ git add Vagrantfile
 $ git commit -m "Vagrant file with CentOS 6.5 configured by playbook.yml"
 $ git add playbook.yml
 $ git commit -m "Playbook for installing Bio::Perl"
