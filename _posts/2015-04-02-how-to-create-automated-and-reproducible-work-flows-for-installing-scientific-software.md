@@ -250,7 +250,7 @@ installs these dependencies first.
            state=present
 
     - name: install cpan and perl-devel
-      yum: name={{ item }}
+      yum: name={{ "{{ item " }}}}
            state=present
       with_items:
         - perl-devel
@@ -273,7 +273,7 @@ installs these dependencies first.
             state=link
 
     - name: install implicit Bio::Perl dependencies
-      cpanm: name={{ item }}
+      cpanm: name={{ "{{ item " }}}}
       with_items:
         - Time::HiRes
         - LWP::UserAgent
