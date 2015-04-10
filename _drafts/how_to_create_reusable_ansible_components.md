@@ -246,7 +246,8 @@ Now copy and paste the code below into the file ``roles/bio_perl/meta/main.yml``
 ```
 ---
 dependencies:
-  - { role: build_tools, cpanm }
+  - { role: build_tools}
+  - { role: cpanm }
 ```
 
 At this point one can reduce the ``playbook.yml`` file to include only the
