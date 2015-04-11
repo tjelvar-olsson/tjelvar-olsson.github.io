@@ -15,8 +15,8 @@ I described how to create reproducible and automated work flows for installing
 scientific software using [Ansible](http://www.ansible.com/home). In the end we
 had an Ansible playbook for installing ``Bio::Perl``. The playbook did
 many things. It installed ``gcc`` and ``cpanm`` as well as ``Bio::Perl``. In
-this post I will show how we can split some of these tasks out into reusable
-components using Ansible's concept of "roles".
+this post I will show how we can split these tasks out into reusable components
+using Ansible's concept of "roles".
 
 Let us have a look at the Ansible playbook from the end of the previous post.
 
@@ -253,7 +253,7 @@ dependencies:
 ```
 
 At this point one can reduce the ``playbook.yml`` file to include only the
-``bio_perl`` modules as the ``build_tools`` and ``cpanm`` modules will be
+``bio_perl`` module as the ``build_tools`` and ``cpanm`` modules will be
 pulled in as dependencies.
 
 ```
@@ -278,8 +278,9 @@ form a role takes the form of tasks within a file named
 
 In this post we also used the file ``role/bio_perl/meta/main.yml`` to specify
 the dependencies of the role. This meant that the content of the final playbook
-really reflected the intent for which it was created, namely to install
-``Bio::Perl``.
+was succinct and reflected the intent for which it was created, namely to install
+``Bio::Perl``. Furthermore, by explicitly stating the dependencies of the
+``bio_perl`` role we made it easier to reuse.
 
 Finally, we also noted that it is possible to pick and mix roles and tasks
 within a single playbook. This can be useful when creating playbooks that have

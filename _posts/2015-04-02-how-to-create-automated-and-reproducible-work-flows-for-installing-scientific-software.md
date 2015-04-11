@@ -493,3 +493,6 @@ Finally, I highly recommend that you keep your Vagrant and Ansible files under
 version control. It will give you more confidence when experimenting with new
 setups and it provides a way for you to track the progression of your machines
 configurations.
+
+In the [next post]({% post_url 2015-04-11-how-to-create-reusable-ansible-components %})
+we will learn how to convert the playbook created in this post into reusable components.
