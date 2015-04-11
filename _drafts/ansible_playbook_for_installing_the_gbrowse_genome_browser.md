@@ -9,12 +9,16 @@ tags:
   - bioinformatics
 ---
 
+![GBrowse screenshot](/images/gbrowse-screenshot.png)
+
 In previous posts I have described [how to use ansible to create automated and
 reproducible work flows for installing scientific
-software](% post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software %})
-and [how to create reusable Ansible components]. In this post we will create a
-playbook for installing the genome browser GBrowse and in the process we will
-learn how to install and manage services, such as Apache, using Ansible.
+software]({% post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software %})
+and [how to create reusable Ansible
+components]({% post_url 2015-04-11-how-to-create-reusable-ansible-components %}).
+In this post we will create a playbook for installing the genome browser
+[GBrowse](http://gbrowse.org/index.html) and in the process we will learn how
+to install and manage services, such as Apache, using Ansible.
 
 ## Adding ``Bio::Graphics`` to the ``bio_perl`` role
 
@@ -129,7 +133,7 @@ Ansible is not really meant to deal with interactive tasks. This means that
 installers that ask a lot of questions pose a problem. However fortunately in
 this case the ``./Build config`` command provides sensible defaults that we can
 accept and we can simply answer no to all the questions posed by ``./Build
-install``. This means that we can use a work around outlined in the [post by Craig
+install``. This means that we can use a work around outlined in a [post by Craig
 Marvelley](http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/).
 
 Copy and paste the code below into the file ``roles/gbrowse/tasks/main.yml``.
@@ -222,8 +226,8 @@ $ ansible-playbook -i hosts playbook.yml
 
 When the playbook finished running I could view the GBrowse application
 in my browser by going to the url ``http://192.168.33.10/gbrowse2/``
-(192.168.33.10 being the private network specified in the Vagrant file from the
-previous post).
+(``192.168.33.10`` being the private network specified in the Vagrant file from
+the previous post).
 
 
 ## Conclusion
