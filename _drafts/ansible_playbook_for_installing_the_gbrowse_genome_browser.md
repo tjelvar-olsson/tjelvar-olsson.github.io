@@ -10,14 +10,15 @@ tags:
 ---
 
 In previous posts I have described [how to use ansible to create automated and
-reproducible work flows for installing scientific software] and [how to create
-reusable Ansible components]. In this post we will create a playbook for
-installing the genome browser GBrowse2 and in the process we will learn how
-to install and manage services, such as Apache, using Ansible.
+reproducible work flows for installing scientific
+software](% post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software %})
+and [how to create reusable Ansible components]. In this post we will create a
+playbook for installing the genome browser GBrowse and in the process we will
+learn how to install and manage services, such as Apache, using Ansible.
 
 ## Adding ``Bio::Graphics`` to the ``bio_perl`` role
 
-GBrowse2 does not only depend on ``Bio::Perl`` it also depends on
+GBrowse does not only depend on ``Bio::Perl`` it also depends on
 ``Bio::Graphics``. At this point we could add a role for installing
 ``Bio::Graphics``. However, I prefer to add the installation of it to the
 existing ``bio_perl`` role.
@@ -43,7 +44,7 @@ Please update the ``roles/bio_perl/tasks/main.yml`` file to look like the below.
        state=present
 
 - name: install implicit Bio::Perl dependencies
-  cpanm: name={{ item }}
+  cpanm: name={{ "{{ item " }}}}
   with_items:
     - Time::HiRes
     - LWP::UserAgent
@@ -52,7 +53,7 @@ Please update the ``roles/bio_perl/tasks/main.yml`` file to look like the below.
   cpanm: name=CGI
 
 - name: install BioPerl
-  cpanm: name={{ item }}
+  cpanm: name={{ "{{ item " }}}}
   with_items:
     - Bio::Perl
     - Bio::Graphics
@@ -60,10 +61,9 @@ Please update the ``roles/bio_perl/tasks/main.yml`` file to look like the below.
 
 ## Installing and configuring Apache
 
-As the name implies GBrowse2 is a web based tool so to serve it we need to
-install Apache, which we will create a new role for.
-
-Copy and paste the text below into the file ``roles/apache/tasks/main.yml``.
+As the name implies GBrowse is a web based tool so to serve it we need to
+install Apache. Let us create create a new role for this.  Copy and paste the
+text below into the file ``roles/apache/tasks/main.yml``.
 
 ```yaml
 ---
@@ -81,13 +81,13 @@ Copy and paste the text below into the file ``roles/apache/tasks/main.yml``.
 
 The code above introduces us to the Ansible [service
 module](http://docs.ansible.com/service_module.html). The service module is
-used to interact with services managed by initd (or systemd on CentOS 7). In
-the task above we state that the service should be enabled at boot and we ask
-for the service to be started.
+used to interact with services managed by ``initd`` (or ``systemd`` on CentOS
+7). In the ``service`` task above we ask for the service to be started and for
+it to be enabled at boot.
 
 Now suppose that we wanted to restart Apache at some point in our Ansible
 script. For example after having installed another piece of software that was
-served by Apache, such as GBrowse2. This can be achived using Ansible's concept
+served by Apache, such as GBrowse. This can be achived using Ansible's concept
 of handlers. Let us therefore add a handler for restarting apache. Copy and
 paste the code below into the file ``roles/apache/handlers/main.yml``.
 
@@ -101,12 +101,12 @@ paste the code below into the file ``roles/apache/handlers/main.yml``.
 
 Now any task in a playbook that makes use of the ``apache`` role can restart
 Apache by adding the directive ``notify: restart apache``. We will see an
-example of this later on in the post towards the end of the ``gbrowse2`` role.
+example of this later on in the post towards the end of the ``gbrowse`` role.
 
 
 ## Creating the ``gbrowse`` role
 
-Are now in a position to create the ``gbrowse`` role for configuring and
+We are now in a position to create the ``gbrowse`` role for configuring and
 installing the GBrowse software. Let us start by defining the Ansible roles it
 depends on. Copy and paste the code below into the file
 ``roles/gbrowse/meta/main.yml``.
@@ -129,7 +129,7 @@ Ansible is not really meant to deal with interactive tasks. This means that
 installers that ask a lot of questions pose a problem. However fortunately in
 this case the ``./Build config`` command provides sensible defaults that we can
 accept and we can simply answer no to all the questions posed by ``./Build
-install``. This means that we can use work around outlined in a [post by Craig
+install``. This means that we can use a work around outlined in the [post by Craig
 Marvelley](http://marvelley.com/blog/2014/04/23/handling-interactive-ansible-tasks/).
 
 Copy and paste the code below into the file ``roles/gbrowse/tasks/main.yml``.
@@ -138,14 +138,14 @@ Copy and paste the code below into the file ``roles/gbrowse/tasks/main.yml``.
 ---
 # Install and configure the gbrowse genome browser.
 
-- name: install undocumented dependency
-  cpanm: name={{ item }}
+- name: install undocumented dependencies
+  cpanm: name={{ "{{ item " }}}}
   with_items:
     - Date::Parse
     - Term::ReadKey
 
 - name: install remaining perl module dependencies
-  cpanm: name={{ item }}
+  cpanm: name={{ "{{ item " }}}}
   with_items:
     - CGI::Session
     - Digest::MD5
@@ -190,15 +190,16 @@ Copy and paste the code below into the file ``roles/gbrowse/tasks/main.yml``.
 ```
 
 Note the ``notify: restart apache`` directive added to the final task above.
+This will ensure that Apache is restarted after GBrowse has been installed.
 
-One of the questions we answer no to in the interactive installer is to
+One of the questions we answer "no" to in the interactive installer is to
 register our use of GBrowse. If you find this tool useful the developers of it
 would appreciate if you registered. You can do this at any point by running the
 command ``./Build register``.
 
 ## Creating the playbook
 
-Now creating a playbook named ``gbrowse.yml`` at the same level as your
+Now create a playbook named ``gbrowse.yml`` at the same level as your
 ``roles`` directory with the code below.
 
 ```yaml
@@ -210,18 +211,29 @@ Now creating a playbook named ``gbrowse.yml`` at the same level as your
     - gbrowse
 ```
 
-I'm using the same Vagrant setup as outlined in the post on [how to create
-automated and reproducible work flows for installing scientific software]({% post_url
-2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software
-%}). So to run the playbook I simply use the command:
+I am using the same Vagrant setup as outlined in the post on [how to create
+automated and reproducible work flows for installing scientific
+software]({% post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software %}).
+So to run the playbook I simply use the command:
 
 ```
 $ ansible-playbook -i hosts playbook.yml
 ```
 
-When the playbook has finished running I can then view the GBrowse application
-in my browser by going to http://192.168.33.10/gbrowse2/ (192.168.33.10 being
-the private network specified in the Vagrant file from the previous post).
+When the playbook finished running I could view the GBrowse application
+in my browser by going to the url ``http://192.168.33.10/gbrowse2/``
+(192.168.33.10 being the private network specified in the Vagrant file from the
+previous post).
 
 
-## Summary
+## Conclusion
+
+In this post I have shown you how to create a reproducible and automated work
+flow for installing the GBrowse genome brower using Ansible.
+
+We created a role for installing and managing Apache. This introduced us to
+Ansible's ``service`` module and the concept of "handlers" that can be
+"notified" by other tasks in a playbook.
+
+In the next post we will look into how we can manage the firewall of our
+machine using Ansible and ferm.
