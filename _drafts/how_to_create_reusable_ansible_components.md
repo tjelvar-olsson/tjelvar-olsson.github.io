@@ -8,12 +8,14 @@ tags:
   - systems adminstration
 ---
 
+![Tools pop art.](/images/reusable-components-pop-art.jpg)
+
 In the [previous post]({% post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software %})
 I described how to create reproducible and automated work flows for installing
 scientific software using [Ansible](http://www.ansible.com/home). In the end we
 had an Ansible playbook for installing ``Bio::Perl``. The playbook did
 many things. It installed ``gcc`` and ``cpanm`` as well as ``Bio::Perl``. In
-this post I will show how we can split some of these tasks out into re-usable
+this post I will show how we can split some of these tasks out into reusable
 components using Ansible's concept of "roles".
 
 Let us have a look at the Ansible playbook from the end of the previous post.
@@ -62,11 +64,11 @@ Let us have a look at the Ansible playbook from the end of the previous post.
 ```
 
 Looking at the above there are at least three reusable roles: ``build_tools``
-(for installing ``gcc``; this role may grow in the future), ``cpanm`` (for
-installing and configuring ``cpanm``), and ``bio_perl`` (for installing
-``Bio::Perl`` and its implicit dependencies). I guess one could argue that the
-implicit dependencies of ``Bio::Perl`` could be split out into individual
-roles, but for now I think that would be too granular.
+(for installing ``gcc``; this role could grow to include more build tools in the
+future), ``cpanm`` (for installing and configuring ``cpanm``), and ``bio_perl``
+(for installing ``Bio::Perl`` and its implicit dependencies). I guess one could
+argue that the implicit dependencies of ``Bio::Perl`` could be split out into
+individual roles, but for now I think that would be too granular.
 
 To create Ansible roles we need a directory named ``roles``. Let us create it
 along with the directories required for the ``build_tools`` role.
@@ -75,8 +77,8 @@ along with the directories required for the ``build_tools`` role.
 $ mkdir -p roles/build_tools/tasks
 ```
 
-Now we move the task of installing ``gcc`` into the ``build_tools`` role.
-Copy and past the text below into the file
+Now we move the task of installing ``gcc`` into the ``build_tools`` role by
+copying and pasting the text below into the file
 ``roles/build_tools/tasks/main.yml``.
 
 ```yaml
@@ -141,7 +143,7 @@ use of some reusable roles but which also needs to perform some non-reusable
 tasks.
 
 Now we can try running the playbook to make sure that we have not broken
-anything. Note that the output now reflect the fact that the ``install gcc``
+anything. Note that the output now reflects the fact that the ``install gcc``
 task is being called from within the ``build_tools`` role.
 
 ```
@@ -231,7 +233,7 @@ playbooks as and when we need them.
 
 It might be obvious to us now that the ``bio_perl`` role depends on the
 ``build_tools`` and ``cpanm`` roles. However, it may be less obvious as the
-playbook grows or when we want to create a new playbooks that makes use of the
+playbook grows or when we want to create a new playbook that makes use of the
 ``bio_perl`` module.
 
 It is possible to make dependencies explicit when using Ansible roles. To
@@ -263,14 +265,14 @@ pulled in as dependencies.
     - bio_perl
 ```
 
-The content of the playbook now really reflects the original intent (to install
-``Bio::Perl``).
+The content of the playbook now really reflects the original intent: to install
+``Bio::Perl``.
 
 ## Summary
 
 Ansible has the concept of "roles" that can be used to create reusable
 components. To create a role one simply needs to adhere to Ansible's
-conventions of naming files and structuring directories.  In their most basic
+conventions of naming files and structuring directories.  In its most basic
 form a role takes the form of tasks within a file named
 ``roles/name_of_role/tasks/main.yml``.
 
@@ -289,5 +291,5 @@ The functionality of Ansible roles are not limited to what I have described in
 this post. For more information on what they can do have a look at the [Ansible
 documentation](https://docs.ansible.com/playbooks_roles.html).
 
-In the next post I will describe how you can use Ansible to install and manage
-services such as Apache and MySQL.
+In the next post we will create a playbook for installing the GBrowse genome
+browser and learn how to manage services such as Apache using Ansible.
