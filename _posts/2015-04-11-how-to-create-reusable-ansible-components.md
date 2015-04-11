@@ -284,7 +284,7 @@ was succinct and reflected the intent for which it was created, namely to instal
 
 Finally, we also noted that it is possible to pick and mix roles and tasks
 within a single playbook. This can be useful when creating playbooks that have
-both reuseable and non-reusable components within them.
+both reusable and non-reusable components within them.
 
 ## Further reading
 
