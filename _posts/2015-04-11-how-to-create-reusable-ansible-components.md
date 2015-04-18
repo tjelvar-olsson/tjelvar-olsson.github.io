@@ -292,5 +292,7 @@ The functionality of Ansible roles are not limited to what I have described in
 this post. For more information on what they can do have a look at the [Ansible
 documentation](https://docs.ansible.com/playbooks_roles.html).
 
-In the next post we will create a playbook for installing the GBrowse genome
-browser and learn how to manage services such as Apache using Ansible.
+In the
+[next post]({% post_url 2015-04-18-ansible-playbook-for-installing-the-gbrowse-genome-browser %})
+we will create a playbook for installing the GBrowse genome browser and learn
+how to manage services, such as Apache, using Ansible.
