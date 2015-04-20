@@ -9,7 +9,9 @@ tags:
   - systems adminstration
 ---
 
-In the [previous post]() we created an Ansible playbook for installing the
+In the
+[previous post]({% post_url 2015-04-18-ansible-playbook-for-installing-the-gbrowse-genome-browser%})
+we created an Ansible playbook for installing the
 GBrowse genome browser. As the name implies GBrowse is a browser based
 application and it serves web pages over http using Apache. If one is
 installing this software as a service to be made more widely accessible one
@@ -21,17 +23,27 @@ configure a firewall for our machine.
 The standard tool for setting up firewalls on Linux is ``iptables``. It is a
 way to set up policy chains to allow or block traffic to, from and through the
 machine of interest. If you have not come across or managed ``iptables`` before
-I recommend that you have a look at
-howtogeek's  [Beginner's Guide to iptables, the Linux Firewall](http://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/)
-and Major Hayden's [Best practices: iptables](https://major.io/2010/04/12/best-practices-iptables/).
+I recommend that you have a look at howtogeek's  [Beginner's Guide to iptables,
+the Linux
+Firewall](http://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/)
+and Major Hayden's [Best practices:
+iptables](https://major.io/2010/04/12/best-practices-iptables/).
 
 ## ferm
 
-However, managing firewalls using ``iptables`` can be a pain. Several tools
-have therefore evolved to make things easier. In this post we will be using a
+However, managing firewalls using ``iptables`` can be a pain. Several tools have
+therefore evolved to make things easier. In this post we will be using a
 program called [ferm](http://ferm.foo-projects.org) (for Easy Rule Making).
 
-Let us start by stating the behaviour that we want from the ``INPUT`` chain of
+When configuring a firewall it is easy to lock oneself out of the machine one
+is configuring. The most common scenario for this is setting the default policy
+to drop incoming connections and then accidentally flushing the connection
+rules, including the rule to accept ``ssh`` connections, leaving the server
+inaccessible. To avoid this scenario we will configure the default policy to
+accept incoming connections and to secure the server we will include a rule to
+drop any incoming connections that do not match any other rules.
+
+Below is a list stating the behaviour that we want from the ``INPUT`` chain of
 our firewall.
 
 - We want the default policy to accept incoming connections
@@ -39,12 +51,12 @@ our firewall.
 - We want to be able to ``ping`` the machine
 - We want to be able to ``ssh`` into the machine
 - We want to be able to add custom rules using Ansible
-- Finally, we want to drop any incoming requests that do not match any rules
+- Finally, we want to drop any incoming connections that do not match any rules
 
-The behaviour that we want from the ``OUPUT`` and ``FORWARD`` chains are simpler.
-We do not want to limit any outgoing connections so we will set the ``OUTPUT``
-policy to ``ACCEPT`` and because we are not configuring a router we will set
-the policy of the ``FORWARD`` chain to ``DROP`` all connections.
+The behaviour that we want from the ``OUTPUT`` and ``FORWARD`` chains are
+simpler.  We do not want to limit any outgoing connections so we will set the
+output policy to accept all connections and because we are not configuring a
+router we will set the policy of the forward chain to drop all connections.
 
 We can configure the behaviour above using the ``ferm.conf`` file below.
 
@@ -147,7 +159,9 @@ $ mkdir roles/ferm/files
 $ mv ferm.conf roles/ferm/files/
 ```
 
-In the [previous post]() I introduced the concept of handlers that could be
+In the
+[previous post]({% post_url 2015-04-18-ansible-playbook-for-installing-the-gbrowse-genome-browser%})
+I introduced the concept of handlers that could be
 notified by other tasks. Let us create a handler for applying the ``ferm``
 rules. Copy and paste the code below into a file named
 ``roles/ferm/handlers/main.yml``.
