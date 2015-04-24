@@ -239,5 +239,7 @@ We created a role for installing and managing Apache. This introduced us to
 Ansible's ``service`` module and the concept of "handlers" that can be
 "notified" by other tasks in a playbook.
 
-In the next post we will look into how we can manage the firewall of our
+In the
+[next post]({% post_url 2015-04-24-how-to-manage-firewalls-using-ferm-and-ansible %})
+we will look into how we can manage the firewall of our
 machine using Ansible and ferm.
