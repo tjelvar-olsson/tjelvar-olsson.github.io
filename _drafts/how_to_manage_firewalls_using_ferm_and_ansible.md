@@ -9,6 +9,8 @@ tags:
   - systems adminstration
 ---
 
+![Firewall.](/images/firewall.jpg)
+
 In the
 [previous post]({% post_url 2015-04-18-ansible-playbook-for-installing-the-gbrowse-genome-browser%})
 we created an Ansible playbook for installing the
@@ -53,7 +55,7 @@ our firewall.
 - We want to be able to add custom rules using Ansible
 - Finally, we want to drop any incoming connections that do not match any rules
 
-The behaviour that we want from the ``OUTPUT`` and ``FORWARD`` chains are
+The behaviours that we want from the ``OUTPUT`` and ``FORWARD`` chains are
 simpler.  We do not want to limit any outgoing connections so we will set the
 output policy to accept all connections and because we are not configuring a
 router we will set the policy of the forward chain to drop all connections.
