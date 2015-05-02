@@ -22,7 +22,7 @@ systems administration to install and manage scientific software.
 
 The question then arises: *how can one effectively configure machines to run
 scientific software?* Particularly as installing software written by other
-scientists can often be a tortuously painful process.
+scientists can often be a torturously painful process.
 
 In this post I will outline a method for producing work flows that result in
 automated and reproducible software installations.
