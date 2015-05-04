@@ -7,7 +7,12 @@ tags:
   - software development
 ---
 
-![Cookiecutters](/images/cookiecutter.jpg)
+<figure>
+  <img src="/images/cookiecutter.jpg" alt="Cookiecutters." />
+  <figcaption>
+  Using a cookiecutter tool to generate a templated result.
+  </figcaption>
+</figure>
 
 In [The Pragmatic
 Programmer](https://pragprog.com/book/tpp/the-pragmatic-programmer) Andrew Hunt
