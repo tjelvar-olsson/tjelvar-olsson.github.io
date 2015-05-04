@@ -14,12 +14,12 @@ the task of producing the same thing over and over. They further separate code
 generators into two types: passive and active.
 
 A passive code generator being one that saves on typing. It is run once, the
-result is placed into version control and then it is built upon by hand.
+result is placed into version control and then the code is built upon by hand.
 
 Whereas an active code generator is used to produce complete code by converting
-a source of meta-data into the language of interest. Active code generators are
-run frequently as the resulting code is reproducible it is also disposable and
-does not need to be tracked in version control.
+a source of meta-data into language(s) of interest. Active code generators are
+run frequently and as the resulting code is reproducible it is also disposable,
+hence it does not need to be tracked in version control.
 
 In this post I will show you how you can use a passive code generator to create
 a basic layout for a Python package.
@@ -41,14 +41,14 @@ illustrate it's use by creating a minimal template for a Python package.
 Firs of all we install it using ``pip``.
 
 ```bash
-sudo pip install cookiecutter
+$ sudo pip install cookiecutter
 ```
 
 Now we will create a funny looking directory structure. It is funny looking because it uses the
 [Jinja2](http://jinja.pocoo.org) templating syntax.
 
 ```bash
-$ mkdir -p mypyproject/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}
+$ mkdir -p mypyproject/{{ "{{cookiecutter.repo_name"}}}}/{{ "{{cookiecutter.repo_name"}}}}
 ```
 
 Now create the file ``myproject/cookicutter.json`` and add the code below to it.
@@ -73,9 +73,11 @@ mypyproject/
 2 directories, 1 file
 ```
 
-You now have enough boilerplate to run cookiecutter. Actually you have more
-than enough, at this point you do not need the ``version`` and ``author``
-variables. Let us run it to see it in action.
+We now have enough boilerplate to run cookiecutter. Actually we have more
+than enough, at this point we do not need the ``version`` and ``author``
+variables.
+
+Let us create an "awesome" Python package to see it in action.
 
 ```bash
 $ cookiecutter mypyproject/
@@ -97,20 +99,29 @@ awesome/
 1 directory, 0 files
 ```
 
-Ok, great - let us add a ``__init__.py`` file to the leaf
-``myproject/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}`` directory.
+Ok, great - let us add an ``__init__.py`` file to the leaf
+``myproject/{{ "{{cookiecutter.repo_name"}}}}/{{ "{{cookiecutter.repo_name"}}}}`` directory.
 
 ```bash
 $ touch mypyproject/\{\{cookiecutter.repo_name\}\}/\{\{cookiecutter.repo_name\}\}/__init__.py
 ```
 
-Let us see where this gets us.
+In the above we need to esacape the ``{`` and ``}`` characters when using bash.
+If you are not already using tab completion when using bash this may be a good
+point to try it out (just start typing the name of the file/directory of
+interest and then press the tab key). 
 
-```
+Let's run ``cookiecutter`` again to see what we get now that we have added the
+``__init__.py`` file.
+
+```bash
 $ cookiecutter mypyproject/
 repo_name (default is "mypackage")? awesome
 version (default is "0.0.1")? 
 author (default is "Your Name")? Tjelvar Olsson
+```
+
+```bash
 $ tree awesome/
 awesome/
 └── awesome
@@ -122,15 +133,15 @@ awesome/
 Great we now automatically get an ``__init__.py`` file added to our project
 when we create it. Now let us add a basic, but all the same templated,
 ``setup.py`` file to our project layout. Create the file
-``mypyproject/{{cookiecutter.repo_name}}/setup.py`` and copy and paste the code
+``mypyproject/{{ "{{cookiecutter.repo_name"}}}}/setup.py`` and copy and paste the code
 below into it.
 
-```jinja2
+```python
 from setuptools import setup
 
-setup(name="{{ cookiecutter.repo_name }}",
-      version="{{ cookiecutter.version }}",
-      author="{{ cookiecutter.author }}"
+setup(name="{{ "{{ cookiecutter.repo_name "}}}}",
+      version="{{ "{{ cookiecutter.version "}}}}",
+      author="{{ "{{ cookiecutter.author "}}}}"
 )
 ```
 
@@ -141,6 +152,9 @@ $ cookiecutter mypyproject/
 repo_name (default is "mypackage")? awesome
 version (default is "0.0.1")? 
 author (default is "Your Name")? Tjelvar Olsson
+```
+
+```bash
 $ tree awesome/
 awesome/
 ├── awesome
@@ -148,6 +162,9 @@ awesome/
 └── setup.py
 
 1 directory, 2 files
+```
+
+```bash
 $ cat awesome/setup.py 
 from setuptools import setup
 
@@ -157,17 +174,16 @@ setup(name="awesome",
 )
 ```
 
-Great now we have a basic layout for building up a Python project.
+Great we now have a basic layout for building up a Python project!
+
+Now that you know the principles you can use them to automate the generation of
+your boilerplate code.
 
 
 ## Making use of GitHub
 
-Clearly you can automate the generation of much more boilerplate code using the
-principles outlined in this post. However, this is left as an exercise for the
-reader.
-
 Once you start building up your template make sure that you save it on GitHub
-or BitBucket. You are already using version control for all text files, right?
+or BitBucket. *You are already using version control, right?*
 
 A nice feature of Cookiecutter is that it has built in functionality for making
 use of templates stored in GitHub/Bitbucket. For example to make use of my
@@ -199,8 +215,8 @@ tempalate](https://github.com/audreyr/cookiecutter-pypackage).
 ## Summary
 
 When you find yourself repeatedly doing the same thing it may be time to start
-thinking about using a code generator. In this post I have shown you have to
-use the passive code generator to produce a basic Python package template.
+thinking about using a code generator. In this post I have shown you how to
+use ``cookiecutter`` to produce a basic Python package template.
 
 However, it is not limited to Python package projects you could use
 it to automate the setup of CMake / HTML / LaTeX files; the world is your
