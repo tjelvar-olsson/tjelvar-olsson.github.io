@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using Cookiecutter as a passive code generator
+title: Using Cookiecutter: a passive code generator
 comments: true
 tags:
   - python
