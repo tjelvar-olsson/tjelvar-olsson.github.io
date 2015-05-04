@@ -7,6 +7,8 @@ tags:
   - software development
 ---
 
+![Cookiecutters](/images/cookiecutter.jpg)
+
 In [The Pragmatic
 Programmer](https://pragprog.com/book/tpp/the-pragmatic-programmer) Andrew Hunt
 and David Thomas talk about the importance of code generators when faced with
