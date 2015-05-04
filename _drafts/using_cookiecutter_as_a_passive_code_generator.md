@@ -93,7 +93,7 @@ version (default is "0.0.1")?
 author (default is "Your Name")? Tjelvar Olsson
 ```
 
-Note that that the prompts and default values are the key/value pairs specified
+Note that the prompts and default values are the key/value pairs specified
 in the ``cookiecutter.json`` file.
 
 Let us have a look at what was produced.
@@ -217,7 +217,7 @@ authors (default is "Tjelvar Olsson")?
 
 Alternatively, for an even more extensive setup have a look at [Audrey Roy's
 ultimate python package
-tempalate](https://github.com/audreyr/cookiecutter-pypackage).
+template](https://github.com/audreyr/cookiecutter-pypackage).
 
 ## Summary
 
@@ -225,7 +225,7 @@ When you find yourself repeatedly doing the same thing it may be time to start
 thinking about using a code generator. In this post I have shown you how to
 use ``cookiecutter`` to produce a basic Python package template.
 
-However, it is not limited to Python package projects you could use
+However, it is not limited to Python package projects. You could use
 it to automate the setup of CMake / HTML / LaTeX files; the world is your
 oyster.
 
