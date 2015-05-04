@@ -10,7 +10,7 @@ tags:
 <figure>
   <img src="/images/cookiecutter.jpg" alt="Cookiecutters." />
   <figcaption>
-  Using a cookiecutter tool to generate a templated result.
+  Using a tool to generate a templated result.
   </figcaption>
 </figure>
 
