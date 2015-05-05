@@ -58,7 +58,7 @@ Now we will create a funny looking directory structure. It is funny looking beca
 $ mkdir -p mypyproject/{{ "{{cookiecutter.repo_name"}}}}/{{ "{{cookiecutter.repo_name"}}}}
 ```
 
-Now create the file ``myproject/cookicutter.json`` and add the code below to it.
+Now create the file ``myproject/cookiecutter.json`` and add the code below to it.
 
 ```json
 {
