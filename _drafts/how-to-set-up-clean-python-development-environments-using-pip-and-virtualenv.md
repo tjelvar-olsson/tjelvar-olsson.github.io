@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to set up Python development environments using setuptools and virtualenv
+title: How to set up Python a development environment using setuptools and virtualenv
 comments: true
 tags:
   - python
@@ -225,13 +225,13 @@ pip install virtualenv
 ```
 
 Now we can create a virtual environment for our project. However, before we do
-that let me give you a suggestion create a separate directory in your home
-directory for storing all your virtual environments and give each virtual
-environment a descriptive name. If you are anything like me you will end up
-having at least one virtual environment for each project you are working on.
+that let me give you a suggestion: create a separate directory for storing all
+your virtual environments and give each virtual environment a descriptive name.
+If you are anything like me you will end up having at least one virtual
+environment for each project you are working on.
 
-Assuming that you are now in your newly created ``~/virtualenv`` directory, run
-the command below.
+Assuming that you are now in your newly created directory, run the command
+below.
 
 ```bash
 $ virtualenv awesome
@@ -239,6 +239,89 @@ New python executable in awesome/bin/python
 Installing setuptools, pip...done.
 ```
 
-Note that this creates a directory named ``awesome`` (same name as the project
-for which I intend to use the virtual environment). The directory contains the
-virtual environment.
+Note that this creates a directory named ``awesome``. You could have named it
+anything, often people use ``env``, but I like to use the same name as the
+project for which I intend to use the virtual environment. The directory
+contains the virtual environment.
+
+To better get a feel for the effect of activating the virtual environment let
+us use ``which`` to find out the path to ``python``.
+
+```bash
+$ which python
+/usr/bin/python
+```
+
+Now let us activate the virtual environment we just created.
+
+```bash
+$ source ./awesome/bin/activate
+(awesome)$ which python
+/home/tjelvar/virtualenvs/awesome/bin/python
+```
+
+When we source the ``activate`` script above it basically alters the ``PATH``
+and ``PS1`` (for the prompt) environment variables. It also defines a
+``deactivate`` function that one can use to reset the environment variables to
+their original state.
+
+```bash
+(awesome)$ deactivate
+tjelvar@crunchbang:~/virtualenvs$ which python
+/usr/bin/python
+```
+
+## Tying it all together
+
+That was a lot of pre-amble to be able to show a simple and effective work flow
+for setting up a clean Python development environment.
+
+Create a virtual environment for the project.
+
+```bash
+$ cd ~/virtualenvs   # Direcotry where I keep my virtual environments.
+$ virtualenv awesome
+```
+
+Generate a new Python project template.
+
+```bash
+$ cd ~/projects   # Directory where I keep my projects.
+$ cookiecutter gh:tjelvar-olsson/cookiecutter-pypackage
+...
+repo_name (default is "mypackage")? awesome
+...
+$ cd awesome
+```
+
+Source the virtual environment and use ``setuptools`` to create a development
+environment.
+
+```bash
+$ source ~/virtualenvs/awesome/bin/activate
+(awesome)$ python setup.py develop
+```
+
+## Run the tests!
+
+Tests are great, they let us know that things are working as intended. Let us
+make sure that our setup is sound.
+
+```bash
+(awesome)$ python tests/tests.py
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+```
+
+## Conclusion
+
+In this post I have shown you how to use ``setuptools`` and ``virtualenv`` to
+create reproducible, clean and isolated Python development environments.
+However, the work flow is not limited to development environments. It is just
+as applicable to production environments and it is extensively used in the
+Python web development community. In fact, having the same work flow for
+setting up your development and production environments is a great bonus as it
+gives you more confidence in the end product.
