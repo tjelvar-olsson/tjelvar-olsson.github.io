@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to set up Python a development environment using setuptools and virtualenv
+title: How to set up a Python development environment using setuptools and virtualenv
 comments: true
 tags:
   - python
@@ -12,9 +12,8 @@ In the
 I illustrated how you could use a static code generator (``cookiecutter``) to
 create a basic template to develop a Python package.
 
-Now suppose that you wanted to develop an awesome Python package named
-"awesome". You would then set up a basic structure for your project using you
-Git hosted Cookiecutter template.
+Now suppose that we want to develop a Python package named "awesome".  Let us
+use a Git hosted Cookiecutter template to create a basic project layout.
 
 ```bash
 $ cookiecutter gh:tjelvar-olsson/cookiecutter-pypackage
@@ -88,21 +87,21 @@ FAILED (errors=2)
 ```
 
 That's not very good! What is going on? It seems that I cannot import the
-``awesome`` module. Depending on your level of familiarity with Python the
-problem may be obvious to you. However, when I started out with Python this
-caused me a lot of confusion because I clearly could import the ``awesome``
-module!
+``awesome`` module.
+
+Depending on your level of familiarity with Python the problem may be obvious
+to you. However, when I started out with Python this caused me a lot of
+confusion. I clearly could import the ``awesome`` module!
 
 ```bash
 $ python -c "import awesome; print(awesome.__version__)"
 0.0.1
 ```
 
-When I run the command above one of the places Python looks for modules is the
-current directory. However, when I run the ``tests/tests.py`` script Python
-cannot find the ``awesome`` package in the ``tests`` directory. In other words
-to get the same environment as experienced when running ``python tests/tests.py``
-one would have to go into the ``tests`` directory first.
+One of the places where Python looks for modules is the directory of the
+calling script, which is why the command above works. However, when we run the
+``tests/tests.py`` script there is no ``awesome`` package to be found in the
+``tests`` directory, illustrated below.
 
 ```bash
 $ cd tests/
@@ -120,45 +119,33 @@ environment variable. However, let us look at a more elegant solution.
 
 In the 
 [previous post]({% post_url 2015-05-04-using-cookiecutter-a-passive-code-generator %})
-we started building up a basic ``setup.py`` file, which makes use of the
+we started building up a basic ``setup.py`` file, which made use of the
 ``setuptools`` module.
 
-You are probably already familiar with this tool from installing other Python
+You are probably already familiar with ``setuptools`` from installing other Python
 packages using the command ``python setup.py install``. This installs the
-package into you Python distributions ``site-packages`` directory. However,
-this means that any changes that you make to the files in your development
-directory will not take effect until you re-install the package.
+package into you Python distribution's ``site-packages`` directory.
+
+However, this is not what we want to do because the package would be copied
+there and any changes that we made to our local development files would not take
+effect until we reinstalled the package. We want to be able to edit our local
+development files and see the effects take place immediately.
 
 The solution to this problem is to use ``python setup.py develop`` which
-creates an ``.egg-link`` in your ``site-packages`` directory to your
+creates an ``.egg-link`` in the ``site-packages`` directory to our local
 development directory.
 
 ```bash
 $ sudo python setup.py develop
 Password:
 running develop
-Checking .pth file support in /Library/Python/2.7/site-packages/
-/usr/bin/python -E -c pass
-TEST PASSED: /Library/Python/2.7/site-packages/ appears to support .pth files
-running egg_info
-creating awesome.egg-info
-writing awesome.egg-info/PKG-INFO
-writing top-level names to awesome.egg-info/top_level.txt
-writing dependency_links to awesome.egg-info/dependency_links.txt
-writing manifest file 'awesome.egg-info/SOURCES.txt'
-reading manifest file 'awesome.egg-info/SOURCES.txt'
-writing manifest file 'awesome.egg-info/SOURCES.txt'
-running build_ext
-Creating /Library/Python/2.7/site-packages/awesome.egg-link (link to .)
-Adding awesome 0.0.1 to easy-install.pth file
-
-Installed /Users/olssont/junk/awesome
+...
 Processing dependencies for awesome==0.0.1
 Finished processing dependencies for awesome==0.0.1
 ```
 
-Now, because ``site-packages`` contains the ``awesome.egg-link``,
-we can run the tests.
+Now ``site-packages`` contains an ``awesome.egg-link`` and we can run the
+tests.
 
 ```bash
 $ python tests/tests.py 
@@ -169,18 +156,15 @@ Ran 2 tests in 0.000s
 OK
 ```
 
-Suppose that we decide that we do not like this package and we would like to
-remove it from our ``site-packages``? We can achieve this by running ``python
+Suppose we decided that we did not like this package and that we would like to
+remove it from our ``site-packages``. This can be done by running ``python
 setup.py develop --uninstall``.
 
 ```bash
 $ sudo python setup.py develop --uninstall
 Password:
 running develop
-Checking .pth file support in /Library/Python/2.7/site-packages/
-/usr/bin/python -E -c pass
-TEST PASSED: /Library/Python/2.7/site-packages/ appears to support .pth files
-Removing /Library/Python/2.7/site-packages/awesome.egg-link (link to .)
+...
 Removing awesome 0.0.1 from easy-install.pth file
 ```
 
@@ -194,10 +178,10 @@ Let me expand on the second issue. Suppose that you had the ``PyYAML`` package
 installed in your system's Python. It is a very useful package, but it is not
 part of Python's standard library. Because it is a very useful package and you
 want to parse YMAL files you start using it in your code. You run your tests,
-**of course you are writing test to test your code as you go along**, and they
-all pass. You feel happy and send the package to a friend, who by the way has
-not yet installed the ``PyYAML`` package. The first thing that your friend is
-going to see is an ``ImportError``.
+*of course you are writing tests as you go along*, and they all pass. You feel
+happy and send the package to a friend, who has not yet installed the
+``PyYAML`` package. The first thing that your friend sees is an
+``ImportError``.
 
 The correct way to deal with this situation would be to add ``pyyaml`` as a
 requirement in your ``setup.py`` file. For more details see the "Specifying
@@ -221,17 +205,21 @@ From the virtualenv website:
 Let us install ``virtualenv`` using ``pip``.
 
 ```bash
-pip install virtualenv
+$ pip install virtualenv
 ```
 
 Now we can create a virtual environment for our project. However, before we do
-that let me give you a suggestion: create a separate directory for storing all
+that let me give you a tip: create a separate directory for storing all
 your virtual environments and give each virtual environment a descriptive name.
+
+```bash
+$ cd
+$ mkdir virtualenvs
+$ cd virtualenvs
+```
+
 If you are anything like me you will end up having at least one virtual
 environment for each project you are working on.
-
-Assuming that you are now in your newly created directory, run the command
-below.
 
 ```bash
 $ virtualenv awesome
@@ -261,13 +249,12 @@ $ source ./awesome/bin/activate
 ```
 
 When we source the ``activate`` script above it basically alters the ``PATH``
-and ``PS1`` (for the prompt) environment variables. It also defines a
-``deactivate`` function that one can use to reset the environment variables to
-their original state.
+and ``PS1`` environment variables. It also defines a ``deactivate`` function
+that one can use to reset the environment variables to their original state.
 
 ```bash
 (awesome)$ deactivate
-tjelvar@crunchbang:~/virtualenvs$ which python
+$ which python
 /usr/bin/python
 ```
 
@@ -279,7 +266,7 @@ for setting up a clean Python development environment.
 Create a virtual environment for the project.
 
 ```bash
-$ cd ~/virtualenvs   # Direcotry where I keep my virtual environments.
+$ cd ~/virtualenvs   # Direcotry for my virtual environments.
 $ virtualenv awesome
 ```
 
@@ -316,10 +303,11 @@ Ran 2 tests in 0.000s
 OK
 ```
 
-## Conclusion
+## Discussion
 
 In this post I have shown you how to use ``setuptools`` and ``virtualenv`` to
 create reproducible, clean and isolated Python development environments.
+
 However, the work flow is not limited to development environments. It is just
 as applicable to production environments and it is extensively used in the
 Python web development community. In fact, having the same work flow for
