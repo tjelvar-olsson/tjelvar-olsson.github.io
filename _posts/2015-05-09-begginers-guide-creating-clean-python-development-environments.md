@@ -9,7 +9,7 @@ tags:
 
 ## Introduction
 
-Code interact with its environment.  For example you can only run a Python
+Code interacts with its environment. For example, you can only run a Python
 script if you have Python installed on the system.  Furthermore, a Python
 script will only run without raising ``ImportError`` exceptions if all the
 required packages are installed.
@@ -189,7 +189,7 @@ Removing awesome 0.0.1 from easy-install.pth file
 So far so good, but there are two issues with what we are currently doing.
 First of all we need to have root permissions to run ``python setup.py
 develop`` and ``python setup.py develop --uninstall`` when using the system's
-Python. Secondly, when using the system's Python are using a (potentially)
+Python. Secondly, when using the system's Python we are using a (potentially)
 polluted environment.
 
 Let me expand on the second issue. Suppose that you had the ``PyYAML`` package
