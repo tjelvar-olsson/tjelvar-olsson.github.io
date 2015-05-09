@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Beginners Guide: creating clean Python development environments"
+title: "Beginner's Guide: creating clean Python development environments"
 comments: true
 tags:
   - python
