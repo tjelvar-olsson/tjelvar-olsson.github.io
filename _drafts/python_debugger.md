@@ -7,6 +7,13 @@ tags:
   - programming
 ---
 
+<figure>
+  <img src="/images/debugging.jpg" alt="Debugging." />
+  <figcaption>
+  How do you do your debugging?
+  </figcaption>
+</figure>
+
 ## Introduction
 
 When programming (in Python) it is common to find oneself inserting ``print``
