@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Five exercises to help you get familiar with the Python debugger
+title: Five exercises to master the Python debugger
 comments: true
 tags:
   - python
@@ -9,23 +9,30 @@ tags:
 
 ## Introduction
 
-When one starts programming it is common to find oneself inserting ``print``
-statements all over the code when one finds that things are not working as
-expected. This is fine and can often be a quick way of finding out what is
-going on. However, it can become tedious whenever the problem in question is
-non-trivial and one finds oneself repeatedly inserting yet another print
-statement before running the script yet again only to find that one still does
-not know what the problem is.
+When programming (in Python) it is common to find oneself inserting ``print``
+statements all over the code when trying to find out why things are not working
+as expected. This can often be a quick way of working out what is going on.
+
+However, it can become tedious whenever the problem is not resolved by the
+first ``print`` statement. I have often found myself spending significant
+amounts of time scattering ``print`` statements all over my code to work out
+what is going on. Usually this is followed by me spending time hunting through
+my code for the ``print`` statements so that I can delete them. After which I
+often realise that I still needed them.
+
 
 There is a more powerful way of finding out what a program is doing: using a
 debugger. However, people often shy away from debuggers because of their arcane
 interface. This post contains five exercises to help you master the Python
 debugger.
 
+By the end of this post I hope that you will be substituting your ``print``
+statements with ``import pdb; pdb.set_trace()``.
+
 ## Exercise 1: stepping through a program
 
 Let us start by stepping through a simple program. Copy and past the code
-snippet below into a file named ``pdb_exercie_1.py``.
+snippet below into a file named ``pdb_exercise_1.py``.
 
 ```python
 name = 'alice'
@@ -50,7 +57,7 @@ In the above ``pdb`` is three letter acronym for Python DeBugger. You should be 
 The debugger shows the next line to be executed (``-> name = 'alice'``) as well
 the prompt for interacting with the debugger (``(Pdb)``).
 
-Type in ``n`` (as in next) to execute the line displayed. You should now see the lines below.
+Type in ``n``, short for ``next``, to execute the line displayed. You should now see the lines below.
 
 ```
 > pdb_exercise_1.py(2)<module>()
@@ -58,14 +65,14 @@ Type in ``n`` (as in next) to execute the line displayed. You should now see the
 ```
 
 Let us check the value of the newly assigned ``name`` variable. Type in ``p
-name`` (p as in print). It should tell you that the name is "alice".
+name`` (``p`` as in "print"). It should tell you that the name is "alice".
 
-Type in ''n'' again to execute the next command. The ``greeting`` variable
+Type in ``n`` again to execute the next command. The ``greeting`` variable
 should now have been assigned the string "hello alice".
 
 When debugging it is quite easy to lose the frame of reference as to where one
-is in the code. To put things into context type in ``l`` as in list (the source
-code for the current file). You should see output below.
+is in the code. To put things into context type in ``l`` as in "list (the source
+code for the current file)". You should see output below.
 
 ```
 (Pdb) l
@@ -101,15 +108,14 @@ greeting = greet('alice')
 print(greeting)
 ```
 
-Before we start stepping through this script let us have a look at a new
-command. Start the debugger.
+Start the debugger.
 
 ```
 python -m pdb pdb_exercise_2.py
 ```
 
-This time rather than stepping through the program press ``c``, which stands
-for "continue execution". You should see the output below.
+This time, rather than stepping through the program, press ``c`` (which stands
+for "continue execution"). You should see the output below.
 
 ```
 (Pdb) c
@@ -119,6 +125,9 @@ The program finished and will be restarted
 -> def greet(name):
 (Pdb) 
 ```
+
+Basically the program ran from beginning to end, printing out the greeting, and
+then it restarted itself leaving us at the ``(Pdb)`` prompt.
 
 This time use ``n`` to walk through the script. Note that you only need three
 clicks to get to the end of the program and that the debugger does not step
@@ -137,7 +146,10 @@ into the ``greet()`` function. You should see the output below.
 hello alice
 ```
 
-Press ``c`` to  restart the program, then press ``n`` once to get to the line
+What this means is that ``n`` does not step into functions, it continues
+execution until the next line in the current function is reached or it returns.
+
+Press ``c`` to  restart the program and press ``n`` once to get to the line
 where the greet function is about to be called.
 
 ```
@@ -147,7 +159,7 @@ where the greet function is about to be called.
 > /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(5)<module>()
 ```
 
-This time we will use ``s`` to "step" into the ``greet()`` function, then
+This time we will use ``s`` to step into the ``greet()`` function, then we will
 continue walking through the program using ``n``. Note the difference now that
 you have stepped into the ``greet()`` function.
 
@@ -199,7 +211,7 @@ The program finished and will be restarted
 (Pdb)
 ```
 
-As a sanity check enter ``l`` to list where you are in the code. You should see the below.
+As a sanity check, use ``l`` to list where you are in the code. You should see the below.
 
 ```
 (Pdb) l
@@ -223,8 +235,39 @@ Now press ``r`` as in "return".
 (Pdb) 
 ```
 
-Finally, as a recap let us have a look at the "help" descriptions of the
-commands that we have been using so far.
+Note that we are immediately placed at the end of the function where it is
+about to deliver its return value.
+
+## Exercise 3: getting help
+
+When using a tool infrequently it is easy to forget what the commands do.
+However, using the ``help`` command it is easy to refresh the memory.
+
+```
+(Pdb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF    bt         cont      enable  jump  pp       run      unt   
+a      c          continue  exit    l     q        s        until 
+alias  cl         d         h       list  quit     step     up    
+args   clear      debug     help    n     r        tbreak   w     
+b      commands   disable   ignore  next  restart  u        whatis
+break  condition  down      j       p     return   unalias  where 
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+
+Undocumented commands:
+======================
+retval  rv
+
+
+```
+
+Let us have a look at the ``help`` descriptions of the commands that
+we have been using so far.
 
 ```
 (Pdb) help n
@@ -258,11 +301,11 @@ With a command name as argument, print help about that command
 (Pdb) 
 ```
 
-## Exercise 3: interacting with the program under inspection
+## Exercise 4: interacting with the program under inspection
 
 Up until this point we have not actually had any errors in our scripts to
 correct. Let us change that. Copy and past the code below into a file named
-``pdb_exercise_2.py``.
+``pdb_exercise_4.py``.
 
 ```python
 import sys
@@ -286,7 +329,8 @@ The answer is: 111
 
 What is going on?
 
-Now rather than insert ``print`` statements all over the code to work out what is going on let us examine the code in the debugger.
+Now, rather than inserting ``print`` statements all over the code to work it out,
+let us examine the code in the debugger.
 
 ```
 python -m pdb pdb_exercise_3.py 1 50
@@ -312,7 +356,8 @@ Let us get to the point where we have access to the variables ``x`` and ``y``.
 (Pdb) 
 ```
 
-First of all let us see what attributes are available in the scope of the program. We can do this using ``p`` for print.
+First of all let us see what attributes are available in the scope of the
+program. We can do this using ``p`` for print.
 
 ```
 (Pdb) p dir()
@@ -333,14 +378,15 @@ There is also ``pp`` for pretty print.
  'y']
 ```
 
-Okay, that is fine. So what is x?
+So what is ``x``?
 
 ```
 (Pdb) p x
 '1'
 ```
 
-Hey, that looks suspiciously like a string. Note that we can use raw Python within the debugger. Let us find out type x is.
+Hey, that looks suspiciously like a string. Note that we can use raw Python
+within the debugger. Let us find out type ``x`` is.
 
 ```
 (Pdb) type(x)
@@ -396,12 +442,12 @@ Ok, so the example is a little bit naff. However, I hope it illustrates the
 power of working with the debugger, particularly if you are working on a more
 complicated code base.
 
-## Exercise 4: using breakpoints
+## Exercise 5: using breakpoints
 
 So far we have been stepping though a program from beginning to end. However,
 when working on larger programs this is often not practical. To simulate such a
 situation copy and paste the code below into a file named
-``pdb_exercise_4.py``.
+``pdb_exercise_5.py``.
 
 ```python
 import time
@@ -439,7 +485,6 @@ function.
 
 ```python
 import time
-import pdb
 
 def slow_subtractor(a, b):
     """Return a minus b."""
@@ -453,7 +498,7 @@ experiment = slow_subtractor(101, 64)
 
 total = some + crazy + scientific + experiment
 
-pdb.set_trace()
+import pdb; pdb.set_trace()
 experimental_fraction = experiment / total
 ```
 
@@ -478,10 +523,19 @@ to the point of interest in your code when you want to examine what is going
 on.
 
 
-## Exercise 5: Moving around the stack
+## Conclusion
+
+In this post we have worked our way through some rather academic exercises to
+get ourselves familiar with the Python debugger and how to interact with it.
+Hopefully you now feel that you have the skill to step through and query the
+state of your program from with the debugger.
+
+However, if you only take one thing away from this post please let it be the
+commitment to insert the line ``import pdb; pdb.set_trace()`` just above your
+code of interest the next time you feel tempted to ``print`` the value of a
+variable in a program that is not behaving as expected.
 
 
-## Summary
 
 ## Further reading
 
