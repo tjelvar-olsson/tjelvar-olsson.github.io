@@ -40,13 +40,14 @@ greeting = 'hello ' + name
 print(greeting)
 ```
 
-Now invoke the script using the python debugger using the command below.
+Now invoke the script using the python debugger via the command below.
 
 ```
 python -m pdb pdb_exercie_1.py
 ```
 
-In the above ``pdb`` is three letter acronym for Python DeBugger. You should be greeted by the prompt below.
+In the above ``pdb`` is three letter acronym for Python DeBugger. You should be
+greeted by the prompt below.
 
 ```
 > pdb_exercise_1.py(1)<module>()
@@ -55,9 +56,10 @@ In the above ``pdb`` is three letter acronym for Python DeBugger. You should be 
 ```
 
 The debugger shows the next line to be executed (``-> name = 'alice'``) as well
-the prompt for interacting with the debugger (``(Pdb)``).
+as the prompt for interacting with the debugger (``(Pdb)``).
 
-Type in ``n``, short for ``next``, to execute the line displayed. You should now see the lines below.
+Type in ``n``, short for ``next``, to execute the line displayed. You should
+now see the output below.
 
 ```
 > pdb_exercise_1.py(2)<module>()
@@ -89,7 +91,7 @@ Okay, so we are almost at the end. Type in ``n`` again to execute the last comma
 hello alice
 ```
 
-Finally, type in ``q`` to quite the debugger.
+Finally, type in ``q`` to quit the debugger.
 
 Well done! You have just used the Python debugger to step through a program.
 
@@ -444,9 +446,9 @@ complicated code base.
 
 ## Exercise 5: using breakpoints
 
-So far we have been stepping though a program from beginning to end. However,
+So far we have been stepping though the scripts from beginning to end. However,
 when working on larger programs this is often not practical. To simulate such a
-situation copy and paste the code below into a file named
+situation, copy and paste the code below into a file named
 ``pdb_exercise_5.py``.
 
 ```python
