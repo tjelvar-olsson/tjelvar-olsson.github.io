@@ -30,7 +30,7 @@ often realise that I still needed them.
 
 There is a more powerful way of finding out what a program is doing: using a
 debugger. However, people often shy away from debuggers because of their arcane
-interface. This post contains five exercises to help you master the Python
+interfaces. This post contains five exercises to help you master the Python
 debugger.
 
 By the end of this post I hope that you will be substituting your ``print``
@@ -38,7 +38,7 @@ statements with ``import pdb; pdb.set_trace()``.
 
 ## Exercise 1: stepping through a program
 
-Let us start by stepping through a simple program. Copy and past the code
+Let us start by stepping through a simple program. Copy and paste the code
 snippet below into a file named ``pdb_exercise_1.py``.
 
 ```python
@@ -53,8 +53,8 @@ Now invoke the script using the python debugger via the command below.
 python -m pdb pdb_exercie_1.py
 ```
 
-In the above ``pdb`` is three letter acronym for Python Debugger. You should be
-greeted by the prompt below.
+In the above ``pdb`` is the three letter acronym for the Python Debugger. You
+should be greeted by the prompt below.
 
 ```
 > pdb_exercise_1.py(1)<module>()
@@ -69,19 +69,29 @@ Type in ``n``, short for ``next``, to execute the line displayed. You should
 now see the output below.
 
 ```
+(Pdb) n
 > pdb_exercise_1.py(2)<module>()
 -> greeting = 'hello' + name
 ```
 
 Let us check the value of the newly assigned ``name`` variable. Type in ``p
 name`` (``p`` as in "print"). It should tell you that the name is "alice".
-
 Type in ``n`` again to execute the next command. The ``greeting`` variable
 should now have been assigned the string "hello alice".
 
+```
+(Pdb) p name
+'alice'
+(Pdb) n
+> pdb_exercise_1.py(3)<module>()
+> -> print(greeting)
+> (Pdb) p greeting
+> 'hello alice'
+```
+
 When debugging it is quite easy to lose the frame of reference as to where one
-is in the code. To put things into context type in ``l`` as in "list (the source
-code for the current file)". You should see output below.
+is in the code. To put things into context type in ``l`` as in ``list`` (the
+source code for the current file). You should see output below.
 
 ```
 (Pdb) l
@@ -98,14 +108,14 @@ Okay, so we are almost at the end. Type in ``n`` again to execute the last comma
 hello alice
 ```
 
-Finally, type in ``q`` to quit the debugger.
+Finally, type in ``q`` to ``quit`` the debugger.
 
 Well done! You have just used the Python debugger to step through a program.
 
 
 ## Exercise 2: stepping into functions
 
-Let us create a script with a function. Copy and past the code snippet below
+Let us create a script with a function. Copy and paste the code snippet below
 into a file named ``pdb_exercise_2.py``.
 
 ```python
@@ -155,20 +165,20 @@ does not step into the ``greet()`` function. You should see the output below.
 hello alice
 ```
 
-What this means is that ``n`` does not step into functions, it continues
-execution until the next line in the current function is reached or it returns.
+In other words ``n`` continues execution until the next line in the current
+function is reached or it returns.
 
 Press ``c`` to  restart the program and press ``n`` once to get to the line
 where the greet function is about to be called.
 
 ```
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(1)<module>()
+> pdb_exercise_2.py(1)<module>()
 -> def greet(name):
 (Pdb) n
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(5)<module>()
+> pdb_exercise_2.py(5)<module>()
 ```
 
-This time we will use ``s`` to step into the ``greet()`` function, then we will
+This time we will use ``s`` to ``step`` into the ``greet()`` function, then we will
 continue walking through the program using ``n``. Note the difference now that
 you have stepped into the ``greet()`` function.
 
@@ -198,7 +208,7 @@ hello alice
 (Pdb) 
 ```
 
-Finally let us have a look at the ``r`` command, which stands for "return".
+Finally let us have a look at the ``r`` command, which stands for ``return``.
 This is similar to the ``c`` command, but rather than continuing to the end of
 the program ``r`` runs to the end of the function.
 
@@ -208,14 +218,14 @@ enter ``n`` and ``s``. You should now be in the ``greet()`` function.
 ```
 (Pdb) c
 The program finished and will be restarted
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(1)<module>()
+> pdb_exercise_2.py(1)<module>()
 -> def greet(name):
 (Pdb) n
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(5)<module>()
+> pdb_exercise_2.py(5)<module>()
 -> greeting = greet('alice')
 (Pdb) s
 --Call--
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(1)greet()
+> pdb_exercise_2.py(1)greet()
 -> def greet(name):
 (Pdb)
 ```
@@ -239,7 +249,7 @@ Now press ``r`` as in "return".
 ```
 (Pdb) r
 --Return--
-> /home/tjelvar/projects/tjelvar-olsson.github.io/_drafts/pdb_exercise_2.py(3)greet()->'hello alice'
+> pdb_exercise_2.py(3)greet()->'hello alice'
 -> return greeting
 (Pdb) 
 ```
@@ -249,8 +259,9 @@ about to deliver its return value.
 
 ## Exercise 3: getting help
 
-When using a tool infrequently it is easy to forget what the commands do.
-However, using the ``help`` command it is easy to refresh your memory.
+When using a tool infrequently it is easy to forget what the commands are named
+and what they do.  However, using the ``help`` command it is easy to refresh
+your memory.
 
 ```
 (Pdb) help
@@ -313,7 +324,7 @@ With a command name as argument, print help about that command
 ## Exercise 4: interacting with the program under inspection
 
 Up until this point we have not actually had any errors in our scripts to
-correct. Let us change that. Copy and past the code below into a file named
+correct. Let us change that. Copy and paste the code below into a file named
 ``pdb_exercise_4.py``.
 
 ```python
@@ -332,7 +343,7 @@ print('The answer is: {}'.format(answer))
 Suppose that we run this script with the inputs 1 and 50 expecting the result 101.
 
 ```
-python pdb_exercise_3.py 1 50
+python pdb_exercise_4.py 1 50
 The answer is: 111
 ```
 
@@ -342,25 +353,25 @@ Now, rather than inserting ``print`` statements all over the code to work it out
 let us examine the code in the debugger.
 
 ```
-python -m pdb pdb_exercise_3.py 1 50
+python -m pdb pdb_exercise_4.py 1 50
 ```
 
 Let us get to the point where we have access to the variables ``x`` and ``y``.
 
 ```
-> pdb_exercise_3.py(1)<module>()
+> pdb_exercise_4.py(1)<module>()
 -> import sys
 (Pdb) n
-> pdb_exercise_3.py(3)<module>()
+> pdb_exercise_4.py(3)<module>()
 -> def magic(x, y):
 (Pdb) n
-> pdb_exercise_3.py(6)<module>()
+> pdb_exercise_4.py(6)<module>()
 -> x = sys.argv[1]
 (Pdb) n
-> pdb_exercise_3.py(7)<module>()
+> pdb_exercise_4.py(7)<module>()
 -> y = sys.argv[1]
 (Pdb) n
-> pdb_exercise_3.py(9)<module>()
+> pdb_exercise_4.py(9)<module>()
 -> answer = magic(x, y)
 (Pdb) 
 ```
@@ -442,7 +453,7 @@ if the code works as expected by letting it run to completion.
 (Pdb) c
 The answer is: 101
 The program finished and will be restarted
-> pdb_exercise_3.py(1)<module>()
+> pdb_exercise_4.py(1)<module>()
 -> import sys
 (Pdb) 
 ```
@@ -479,9 +490,9 @@ experimental_fraction = experiment / total
 When we run this code we get a ``ZeroDivisionError``.
 
 ```
-tjelvar@crunchbang:~/projects/tjelvar-olsson.github.io/_drafts$ python pdb_exercise_4.py
+$ python pdb_exercise_5.py
 Traceback (most recent call last):
-  File "pdb_exercise_4.py", line 15, in <module>
+  File "pdb_exercise_5.py", line 15, in <module>
     experimental_fraction = experiment / total
 ZeroDivisionError: integer division or modulo by zero
 ```
@@ -515,8 +526,8 @@ If we run the code now we get dumped into a debugger session before the
 offending line is executed.
 
 ```
-python pdb_exercise_4.py
-> pdb_exercise_4.py(17)<module>()
+python pdb_exercise_5.py
+> pdb_exercise_5.py(17)<module>()
 -> experimental_fraction = experiment / total
 (Pdb) p total
 0
