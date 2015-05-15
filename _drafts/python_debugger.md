@@ -53,7 +53,7 @@ Now invoke the script using the python debugger via the command below.
 python -m pdb pdb_exercie_1.py
 ```
 
-In the above ``pdb`` is three letter acronym for Python DeBugger. You should be
+In the above ``pdb`` is three letter acronym for Python Debugger. You should be
 greeted by the prompt below.
 
 ```
@@ -138,9 +138,9 @@ The program finished and will be restarted
 Basically the program ran from beginning to end, printing out the greeting, and
 then it restarted itself leaving us at the ``(Pdb)`` prompt.
 
-This time use ``n`` to walk through the script. Note that you only need three
-clicks to get to the end of the program and that the debugger does not step
-into the ``greet()`` function. You should see the output below.
+This time use ``n`` to walk through the script. Note that you only need to
+enter ``n`` three times to get to the end of the program and that the debugger
+does not step into the ``greet()`` function. You should see the output below.
 
 ```
 > pdb_exercise_2.py(1)<module>()
@@ -250,7 +250,7 @@ about to deliver its return value.
 ## Exercise 3: getting help
 
 When using a tool infrequently it is easy to forget what the commands do.
-However, using the ``help`` command it is easy to refresh the memory.
+However, using the ``help`` command it is easy to refresh your memory.
 
 ```
 (Pdb) help
