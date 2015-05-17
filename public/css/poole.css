@@ -47,13 +47,13 @@ body {
   padding: 0;
 }
 
-html {
+html,input {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
 @media (min-width: 38em) {
-  html {
+  html,input {
     font-size: 20px;
   }
 }
@@ -126,6 +126,27 @@ dt {
 dd {
   margin-bottom: .5rem;
 }
+
+/* Forms */
+input {
+  vertical-align:top;
+  border-radius:4px;
+  text-rendering: optimizeLegibility;
+}
+input[type="text"] {
+  padding: .25em .5em;
+  border: None;
+  background-color: #f9f9f9;
+}
+input[type="submit"] {
+  padding: .25em .5em;
+  border: None;
+  color:#fff;
+  background-color: #268bd2;
+  cursor:pointer;
+}
+input[type="submit"]::-moz-focus-inner {border:0;}
+input[type="submit"]:focus {background-color:#313131;}
 
 /* Misc */
 hr {
