@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Test-driven development part II: tools for testing Python code"
+title: "Four tools for testing your Python code"
 comments: true
 tags:
   - programming
@@ -40,7 +40,7 @@ OK
 This post will elaborate on the testing machinery running behind the scenes.
 
 
-## Unittest: a Python module for creating tests
+## 1. Unittest - a Python module for creating tests
 
 Python comes with batteries included and built into the standard library is a
 module named ``unittest``, which can be used to write tests.
@@ -152,10 +152,171 @@ started with writing your own tests. For more information have a look at the
 [unittest documentation](https://docs.python.org/2/library/unittest.html).
 
 
-## Nose: a test runner for finding tests
+## 2. Nose - a test runner for finding tests
+
+As you build up more and more tests you want to have a way of running them all
+automatically. One way to do this is to use
+[nose](https://nose.readthedocs.org/en/latest/).
+
+Let us install it using ``pip``.
+
+```
+(awesome)$ pip install nose
+```
+
+Now we can run the test suite using the ``nosetest`` command.
+
+```
+(awesome)$ nosetests
+nose.plugins.cover: ERROR: Coverage not available: unable to import coverage module
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+OK
+
+```
+
+There are two things to note above. First of all, the ``nosetest`` command
+automatically found and ran our tests in the ``tests`` directory. Yay!
+
+Secondly, it complained about not being able to import the ``coverage`` module.
+There are two reasons for this:
+
+1. We have not installed the ``coverage`` module yet
+2. The setup.cnf file specifies that it should be used
+
+```conf
+[nosetests]
+detailed-errors=1
+with-coverage=1
+cover-package=awesome
+cover-erase=1
+verbosity=1
+```
+
+*What is the coverage all about anyway?*
 
 
-## Coverage: measuring your code coverage
+## 3. Coverage - measuring your code coverage
+
+The ``coverge`` module measures code coverage. Code coverage is a measure of
+how many lines of ones code are being exercised by your tests. It is
+particularly useful for identifying areas of the code-base that need more
+tests.
+
+Let us install it.
+
+```
+(awesome)$ pip install coverage
+```
+
+Now let us run the tests again.
+
+```
+(awesome)$ nosetests
+..
+Name     Stmts   Miss  Cover   Missing
+--------------------------------------
+awsome       1      0   100%   
+----------------------------------------------------------------------
+Ran 2 tests in 0.009s
+
+OK
+```
+
+Great we have 100% test coverage! Let us add some more functionality to see what
+happens when we have code that is not tested. Add the ``fpaths_in_dir()`` function
+to the ``awesome/__init__.py`` file.
+
+```
+"""awesome package."""
+import os
+
+__version__ = "0.0.1"
+
+def fpaths_in_dir(directory):
+    """Return the paths to the files in the directory."""
+    fpaths = []
+    for fname in os.listdir(directory):
+        fpaths.append(os.path.join(directory, fname))
+    return fpaths
+```
+
+If we run the tests again we find out that lines 8-11 have not been convered
+by the tests.
+
+```
+(awseome)$ nosetests
+..
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+awesome       7      4    43%   8-11
+----------------------------------------------------------------------
+Ran 2 tests in 0.010s
+
+OK
+```
+
+Let's add a test for them! But wait... Errh...
+
+*How do we add a reliable test for something that wants to read information
+from the file system?*
 
 
-## Mock: faking data for unit tests
+## 4. Mock - faking objects for unit tests
+
+We can make use of mock objects to solve these types of problems. Mock objects
+are mimic the behaviour of real objects in controllable ways. For more background
+have a look at the
+[Mock object wikipedia page](http://en.wikipedia.org/wiki/Mock_object).
+
+As of Python 3.3 ``mock`` is part of the standard library. However, users of older
+versions of Python can install it using ``pip``.
+
+```
+(awseome)$ pip install mock
+```
+
+Now we can write a test for our function. Add the function below to the
+``UnitTests`` class in the ``awesome/tests/tests.py`` file.
+
+```
+    def test_fpaths_in_dir(self):
+        from mock import MagicMock
+        from awesome import fpaths_in_dir
+        os.listdir = MagicMock(return_value=['test1.txt', 'test2.txt'])
+        fpaths = fpaths_in_dir('some/dir')
+        expected = ['some/dir/test1.txt', 'some/dir/test2.txt']
+        self.assertEqual(fpaths, expected)
+```
+
+Let us run the tests again.
+
+```
+(awseome)$ nosetests
+...
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+awesome       7      0   100%
+----------------------------------------------------------------------
+Ran 3 tests in 0.043s
+
+OK
+```
+
+Great all the tests are passing! We can now relax again.
+
+The ``mock`` module can do much more than what I have shown above. Have a look
+at the [mock documentation](https://pypi.python.org/pypi/mock) for some more
+inspiration.
+
+
+## Conclusion
+
+Python comes with lots of useful tools for helping you test your code base. In
+this post I have described some of the most established ones. However there are
+others around. Experiment and find out what works for you.
+
+In the next post I will continue in on the theme of testing and try to illustrate
+some aspects of test-driven development.
