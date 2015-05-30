@@ -10,7 +10,7 @@ tags:
 
 ## Introduction
 
-It is important to tests your code. Tests provides a means to verify that code
+It is important to test your code. Tests provide a means to verify that code
 does what it is intended to do. However, repeated manual testing is tedious and
 error prone.
 
@@ -22,7 +22,7 @@ of your code base.
 
 In a
 [previous post]({% post_url 2015-05-09-begginers-guide-creating-clean-python-development-environments %})
-we discussed how to set up clean Python development environment using
+we discussed how to set up clean Python development environments using
 ``virtualenv`` and
 [cookicutter]({% post_url 2015-05-04-using-cookiecutter-a-passive-code-generator %}).
 
@@ -51,7 +51,7 @@ a nice overview of the different types of tests on
 [stackoverflow](http://stackoverflow.com/a/4904533). As the post implies the
 subject of classifying tests is rather subjective and you get different answers
 depending on where you look. Personally, I simply use two broad categories:
-unit tests and functional test. Where the latter incorporates both acceptance
+unit tests and functional tests. Where the latter incorporates both acceptance
 and integration tests.
 
 No matter how you classify your tests you can use Python's ``unittest`` module
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-Let us see what happens when run this code.
+Let's see what happens when we run this code.
 
 ```
 (awesome)$ python basic_unittest.py
@@ -256,7 +256,7 @@ Ran 2 tests in 0.010s
 OK
 ```
 
-Let's add a test for them! But wait... Errh...
+Let's add a test for them! But wait... Errr...
 
 *How do we add a reliable test for something that wants to read information
 from the file system?*
