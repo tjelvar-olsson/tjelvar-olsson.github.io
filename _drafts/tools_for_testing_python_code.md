@@ -47,7 +47,7 @@ module named ``unittest``, which can be used to write tests.
 
 As a side note: tests can be classified into many different types: unit tests,
 integration tests, functional tests, acceptance tests. Mark Simpson has written
-a nice concise overview of the different types of tests on
+a nice overview of the different types of tests on
 [stackoverflow](http://stackoverflow.com/a/4904533). As the post implies the
 subject of classifying tests is rather subjective and you get different answers
 depending on where you look. Personally, I simply use two broad categories:
@@ -125,18 +125,15 @@ if __name__ == "__main__":
 
 There are several things to note here.
 
-Let us start by looking at the
-``test_package_has_version_string()`` function. It makes use of
-``unittest.TestCase.assertTrue()`` to check that the version number of
-the ``awesome`` package we are developing is a string (using Python's
-built in [isinstance](https://docs.python.org/2/library/functions.html#isinstance)
-function). There are many other useful "assert" functions built into
-the ``unittest.TestCase`` base class, note in particular
-[unittest.TestCase.assertEqual()](https://docs.python.org/2/library/unittest.html#unittest.TestCase.assertEqual).
+Let us start by looking at the ``test_package_has_version_string()`` function.
+It makes use of ``unittest.TestCase.assertTrue()`` to check that the version
+number of the ``awesome`` package we are developing is a string.  There are
+many other useful "assert" functions built into the ``unittest.TestCase`` base
+class, one of the most used ones being ``unittest.TestCase.assertEqual()``.
 
 At the top of the file we import several additional modules: ``os``,
-``os.path``, ``shutil``. The ``os.path`` module is used to define some global
-variables defining input and output directories for our functional
+``os.path``, ``shutil``. The ``os.path`` module is used to create some 
+variables for defining input and output directories for our functional
 tests.
 
 The ``unittest.TestCase.setUp()`` and ``unittest.TestCase.tearDown()``
@@ -151,7 +148,7 @@ started writing your own tests. For more information have a look at the
 [unittest documentation](https://docs.python.org/2/library/unittest.html).
 
 
-## 2. Nose - a test runner for finding tests
+## 2. Nose - a test runner for your tests
 
 As you build up more and more tests you want to have a way of running them all
 automatically. One way to do this is to use
@@ -163,7 +160,7 @@ Let us install it using ``pip``.
 (awesome)$ pip install nose
 ```
 
-Now we can run the test suite using the ``nosetest`` command.
+Now we can run the test suite using the ``nosetests`` command.
 
 ```
 (awesome)$ nosetests
@@ -176,14 +173,14 @@ OK
 
 ```
 
-There are two things to note in the above. First of all, the ``nosetest`` command
+There are two things to note in the above. First of all, the ``nosetests`` command
 automatically found and ran our tests. Yay!
 
 Secondly, it complained about not being able to import the ``coverage`` module.
 There are two reasons for this:
 
 1. We have not installed the ``coverage`` module yet
-2. The setup.cnf file specifies that it should be used
+2. The ``awesome/setup.cnf`` file specifies that it should be used
 
 ```
 [nosetests]
@@ -230,7 +227,7 @@ Let us add some more functionality to see what happens when we have code that
 is not tested. Add the ``fpaths_in_dir()`` function to the
 ``awesome/__init__.py`` file.
 
-```
+```python
 """awesome package."""
 import os
 
@@ -282,7 +279,7 @@ versions of Python can install it using ``pip``.
 Now we can write a test for our function. Add the test function below to the
 ``UnitTests`` class in the ``awesome/tests/tests.py`` file.
 
-```
+```python
     def test_fpaths_in_dir(self):
         from mock import MagicMock
         from awesome import fpaths_in_dir
@@ -306,7 +303,7 @@ Ran 3 tests in 0.043s
 OK
 ```
 
-Great all the tests are passing! We can now relax again.
+Great all the tests are passing! Now we can relax again.
 
 The ``mock`` module can do much more than what I have shown above. Have a look
 at the [mock documentation](https://pypi.python.org/pypi/mock) for some more
@@ -319,5 +316,5 @@ Python comes with lots of useful tools for helping you test your code base. In
 this post I have described some of the most established ones. However there are
 others around. Experiment and find out what works for you.
 
-In the next post I will continue the theme of testing and I will try to
-illustrate some aspects of test-driven development.
+In the next post I will continue the theme of testing by illustrating some
+aspects of test-driven development.
