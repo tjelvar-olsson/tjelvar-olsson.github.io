@@ -27,7 +27,7 @@ and a means to alert you if you inadvertently break an existing piece of
 functionality when modifying the code base.
 
 Furthermore, if you have a well tested code base you feel less scared of making
-changes to it. Have you ever worked on a code base and thought to yourself:
+changes to it. Whilst coding have you ever thought to yourself:
 
 <blockquote>
 I could really do with re-writing this to make it simpler, but I'm not sure what
@@ -35,7 +35,7 @@ else I would break....
 </blockquote>
 
 If your code base had better test coverage you would not feel this way.
-Having tests give you the ability to make sweeping changes to the code base
+Having tests give you the ability to make sweeping changes to the code
 whilst retaining confidence that you have not broken any vital piece of
 functionality.
 
@@ -58,7 +58,7 @@ Test-driven development can be thought of as a three step process.
 2. Write minimal code to make the test pass
 3. Refactor the code if required
 
-Don't worry if the above does not make sense. The purpose of the rest of this
+Don't worry if the above sounds a bit abstract. The purpose of the rest of this
 post is to illustrate how this works in practise.
 
 ## Spiking
@@ -389,6 +389,11 @@ functional again.  Have a look at
 [commit 7fb248f](https://github.com/tjelvar-olsson/tinyfasta/commit/7fb248f7ce3029bd517abe887623ecbe5b68c23e)
 to see the resulting changes to the code base.
 
-## Summary
+## Conclusion
 
+I hope this post inspires you to try out test-driven development. However,
+don't be surprised if you find that it is harder than it looks. Like everything
+it requires practise. If you feel really stuck, try using a spike to get you
+going and then use the resulting code to inspire a functional test.
 
+Happy coding!
