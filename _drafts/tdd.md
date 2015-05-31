@@ -19,16 +19,20 @@ and a means to alert you if you inadvertently break an existing piece of
 functionality when modifying the code base.
 
 Furthermore, if you have a well tested code base you feel less scared of making
-changes to it. Have you ever worked on a code base and thought to yourself: *I
-could really do with re-writing this to it simpler... but I'm not
-sure what else I would break... so I will add yet another ``if`` statement and
-add my new functionality in there...*. It is in these types of scenarios, where
-you want to do some refactoring, that having tests really shines. It gives you
-the ability to make sweeping changes to the code base whilst retaining
-confidence that you have not broken any vital piece of functionality.
+changes to it. Have you ever worked on a code base and thought to yourself:
 
-Tests also provide a type of living documentation of your code, a specification
-of how the code is intended to work.
+<blockquote>
+I could really do with re-writing this to make it simpler, but I'm not sure what
+else I would break....
+</blockquote>
+
+If your code base had better test coverage you would not feel this way.
+Having tests give you the ability to make sweeping changes to the code base
+whilst retaining confidence that you have not broken any vital piece of
+functionality.
+
+Tests also provide a type of living documentation of your code base, a
+specification of how the code is intended to work.
 
 In fact tests are so important that some people write them before they write
 any code in a method known as test-driven development.
