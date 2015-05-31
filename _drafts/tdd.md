@@ -9,6 +9,14 @@ tags:
   - test driven development 
 ---
 
+<figure>
+  <img src="/images/tdd_cycle.jpg" alt="Test-driven development cycle." />
+  <figcaption>
+  The test-driven development cycle.
+  </figcaption>
+</figure>
+
+
 ## Introduction
 
 In
@@ -48,7 +56,7 @@ Test-driven development can be thought of as a three step process.
 
 1. Write a test for the functionality that you have in mind and watch it fail
 2. Write minimal code to make the test pass
-3. Re-factor the code if required
+3. Refactor the code if required
 
 Don't worry if the above does not make sense. The purpose of the rest of this
 post is to illustrate how this works in practise.
@@ -268,9 +276,7 @@ Up until this point we have followed the work flow below
 2. Write minimal code to make the test pass
 
 However, this is not the whole story it leaves out an important aspect of test
-driven-development: refactoring. The real work flow should look more like the below.
-
-![TDD workflow image.]()
+driven-development: refactoring.
 
 Let us start with a simple example of factoring out code duplication. After
 having added functionality for using either strings or compiled regular
