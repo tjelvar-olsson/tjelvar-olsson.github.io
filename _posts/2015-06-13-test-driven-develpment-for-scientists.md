@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Test driven development for scientists"
+title: "Test-driven development for scientists"
 comments: true
 tags:
   - scientific computing
   - programming
   - software development
-  - test driven development 
+  - test-driven development 
 ---
 
 <figure>
@@ -22,7 +22,7 @@ tags:
 In
 [Three essential tips for improving your scientific code]({% post_url 2015-02-28-three-essential-tips-for-improving-your-scientific-code %})
 I talked about the importance of writing tests for your scientific code base.
-Tests provides a means to verify that new code does what it is intended to do
+Tests provide a means to verify that new code does what it is intended to do
 and a means to alert you if you inadvertently break an existing piece of
 functionality when modifying the code base.
 
@@ -93,11 +93,11 @@ If you are interested in this topic I also recommend reading Kane Mar's three pa
 
 ## Spiking
 
-It is not wrong to develop code without tests. However, if you are doing test
-driven-development you should treat such exploratory code as "throw away" and
-use it as a guide to write tests when doing things property. In this context
-"properly" means writing the tests first. People who practise test
-driven-development refer to such exploratory coding as a 
+It is not wrong to develop code without tests. However, if you are doing
+test-driven development you should treat such exploratory code as "throw away"
+and use it as a guide to write tests when doing things properly. In this
+context "properly" means writing the tests first. People who practise
+test-driven development refer to such exploratory coding as a 
 [spike](http://stackoverflow.com/questions/249969/why-are-tdd-spikes-called-spikes).
 Here we will treat the exploration from the
 [prevoius FASTA post](2015-03-22-object-oriented-programming-for-scientists) as
@@ -133,7 +133,7 @@ Note that you can view this project and its progression on
 
 ## Start with a functional test
 
-When practising test driven development it is often useful to start with a
+When practising test-driven development it is often useful to start with a
 functional test. A functional test differs from a unit test in that it tests
 a slice of functionality in the system as opposed to an individual unit.
 The rational for starting with a functional test is that it allows us to take a
@@ -223,7 +223,7 @@ Okay, so we need a test to make sure that the class is iterable.
 ```
 
 At this point it may be worth reflecting on how we should make this test pass.
-In test driven development we want to add minimal implementation to get the
+In test-driven development we want to add minimal implementation to get the
 tests to pass. The code below is pretty minimal and it makes the test pass.
 
 
@@ -308,8 +308,8 @@ Up until this point we have followed the work flow below
 1. Write a test
 2. Write minimal code to make the test pass
 
-However, this is not the whole story it leaves out an important aspect of test
-driven-development: refactoring.
+However, this is not the whole story as it leaves out an important aspect of
+test-driven development: refactoring.
 
 Let us start with a simple example of factoring out code duplication. After
 having added functionality for using either strings or compiled regular
