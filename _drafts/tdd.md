@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Test driven development"
+title: "Test driven development for scientists"
 comments: true
 tags:
   - scientific computing
@@ -52,7 +52,8 @@ create a Python FASTA parser package.
 
 ## What is test-driven development?
 
-Test-driven development can be thought of as a three step process.
+Test-driven development, often abbreviated as TDD, can be thought of as a three
+step process.
 
 1. Write a test for the functionality that you have in mind and watch it fail
 2. Write minimal code to make the test pass
@@ -60,6 +61,35 @@ Test-driven development can be thought of as a three step process.
 
 Don't worry if the above sounds a bit abstract. The purpose of the rest of this
 post is to illustrate how this works in practise.
+
+## What are the benefits of test-driven development?
+
+The three main reasons I love test-driven development are:
+
+- It makes me think about how I want my code to behave up front
+- It makes me write tests
+- It is fun
+
+Of course I could write tests after having implemented a piece of code.
+However, in practise when I code first and test later, the "test later" rarely
+happens.
+
+This may sound silly, but it is not much fun writing a test for something that
+already works. It feels like a menial task. On the other hand, writing a test
+before an implementation exists stimulates my brain, I have to think about how
+I want my code to behave.
+
+Furthermore, a failing test is like a challenge. In writing a failing test I am
+giving myself a tiny puzzle to solve. The test-driven development cycle
+essentially gamifies my working day, with the positive side-effect of producing
+an extensive test suite.
+
+For a more exhaustive list of benefits of test-driven development have a look at
+Mark Levison's post:
+[Advantages of TDD](http://agilepainrelief.com/notesfromatooluser/2008/10/advantages-of-tdd.html).
+
+If you are interested in this topic I also recommend reading Kane Mar's three part post:
+[The benefits of TDD are neither clear nor are they immediately apparent](http://scrumology.com/the-benefits-of-tdd-are-neither-clear-nor-are-they-immediately-apparent/).
 
 ## Spiking
 
@@ -109,7 +139,10 @@ a slice of functionality in the system as opposed to an individual unit.
 The rational for starting with a functional test is that it allows us to take a
 step back and think about the larger picture.
 
-We can translate the learning from our spike into a functional test.
+We can translate the learning from our spike into a functional test. The code
+below parses FASTA records from the ``dummy.fasta`` file and writes the records
+to another file ``tmp.fasta``. The test then ensures that the contents of the
+two files are identical.
 
 [ebcc524 ``tests/tests.py``](https://github.com/tjelvar-olsson/tinyfasta/blob/ebcc524fed6f596cc749e9bbb439ab47f4398aeb/tests/tests.py)
 
@@ -126,7 +159,7 @@ We can translate the learning from our spike into a functional test.
         self.assertEqual(input_data, output_data)
 ```
 
-And add a sample test file
+Here is a link to the input FASTA file
 [tests/data/dummy.fasta](https://github.com/tjelvar-olsson/tinyfasta/blob/ebcc524fed6f596cc749e9bbb439ab47f4398aeb/tests/data/dummy.fasta).
 
 
@@ -178,7 +211,7 @@ Traceback (most recent call last):
 TypeError: 'FastaParser' object is not iterable
 ```
 
-Okay, so we need a test to make sure that the class iterable.
+Okay, so we need a test to make sure that the class is iterable.
 
 [abfdeee ``tests/test.py``](https://github.com/tjelvar-olsson/tinyfasta/blob/abfdeeea35fe5c5143a1a4831a1ce4d7523b3515/tests/tests.py)
 
@@ -204,7 +237,7 @@ tests to pass. The code below is pretty minimal and it makes the test pass.
 
 As the docstring above suggests we want the ``FastaParser`` to yield
 ``FastaRecord`` instances. So at this point we can start building up the
-``FastaRecord`` using small incremental steps of test and code. To get a
+``FastaRecord`` class using small incremental steps of test and code. To get a
 feel for this have a look at the commits:
 
 - [cd34f8b Added FastaRecord class.](https://github.com/tjelvar-olsson/tinyfasta/commit/cd34f8b862974abbe1fad096a89ffc34b537c22b)
@@ -304,7 +337,7 @@ lot of code duplication.
 ```
 
 As we have been using test-driven development we have tests for all the
-functionality of interest. We can therefore refactor to look like the below.
+functionality of interest. We can therefore refactor the code to the below.
 
 [2b988b9 ``tinyfasta/__init__.py``](https://github.com/tjelvar-olsson/tinyfasta/blob/2b988b9d8b309ae4de6ae1a953078e834ead724c/tinyfasta/__init__.py)
 
@@ -389,11 +422,16 @@ functional again.  Have a look at
 [commit 7fb248f](https://github.com/tjelvar-olsson/tinyfasta/commit/7fb248f7ce3029bd517abe887623ecbe5b68c23e)
 to see the resulting changes to the code base.
 
+
 ## Conclusion
 
 I hope this post inspires you to try out test-driven development. However,
 don't be surprised if you find that it is harder than it looks. Like everything
 it requires practise. If you feel really stuck, try using a spike to get you
 going and then use the resulting code to inspire a functional test.
+
+I can also highly recommend Harry Percival's book
+[Test-Driven Development with Python](http://chimera.labs.oreilly.com/books/1234000000754).
+It is what inspired me to start using test-driven development.
 
 Happy coding!
