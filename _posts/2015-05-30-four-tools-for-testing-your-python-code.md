@@ -316,5 +316,7 @@ Python comes with lots of useful tools for helping you test your code base. In
 this post I have described some of the most established ones. However there are
 others around. Experiment and find out what works for you.
 
-In the next post I will continue the theme of testing by illustrating some
-aspects of test-driven development.
+In the
+[next post]({% post_url 2015-06-13-test-driven-develpment-for-scientists %})
+I will continue the theme of testing by illustrating some aspects of
+test-driven development.
