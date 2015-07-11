@@ -105,7 +105,7 @@ $ make html
 This will create output in the directory ``build/html``, open the ``build/html/index.html`` file
 in your browser of choice. You should see something along the lines of the below.
 
-![Sphinx default look](/images/sphinx_default_look.png)
+![Sphinx default look](/images/sphinx_default_look.jpg)
 
 Now have a look at the content of the ``source/index.rst`` file.
 
@@ -483,6 +483,8 @@ Regenerate the documentation by running ``make html`` in the ``docs`` directory
 and explore the look and feel of this new theme. Note in particular the
 behaviour of the left hand side navigation bar and the clear "next" and
 "previous" buttons at the bottom of each page.
+
+![Sphinx rdt theme](/images/rtd_theme.jpg)
 
 For more information on the ``readthedocs`` theme have a look
 [here](https://read-the-docs.readthedocs.org/en/latest/theme.html).
