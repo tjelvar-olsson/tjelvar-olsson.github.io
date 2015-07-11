@@ -31,7 +31,7 @@ $ sudo pip install -U Sphinx
 
 ## Generating boilerplate files for the documentation
 
-Suppose that were at the early stages of our project. All we have is
+Suppose that we are at the early stages of our project. All we have is
 a ``README`` file with the content below.
 
 ```
@@ -51,11 +51,10 @@ $ cd docs
 $ sphinx-quickstart
 ```
 
-The last command will prompt you with a bunch of questions on how
-you want to setup your documentation and what extensions you want
-to enable. I tend to accept the defaults for everything except the
-question on whether or not I want to separate the source and
-build directories.
+The last command will prompt you for answers to a bunch of questions on how you
+want to setup your documentation and what extensions you want to enable. I tend
+to accept the defaults for everything except the question on whether or not I
+want to separate the source and build directories.
 
 ```
 > Separate source and build directories (y/n) [n]: y
@@ -134,8 +133,8 @@ Indices and tables
 ```
 
 The first section is a comment (the section starting with ``..``).  This is
-followed by a header (denoted by the ``=`` underline).  The ``.. tocktree::``
-section is Sphinx way of denoting that a list of other files should be included
+followed by a header (denoted by the ``=`` underline).  The ``.. toctree::``
+section is Sphinx's way of denoting that a list of other files should be included
 (at the moment we have none). Finally, in the ``Indices and tables`` section
 there are links to index, module and search pages. If you are documenting a
 Python package the module page will contain links to the modules in your
@@ -164,9 +163,10 @@ Contents:
    intro
 ```
 
-Note that the name of the file to be included ``intro`` needs to be indented to
-the same level as ``:maxdepth:`` (by default this is three spaces). This has
-caught me out many times as I tend to indent four spaces.
+Note that the reference of the file to be included does not need the ``.rst`` extension.
+Furthermore it needs to be indented to the same level as ``:maxdepth:`` (by
+default this is three spaces). The latter has caught me out many times as I tend to
+indent four spaces.
 
 If you rebuild the documentation using ``make html`` you will see the content
 of the ``source/intro.rst`` file included in the documentation.
@@ -244,7 +244,7 @@ if __name__ == "__main__":
     print(greet(name))
 ```
 
-Now we will use Sphinx's ``include`` directory to include the content of this script
+Now we will use Sphinx's ``include`` directive to include the content of this script
 into the "Code example" page. Add the lines below to the end of the
 ``source/code_example.rst`` file.
 
@@ -411,7 +411,7 @@ Finally, regenerate the documentation by running ``make html`` in the ``docs``
 directory and behold the beautifully generated API documentation.
 
 If you interact with the generated HTML documentation you will note that the
-constructs below have been converted into hyperlinks.
+constructs following the pattern below have been converted into hyperlinks.
 
 ```
 :mod:`chemistry`
@@ -424,7 +424,7 @@ relevant section in the API documentation. Having descriptive documentation
 that contains links to the more technical API documentation is very
 pleasant and these directives make it very easy to do so.
 
-It is also worth commenting on the ``:param:`` and ``:returns:`` formatting
+It is also worth commenting on the ``:param:`` and ``:returns:`` directives
 used in the docstrings. These are part of a larger set of description directives
 that are formatted nicely by Sphinx. For more information have a look at the
 [info field list section](http://sphinx-doc.org/domains.html#info-field-lists)
@@ -448,8 +448,9 @@ This will include the content of the top level ``README`` file into the document
 
 The default theme of Sphinx is currently
 [Alabaster](https://github.com/bitprophet/alabaster). It is very beautiful. However,
-personally I prefer the ReadTheDocs theme. In particular because of its left hand side
-navigation bar. Let's check it out.
+personally I prefer the
+[ Sphinx ReadTheDocs theme](https://github.com/snide/sphinx_rtd_theme). In
+particular because of its left hand side navigation bar. Let's check it out.
 
 First of all we install the theme using ``pip``.
 
@@ -486,14 +487,14 @@ behaviour of the left hand side navigation bar and the clear "next" and
 
 ![Sphinx rdt theme](/images/rtd_theme.jpg)
 
-For more information on the ``readthedocs`` theme have a look
+For more information on the ReadTheDocs theme have a look
 [here](https://read-the-docs.readthedocs.org/en/latest/theme.html).
 
 
 ## ReadTheDocs
 
 Whilst on the subject it is worth mentioning the ability to host your documentation
-on . Simply sign-up for an account, link your
+on [readthedocs](https://readthedocs.org). Simply sign-up for an account, link your
 GitHub/BitBucket account and then you can select the projects that you want to host
 on [readthedocs](https://readthedocs.org). It is great!
 
