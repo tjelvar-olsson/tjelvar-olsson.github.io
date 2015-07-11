@@ -87,7 +87,8 @@ of output formats including HTML and PDF. It has great support for
 cross-referencing and the HTML output has built-in support for searching.
 Furthermore, if you use Sphinx you can host your documentation on
 [Read the Docs](https://readthedocs.org). I will explain how to use Sphinx
-in my next post.
+in my
+[next post]({% post_url 2015-07-11-how-to-generate-beautiful-technical-documentation %}).
 
 ## Conclusion
 
