@@ -187,7 +187,7 @@ Another good source is Sphinx's
 ## Including code snippets in the documentation
 
 Sphinx has taken advantage of the fact that reStructuredText is extensible and
-have added directives of its own. We have already seen one of these: the ``toctree``
+has added directives of its own. We have already seen one of these: the ``toctree``
 directive.
 
 Let us have a look at the ``code-block`` directive, which can be used to include
