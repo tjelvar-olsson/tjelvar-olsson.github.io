@@ -63,5 +63,60 @@ and for everyone to think critically about the impact of the choice of modelling
 What can be seen as a feature in one instance can be an artifact in another. It all depends
 on the phenomena that one is trying to model.
 
+Then it was time for lunch and socialising.
 
+After lunch
+[Dr Stan Maree](https://www.jic.ac.uk/directory/stan-maree/)
+introduced three seemingly different phenomena: cellular slime mold chemotaxis, 
+Belousov-Zhabotinsky reaction (chemistry) and action potentials in neurophysiology.
 
+The
+[Hodgkin-Huxley model](https://en.wikipedia.org/wiki/Hodgkin–Huxley_model)
+was described in all its complexity. Followed by a statement that it can be
+described as "unpleasantly complex" and a quote from FitzHugh that
+"the usefulness of an equation to an experimental physiologist (...) depends
+on his understanding of how it works". The
+[FitzHugh-Nagumo model](https://en.wikipedia.org/wiki/FitzHugh–Nagumo_model)
+was then briefly introduced. However, the details of it and the implications
+of the model were not described as it was to be explored during the
+afternoons practical session.
+
+Instead the focus shifted to how one can gain an understanding of systems of
+linear ordinary differential equations. Timeplots were contrasted with
+[phase plane plots](https://en.wikipedia.org/wiki/Phase_plane). And the importance
+of visualising
+[nullclines](https://en.wikipedia.org/wiki/Nullcline) as lines of zero change
+for a particular parameter was highlighted. In particular the fact that
+one can identify all equilibria from the intersections of nullclines in
+a phase plane plot.
+
+Stability of equilibria was then discussed and simple rules for quickly analysing
+the stability of equilibria were derived from the fact that:
+
+1. For an equilibria to be stable its eigenvalues need to be negative
+2. Summing two eigenvalues results in the trace
+3. Multiplying two eigenvalues results in the determinant 
+
+So by plotting the trace vs the determinant we can get a plot illustrating
+different types of equilibria,
+[see also](https://en.wikipedia.org/wiki/Phase_plane#Eigenvectors_and_nodes).
+
+![trace-determinant plot](https://upload.wikimedia.org/wikipedia/commons/3/35/Phase_plane_nodes.svg)
+
+The
+[Jacobian matrix](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
+was then introduced and the idea that the Jacobian can be approximated by
+plotting the nullcliens on the phase plane plot and making small
+perturbations around the equilibria.
+
+The participant where then invited to explore the temporal dynamics of the FitzHugh-Nagumo
+model using the software
+[grind](http://www-binf.bio.uu.nl/rdb/grind.html). This was followed by exercises looking
+at the spatio-temporal dynamics of the same model using partial differential equations.
+This led on to looking at spirals formed when introducing introducing a temporary barrier
+and it was highlighted that these spirals could never have been identified if
+one did not take the spatial regime into account.  Finally the link to the
+other phenomena outlined at the beginning of the afternoon session, slime mold
+chemotaxis and
+Belousov-Zhabotinsky reaction was pointed out and the isomorphic nature of these
+phenomena was highlighted.
