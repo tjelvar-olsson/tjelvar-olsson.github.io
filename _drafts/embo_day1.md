@@ -24,7 +24,7 @@ developmental biology and biological modelling. More specifically to:
 - How to obtain models **with predictive value** and **explanatory power** that **create isomorphisms**
 
 In this context isomorphisms are corresponding abstractions and conceptual
-models that can be applied to different phenomena.
+models that can be applied to different phenomenon.
 
 At another level a goal of the course is to discuss practical aspects of
 modelling. As scientists we need techniques to be able to express ourselves. As
@@ -35,15 +35,15 @@ communication with a common language. The participants of the course are
 intentionally a mix of experimental and computational biologists from many
 different fields of biology. Bridging the gap between experimental and
 computational biologists is a central theme of the course. As is learning how
-to express oneself to people from a different fields. 
+to express oneself to people from different fields. 
 
-The description of the goals of the course was followed by a brief introduction
+The section describing the goals was followed by a brief introduction
 to partial differential equations starting from the conservation equation (the
 differentiation form of the
 [continuity equation](https://en.wikipedia.org/wiki/Continuity_equation)),
 leading into a discussion about
 [flux](https://en.wikipedia.org/wiki/Flux), Fick's first law and
-[it's relation to diffiusion](https://en.wikipedia.org/wiki/Fick%27s_laws_of_diffusion).
+[it's relation to diffusion](https://en.wikipedia.org/wiki/Fick%27s_laws_of_diffusion).
 
 The overview of partial differential equations was followed by a discussion on
 [cellular automata](https://en.wikipedia.org/wiki/Cellular_automaton),
@@ -55,19 +55,20 @@ The overview of partial differential equations was followed by a discussion on
 
 The participants were then immersed in a hands on workshop exploring majority
 voting and Conway's game of life. Followed by an exploration of diffusion simulated by
-partial differential equations and Margolous alternation. The latter was finished off
+partial differential equations and Margolous alternation. The latter was accomplished
 by an exercise exploring
-[diffusion-limited aggragation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation).
-The pupropse of these exercies was to make biologist more familar with thinking algorithmically
-and for everyone to think critically about the impact of the choice of modelling technique.
-What can be seen as a feature in one instance can be an artifact in another. It all depends
-on the phenomena that one is trying to model.
+[diffusion-limited aggregation](https://en.wikipedia.org/wiki/Diffusion-limited_aggregation).
+The purpose of these exercises was to make biologist more familiar with
+thinking algorithmically and for everyone to think critically about the impact
+of the choice of modelling technique.  What can be seen as a feature in one
+instance can be an artifact in another. It all depends on the phenomena that
+one is trying to model.
 
 Then it was time for lunch and socialising.
 
 After lunch
 [Dr Stan Maree](https://www.jic.ac.uk/directory/stan-maree/)
-introduced three seemingly different phenomena: cellular slime mold chemotaxis, 
+introduced three seemingly different phenomenon: cellular slime mold chemotaxis, 
 Belousov-Zhabotinsky reaction (chemistry) and action potentials in neurophysiology.
 
 The
@@ -82,7 +83,7 @@ of the model were not described as it was to be explored during the
 afternoons practical session.
 
 Instead the focus shifted to how one can gain an understanding of systems of
-linear ordinary differential equations. Timeplots were contrasted with
+linear ordinary differential equations. Time plots were contrasted with
 [phase plane plots](https://en.wikipedia.org/wiki/Phase_plane). And the importance
 of visualising
 [nullclines](https://en.wikipedia.org/wiki/Nullcline) as lines of zero change
@@ -106,7 +107,7 @@ different types of equilibria,
 The
 [Jacobian matrix](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)
 was then introduced and the idea that the Jacobian can be approximated by
-plotting the nullcliens on the phase plane plot and making small
+plotting the nullclines on the phase plane plot and making small
 perturbations around the equilibria.
 
 The participant where then invited to explore the temporal dynamics of the FitzHugh-Nagumo
@@ -116,7 +117,7 @@ at the spatio-temporal dynamics of the same model using partial differential equ
 This led on to looking at spirals formed when introducing introducing a temporary barrier
 and it was highlighted that these spirals could never have been identified if
 one did not take the spatial regime into account.  Finally the link to the
-other phenomena outlined at the beginning of the afternoon session, slime mold
+other phenomenon outlined at the beginning of the afternoon session, slime mold
 chemotaxis and
 Belousov-Zhabotinsky reaction was pointed out and the isomorphic nature of these
-phenomena was highlighted.
+phenomenon was highlighted.
