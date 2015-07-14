@@ -5,6 +5,7 @@ comments: true
 tags:
   - scientific computing
   - computational biology
+  - systems biology
 ---
 
 Today was the first day of a two week course on
