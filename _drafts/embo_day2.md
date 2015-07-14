@@ -46,7 +46,7 @@ known as Turing patterns.
 Dr Stan Maree's talk was followed by a more sociological talk by
 [Dr Nick Monk](http://nick-monk.staff.shef.ac.uk)
 who examined the interactions between experimental and theoretical biologists
-in the context of the reaction-diffusion system.
+in the context of reaction-diffusion systems.
 
 In the early days the reaction-diffusion system did not really gain traction
 with embryologist who did not like it as a model for development.
