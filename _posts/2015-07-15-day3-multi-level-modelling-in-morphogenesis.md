@@ -29,9 +29,9 @@ In 1964 Steinberg formulated the
 in which he made the comparison between cells and immiscible fluids. He used the idea
 that cell types present different adhesive and cohesive interactions to postulate
 that the final configurations are established by obtaining a minimal interface
-free energy through successive changes in cell content.
+free energy through successive changes in cell contacts.
 
-This means that differential inter-cellular adhesion is on of the most
+This means that differential inter-cellular adhesion is one of the most
 important factors in cell sorting.
 
 It did however take some time before this could be modelled. People tried doing
@@ -42,7 +42,8 @@ Some time later people started experimenting with the cellular Potts model.
 A significant difference between the cellular Potts model and cellular automata is
 the representation of a biological cell. In cellular automata a cell is
 represented by a single pixel, whereas in the cellular Potts model a biological
-cell is represented by lots and lots of pixels.
+cell is represented by lots and lots of pixels. The latter is therefore able to
+represent cell shape.
 
 The
 [cellular Potts model](https://en.wikipedia.org/wiki/Cellular_Potts_model)
@@ -113,7 +114,8 @@ the experimental biologists that disproved the internal clock hypothesis.
 
 The second example illustrated how the cellular Potts model could be combined
 with chemotaxis, cell differentiation and gene regulatory networks to model
-complex developmental changes during gastriculation.
+complex developmental changes during
+[gastrulation](https://en.wikipedia.org/wiki/Gastrulation).
 
 Dr Maree's lecture was followed by a keynote talk by
 [Professor Shigeru Kondo](http://www.fbs.osaka-u.ac.jp/labs/skondo/indexE.html).
@@ -142,11 +144,17 @@ He then illustrated how his group had applied this methodology of modelling
 first and experimenting second to find extraordinary evidence of the
 reaction-diffusion system in fish.
 
-For example, by varying parameters one can change the patterns formed by
-the reaction-diffusion system. In going from black dots on a white background
-to white dots on a black background one goes through a stage of having a
-labyrinth pattern of black and white stripes. Professor Kondo therefore made
-the prediction that if one crossed a white spotted salmon with a black spotted
-salmon one should get a hybrid salmon with such a labyrinth pattern. This
-prediction turned out to be correct, see
-[Miyazawa, Okamoto and Kondo; Nature Communications (2010)](http://www.nature.com/ncomms/journal/v1/n6/full/ncomms1071.html).
+For example, one prediction made from the Turing reaction-diffusion system
+was that fish stripes should be able to migrate, specifically stripes
+that bifurcate. At the time Professor Kondo asked leading experts of
+fish developmental biology if this had every been observed. However, they
+replied that it had not. Undeterred Dr Kondo started looking
+for evidence of this behaviour and was able to find it in the skin of
+maring anglefish, see
+[Kondo and Asai; Nature (1995)](http://www.fbs.osaka-u.ac.jp/labs/skondo/paper/kondo%20Nature%201995.pdf).
+
+After several other striking examples of prediction followed by experimental
+evidence Professor Kondo concluded by stating that Turing systems had proved an
+effective tool for understanding patterning. However, he made the point clear
+that the underlying mechanism is probably encoded in cell motility rules rather
+than necessarily in an activator and inhibitor.
