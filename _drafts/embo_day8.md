@@ -19,16 +19,16 @@ The talk was illustrated using a case study of
 during
 [fly embrogenesis](https://en.wikipedia.org/wiki/Drosophila_embryogenesis).
 
-Along the way Dr Jaeger highlighted many of the pitfalls that one need to be
+Along the way Dr Jaeger highlighted many of the pitfalls that one needs to be
 aware of when modelling biological systems. Particular emphasis was put on the
 model being a tool, not reality! An outcome of this is that one needs to
 pay attention to the model and understand its limitations.
 
 In its most simple form reverse-engineering can be split into three stages:
 
-1. Create a dynamical model
-2. Obtain quantitative measurements of data
-3. Fit the model to the data
+1. Creating a dynamical model
+2. Obtaining quantitative measurements of data
+3. Fitting the model to the data
 
 When fitting the model to the data there are two main questions to consider.
 
@@ -36,14 +36,14 @@ When fitting the model to the data there are two main questions to consider.
 2. Which algorithm are you going to use to fit the data?
 
 One of the simplest ways of measuring the similarity between the model and the
-data is to calculate the root mean square deviation. However, other
+data is to calculate the root mean square deviation ????? . However, other
 measures are available and the selection of one over another is context
 dependent. It is therefore something that one needs to pay attention to.
 
 Fitting the model to the data, i.e. estimating the parameters, is a global
 optimisation problem and there are a number of algorithms available to tackle
 it. Traditionally people have been using evolutionary strategy and simulated
-annealing algorithms for these types of problems. Evolutionary algorithms are
+annealing algorithms for these types of problems. Evolutionary strategy algorithms are
 relatively quick. However, when using them one suffers from not knowing whether
 or not the solution identified is the real global minimum. Simulated annealing
 algorithms can be more robust, but they are also slower.
@@ -52,9 +52,9 @@ Dr Jaeger then mentioned that his lab has had great success with the
 [scatter search algorithm](http://www.cleveralgorithms.com/nature-inspired/stochastic/scatter_search.html).
 In his hands it can be up to ten times quicker than simulated annealing.
 
-Once one has found a solution one then needs to ask whether or not
+Once one has found a solution one needs to ask whether or not
 it is appropriate. This can be achieved by bootstrapping, i.e.
-fitting the model to noisy data. These results can be projected
+fitting the model to noisy data. The results can be projected
 onto the parameter landscape as ellipsoid confidence regions.
 However, this can be slow. A quicker way to estimate these confidence
 regions is to calculate the Hessian matrix of the system using linear
@@ -65,9 +65,9 @@ After lunch
 gave a talk about cell polarity and how it can be used to understand breaks of
 symmetry.
 
-Consider a morphogen gradient. How can it be "read" by cells? Further, how can
-this lead to coordinated cell orientations?  Any solution will require some
-sort of process of comparison.
+If one considers a morphogen gradient, how can it be "read" by cells? Further,
+how can this lead to coordinated cell orientations?  Any solution will require
+some process of comparison.
 
 The talk then took a slight detour into physics.
 
@@ -76,11 +76,11 @@ external field. If you have many needles they will all align in the field.
 Importantly each subunit (needle) will have a "north-south" polarity in the
 magnetic field.
 
-Without going to far with the analogy Dr Grieneisen noted that by giving a
+Without going too far with the analogy Dr Grieneisen noted that by giving a
 cell the concept of polarity it is given a mechanism for aligning within
 a larger polarity such as a chemical gradient or a tissue polarity.
 
-Dr Grieneisen then showed work using the cellular Potts model illustrating
+Dr Grieneisen then presented work using the cellular Potts model illustrating
 how small G-proteins, which can act as molecular switches, can give rise to
 cell polarity. However, the modelling found that there was an additional
 requirement. The inactive form had to be able to diffuse on a quicker
