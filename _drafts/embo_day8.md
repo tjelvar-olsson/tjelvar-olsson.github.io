@@ -36,7 +36,7 @@ When fitting the model to the data there are two main questions to consider.
 2. Which algorithm are you going to use to fit the data?
 
 One of the simplest ways of measuring the similarity between the model and the
-data is to calculate the root mean square deviation ????? . However, other
+data is to calculate the root mean square residual. However, other
 measures are available and the selection of one over another is context
 dependent. It is therefore something that one needs to pay attention to.
 
@@ -53,7 +53,7 @@ Dr Jaeger then mentioned that his lab has had great success with the
 In his hands it can be up to ten times quicker than simulated annealing.
 
 Once one has found a solution one needs to ask whether or not
-it is appropriate. This can be achieved by bootstrapping, i.e.
+it is appropriate. This can be achieved by parameter identifiability analysis though bootstrapping,  i.e.
 fitting the model to noisy data. The results can be projected
 onto the parameter landscape as ellipsoid confidence regions.
 However, this can be slow. A quicker way to estimate these confidence
@@ -62,7 +62,7 @@ approximation.
 
 After lunch 
 [Dr Veronica Grieneisen](https://www.jic.ac.uk/directory/veronica-grieneisen/)
-gave a talk about cell polarity and how it can be used to understand breaks of
+gave a talk about cell polarity and how one can understand it through breaks of
 symmetry.
 
 If one considers a morphogen gradient, how can it be "read" by cells? Further,
@@ -97,7 +97,7 @@ By using this reverse-engineering approach Dr Jaeger managed to establish
 that the
 [AC/DC circuit](http://rsif.royalsocietypublishing.org/content/10/79/20120826)
 is a recurring motif in the
-[Gap gene](https://en.wikipedia.org/wiki/Gap_gene) network. The AC/DC circuit
+[gap gene](https://en.wikipedia.org/wiki/Gap_gene) network. The AC/DC circuit
 is interesting in that it can act both as a positive and a negative feedback
 loop. By analysing the phase space and attractors in the AC/DC circuit one
 finds that this simple network can give rise to different functions.
@@ -107,7 +107,7 @@ Specifically it can act as a:
 - oscillator
 - damped oscillator
 
-Dr Jaeger then showed that the AC/DC circuit in the Gap system could be used to create:
+Dr Jaeger then showed that the AC/DC circuit in the gap system could be used to create:
 
 - Stable boundaries in the anterior of the fly embryo, set by attractors
 - Moving boundaries in the posterior of the fly embryo, governed by a damped oscillator
