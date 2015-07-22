@@ -55,22 +55,30 @@ But we know of at least some systems where this assumption is not true.
 For example budding yeast and migrating neutrophils.
 
 Dr Coen then showed that by assuming that cells have an intrinsic polarity one
-can create a model where the polarised cells arranges themselves along
-a concentration gradient by working as a system to reduce the gradient in question.
-This is a bit counterintuitive.
-The patterning is working to remove the signal that is causing the pattern.
+can create a model where the polarised cells arrange themselves through local
+interactions with their neighors. For example, in an animal model, one can
+imagine a scenario where the cells' "front" and "back" factors directly bind
+with their neighbour's "front" and "back" factors. This leads to coordination.
+However, the emerging pattern is a bunch of spirals. He then showed that very
+strict, orientated tissue polarity can be established if organizers are located
+somewhere on the tissue, or the polarities interact with some kind of
+concentration gradient.
 
-One way to use this principle to model how a plant organises polarity is to
-assume high auxin efflux at one end of the tissue and no export of auxin at the
-other end.  Using this model one gets a similar result to the cell-cell
-comparison models.
+One way to use this to model how a plant organises polarity is to assume high
+auxin efflux at one end of the tissue and no export of auxin at the other end.
+By reading out the same concentrations between the cells, both cells tend to
+align.  Thus, using this indirect-signalling mode, one gets a similar result to
+the cell-cell comparison models. This is a bit counterintuitive.  The
+patterning is working to remove the signal that is causing the pattern.
 
-However, one can use the same principle to create a different model.
+However, one can use the same model to create a different emergent tissue polarity.
 A model with high auxin production at one end of the tissue and low
 auxin degradation at the other end. In this case one ends up with
 results similar to those from the "with-the-flow" hypothesis.
 
-So in essence we have a principle that can produce two different phenomena.
+So in essence we have a model that produces two different behaviours,
+previously thought to be two different processes altogether, and consolidates
+them in a parsimonious and locally-based manner.
 
 
 Professor Coen's talk was followed by a presentation by
@@ -97,7 +105,7 @@ calculate velocities. All of the velocities can then be used to
 create a velocity field. By differentiating the velocity field one
 obtains a deformation field, which is a useful representation for
 trying to understand tissue formation by motion during development.
-The deformation field can, in fact, by used to identify separate
+The deformation field can, in fact, be used to identify separate
 tissues from a blob of cells.
 
 Dr Kabla then went on to describe how one could analyse cell interacalation
@@ -105,7 +113,7 @@ Dr Kabla then went on to describe how one could analyse cell interacalation
 representation.
 
 The talk was followed by lunch, which was followed by another talk by Dr Kabla
-giving more detail on how the deformation field representation could be used to
-study collective migration. After the talk the participants of the course were
-invited to to try out some of these analysis using data simulated using
-cellular Potts model programs used earlier in the course.
+describing on how modelling can be used to study collective migration. After
+the talk the participants of the course were invited to try out some of
+these analysis using data simulated using cellular Potts model programs used
+earlier in the course.
