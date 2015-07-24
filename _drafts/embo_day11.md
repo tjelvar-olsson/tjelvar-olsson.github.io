@@ -148,6 +148,40 @@ can change phase space. Perhaps we should think of evolution as an inheritance
 of process where discrete changes in genome sequence and allele frequency
 results in a change to an underlying continuous dynamics.
 
+Dr Monk's talk was followed by a keynote talk by Dr Lander which expanded on some
+of the concepts outlined in the morning's lecture.
 
-Dr Monk's talk was followed by a keynote lecture by Dr Lander titled
-"Connecting biological organisations to the cost of control".
+Biology is driven by performance objectives. The mechanisms that exist to achieve
+these kinds of gaols are collectively referred to as **control**.
+
+What are the problems that you get into when you want to achieve "control"?
+
+Basically control makes things more complex. In fact there is a very strong
+relationship between the two and in engineering this is referred to as the
+"no-free-lunch principle". In other words, achieving good performance in one
+arena often comes at the expense of good performance in another.
+
+In fact curious things happen when you try to achieve control over a great many
+things at the same time. The possible solutions start diverging and scatter
+exponentially (for more detail see
+[Landscape analysis of constraint satisfaction problems; Krzakala and Kurchan; 2007](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.76.021122)).
+
+Dr Lander then illustrated the interplay between control, complexity and
+tradeoffs using the example of Drosophila wing patterning. Using modelling, Dr
+Lander showed many examples of how introducing a process for controlling a
+particular aspect of the morphogen gradient also resulted in loss of control
+for a different aspect.
+
+A fundamental issue, in terms of Drosophila wing patterning, may be that there
+is not be enough information in a single morphogen gradient. Dr Lander then
+illustrated how more control can be realised by using two morphogen gradients,
+particularly in conjunction with the toggle-switch architecture.
+
+Dr Lander concluded by stating that if we wish to understand not just what
+happens in biology, but why biological systems are built the way they are, we
+need to interpret biological organisation in light of principles of control,
+and the constrains imposed by selection for control. Trade-offs (the
+no-free-lunch principle) are likely to drive the evolution of complexity.  By
+focussing on performance, trade-offs and control, we can find *potential*
+explanations for at least some of the intricate feedback and feed-forward
+interactions that we observe in patterning systems.
