@@ -64,3 +64,29 @@ pattern coordination. From an impressive set of experiments looking
 at the expression levels of different hormones during development
 Dr Mirth managed to show, by perturbing the system, that the organ
 patterning is coordinated by a set of specific milestones.
+
+The participants were then invited to experiment with computational
+models linking network evolutions to cellular behaviour.
+
+After lunch Dr Mirth gave a keynote lecture expanding on the concept outlined
+in the morning describing phenotypic plasticity and the evolution of
+polyphenisms.
+
+During her talk Dr Mirth described how nutrition can affect two different
+aspects of plasticity in Drosophila:
+
+- Body size
+- Ovarian size
+
+The latter example was analogous to the male dung beetle horn development
+where the size of the tissue is reprogrammed in fashion that is independent of
+the whole body size.
+
+Through a set of beautiful experiments Dr Mirth was able to show that 
+**different processes during different stages can be used to reprogram tissue growth**.
+
+After the keynote the course was wrapped up by the participants being handed their
+certificates and everyone breathing a sigh of relief before saying goodbye to their
+new found friends.
+
+*Stay in touch!*
