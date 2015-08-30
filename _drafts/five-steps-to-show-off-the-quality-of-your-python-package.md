@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Five steps to show off the quality of your Python package"
+title: "Five steps to add the 'bling' factor your Python package"
 comments: true
 tags:
   - scientific computing
@@ -14,7 +14,7 @@ tags:
 In previous posts I have shown how to create a Python package.
 
 We started by 
-[using Cookicutter to generate a template for our package]({% post_url 2015-05-04-using-cookiecutter-a-passive-code-generator %}).
+[using Cookicutter to generate a basic structure for our project]({% post_url 2015-05-04-using-cookiecutter-a-passive-code-generator %}).
 We then looked at
 [how to setup and use clean development environments]({% post_url 2015-05-09-begginers-guide-creating-clean-python-development-environments %}).
 This was followed by an
@@ -22,7 +22,7 @@ This was followed by an
 and the implementation of the Python package using
 [test-driven development]({% post_url 2015-06-13-test-driven-develpment-for-scientists %}).
 Finally we looked at
-[how to generate beautiful technical documentation]({% post_url 2015-07-11-how-to-generate-beautiful-technical-documentation %}).
+[how to generate beautiful technical documentation using Sphnix]({% post_url 2015-07-11-how-to-generate-beautiful-technical-documentation %}).
 
 Now it is time to show off our hard work. In this post I will show you how to
 make use of cloud services to host your documentation, run continuous
@@ -31,21 +31,21 @@ neat looking badges to the README file.
 
 ## Step 1: Host the documentation on readthedocs
 
-You have spent hour documenting your package using Sphinx. It is time to share
+You have spent hours documenting your package using Sphinx. It is time to share
 it with the world.  Register with [readthedocs](https://readthedocs.org) and
 sync your GitHub account with it. Then you can simply select the project that
-you readthedocs to host documentation for.
+you want readthedocs to host documentation for.
 
-If you are using Sphinx's [http://sphinx-doc.org/ext/autodoc.html](autodoc) and
-your package depends on numpy/scipy/matplotlib you may run into trouble as the
-readthedoc server will not compile the C extensions. The first thing to try to
-work around this is to go into the advanced settings section of your project in
-the readthedocs web interface and make sure that the project is set to install
-into a virutalenvironment using ``setup.py install`` and that the checkbox to
+If you are using Sphinx's [autodoc](http://sphinx-doc.org/ext/autodoc.html)
+functionality and your package depends on ``numpy``/``scipy``/``matplotlib``
+you may run into trouble as Readthedocs' server may not be able to compile the
+C extensions. The first thing to try is to go into the advanced settings
+section of your project in Readthedocs' web interface and make sure that the
+project is set to install into a virtual environment and that the option to
 "Give the virtual environment access to the global site-packages dir" is
-selected. The system packages now seem to include numpy, scipy, and matplotlib
-so this should go a long way. However if you are still running into trouble you
-may need to
+selected. The system packages now appear to include ``numpy``, ``scipy``, and
+``matplotlib`` so this should go a long way. However, if you are still running
+into trouble you may need to
 [mock out the dependencies](https://read-the-docs.readthedocs.org/en/latest/faq.html#i-get-import-errors-on-libraries-that-depend-on-c-modules).
 
 ## Step 2: Set up continuous integration testing on Travis Ci
@@ -72,7 +72,7 @@ script: nosetests
 ```
 
 If your code includes dependencies on ``numpy`` and ``scipy`` things get a
-little bit trickier as Travis can time out trying to install these from source.
+little bit trickier as Travis CI can time out trying to install these from source.
 The solution is to make use of [Miniconda](http://conda.pydata.org/docs/index.html).
 
 The ``.travis.yml`` file below is based on the template from the 
@@ -114,11 +114,13 @@ script: nosetests
 ## Step 3: Calculate your code coverage using Codecov
 
 As you have developed your code using test-driven development you have a high
-coverage. It is time to integrate the code coverage calculation into the Travis CI testing.
-We will use [Codecov.io](https://codecov.io) to do this.
+degree of code coverage. It is time to integrate the code coverage calculation
+into the Travis CI testing.  We will use [Codecov](https://codecov.io) to do
+this.
 
-Sign in using your GitHub account, sync your repos and add the one that you want to test.
-Then edit the ``.travis.yml`` file to look like the below.
+Sign in using your GitHub account, sync your repos and add the project that you
+want to measure the code coverage for.  Then edit the ``.travis.yml`` file to
+look like the below.
 
 ```yaml
 language: python
@@ -136,20 +138,21 @@ after_success:
 
 ## Step 4: Upload your Package to PyPi
 
-You have developed a great Python package it is time to share it with the world.
-This is done most effectively by uploading it to [PyPi](https://pypi.python.org/pypi).
+You have developed a great Python package, it is time to share it with the
+world.  This is done, most effectively, by uploading it to
+[PyPi](https://pypi.python.org/pypi).
 
-Peter Down's has written a great post explaining
-[How to submit a package to PyPi](http://peterdowns.com/posts/first-time-with-pypi.html).
+Peter Down has written a great post explaining
+[how to submit a package to PyPi](http://peterdowns.com/posts/first-time-with-pypi.html).
 
 Hosting your package on PyPi makes it easy for people to install using ``pip``.
 
 
-## Step 5: Add badges to your README file
+## Step 5: Add badges to your projects README file
 
-Now finally the part that we have all been waiting for: badges!
+Finally the part that we have all been waiting for: cool looking badges!
 
-Readthedocs, TravisCI and Codecov.io all provide badges as part of their service. For the PyPi
+Readthedocs, Travis CI and Codecov all provide badges as part of their service. For the PyPi
 package we will make use of [Version Badge](http://badge.fury.io).
 
 Below is part of the reStructuredText markup I use for my ``tinyfasta`` package.
@@ -172,17 +175,20 @@ Below is part of the reStructuredText markup I use for my ``tinyfasta`` package.
    :alt: Documentation Status
 ```
 
-On GitHub the [README.rst](https://github.com/tjelvar-olsson/tinyfasta/blob/master/README.rst)
-file renders itself into a neat looking header with the badges below.
+The images in the [README.rst](https://github.com/tjelvar-olsson/tinyfasta/blob/master/README.rst)
+file gets rendered by GitHub into a neat looking header with the badges below.
 
-![PyPI package](http://badge.fury.io/py/tinyfasta.svg) ![Travis CI build status (Linux)](https://travis-ci.org/tjelvar-olsson/tinyfasta.svg?branch=master)
+![PyPI package](http://badge.fury.io/py/tinyfasta.svg)
+![Travis CI build status (Linux)](https://travis-ci.org/tjelvar-olsson/tinyfasta.svg?branch=master)
 ![Code Coverage](https://codecov.io/github/tjelvar-olsson/tinyfasta/coverage.svg?branch=master)
 ![Documentation Status](https://readthedocs.org/projects/tinyfasta/badge/?version=latest)
 
 
 ## Conclusion
 
-You should now have a Python package that looks loved and cared for. It is easy
-to install using ``pip``. The package has online documentation. Furthermore it
-is tested every time code is pushed to GitHub and the test coverage is
-measured.
+You should now have a Python package that looks loved and cared for.
+
+- It is easy to install using ``pip``
+- It has online documentation
+- It gets tested every time code is pushed to GitHub
+- It has its code coverage measured
