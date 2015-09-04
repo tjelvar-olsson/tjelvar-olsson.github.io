@@ -122,4 +122,4 @@ Python code with scientific dependencies.
 - Oliver Grisel and Kyle Kaster's tutorial
   [Building Binary Wheels for Windows using Appveyor](https://packaging.python.org/en/latest/appveyor.html)
 - Robert T. McGibbon's
-  [Python Appveyor Conda example](https://github.com/rmcgibbo/python-appveyor-conda-example).
+  [Python Appveyor Conda example](https://github.com/rmcgibbo/python-appveyor-conda-example)
