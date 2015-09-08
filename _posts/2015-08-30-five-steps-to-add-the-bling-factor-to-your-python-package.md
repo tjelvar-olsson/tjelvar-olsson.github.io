@@ -148,7 +148,7 @@ Peter Down has written a great post explaining
 Hosting your package on PyPi makes it easy for people to install using ``pip``.
 
 
-## Step 5: Add badges to your projects README file
+## Step 5: Add badges to your project's README file
 
 Finally the part that we have all been waiting for: cool looking badges!
 
