@@ -9,12 +9,12 @@ tags:
 
 In this blog post we will use FreeImage and SDL2 to create a basic image viewer
 in C. [FreeImage](http://freeimage.sourceforge.net/) is an open source library
-project with support for working with image files. It supports over 30 file
-formats, gives access to meta-data and provides basic image manipulation
-routines.  [SDL](https://www.libsdl.org/) (Simple DirectMedia Layer) is a
-cross-platform library which provides low level access to things like the
-keyboard and mouse as well as graphics hardware using OpenGL and Direct3D. SDL
-provides official supports for Windows, Mac, Linux, iOS and Android.
+project for working with image files. It supports over 30 file formats, gives
+access to meta-data and provides basic image manipulation routines.
+[SDL](https://www.libsdl.org/) (Simple DirectMedia Layer) is a cross-platform
+library which provides low level access to things like the keyboard and mouse
+as well as graphics hardware using OpenGL and Direct3D. SDL provides official
+supports for Windows, Mac, Linux, iOS and Android.
 
 By the end of this post we will have created a C program named ``see`` that can
 be used to view RGB and grayscale images from the command line.
@@ -158,7 +158,7 @@ is a side-effect of the function.
 We then create the SDL surface using the ``SDL_CreateRGBSurfaceFrom()``
 function, which (amongst others) takes as input the red, green and blue masks
 of the FreeImage bitmap. The functions for accessing these masks
-(``FreeImage_GetRedMask``, etc) work even if the FreeImage bitmap comes from a
+(``FreeImage_GetRedMask()``, etc) work even if the FreeImage bitmap comes from a
 single channel input image (gray scale). If the input image is in gray scale we
 therefore need to create a custom palette for it and associate this with the
 SDL surface that we have created.
@@ -217,16 +217,16 @@ void render_image(SDL_Window *window, SDL_Surface *surface) {
 }
 ```
 
-Note that the last parameters of the ``SDL_RenderCopy()`` function
-(``dstrect``) is a pointer to the destination rectangle and can be used to
-implement zooming. However, here we set it to ``NULL`` for the entire rendering
-target.
+Note that the third parameter of the ``SDL_RenderCopy()`` function
+(``srcrect``) is a pointer to the source rectangle and can be used to
+implement zooming. However, here we set it to ``NULL`` to display the entire
+texture.
 
 ## Giving the user the chance to view the image
 
 At this point we need some sort of event loop to make sure that the image does
 not vanish instantaneously after having been rendered in the window. Below is
-is a simple event loop that ends when the user pressed a key on the keyboard.
+is a simple event loop that ends when the user presses a key on the keyboard.
 
 ```c
 /** Loop until a key is pressed. */
@@ -313,11 +313,10 @@ $  ./see image.png
 
 ## Conclusion
 
-FreeImage and SDL are two very useful C libraries for working with images and
-creating graphical user interfaces, respectively. In this post I have shown how
-we can use the two in combination to create a basic image viewer that can parse
-over 30 image file formats and display both RGB and gray scale images
-correctly.
+FreeImage and SDL are useful C libraries for working with images and graphical
+user interfaces, respectively. In this post we have used the two in combination
+to create a basic image viewer that can parse over 30 image file formats and
+display both RGB and gray scale images correctly.
 
 ## Acknowledgements
 
