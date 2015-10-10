@@ -9,15 +9,15 @@ tags:
 
 In this blog post we will use FreeImage and SDL2 to create a basic image viewer
 in C. [FreeImage](http://freeimage.sourceforge.net/) is an open source library
-project for working with image files. It supports over 30 file formats, gives
+for working with image files. It supports over 30 file formats, gives
 access to meta-data and provides basic image manipulation routines.
 [SDL](https://www.libsdl.org/) (Simple DirectMedia Layer) is a cross-platform
 library which provides low level access to things like the keyboard and mouse
 as well as graphics hardware using OpenGL and Direct3D. SDL provides official
 supports for Windows, Mac, Linux, iOS and Android.
 
-By the end of this post we will have created a C program named ``see`` that can
-be used to view RGB and grayscale images from the command line.
+By the end of this post we will have created a C program that can be used to
+view RGB and grayscale images from the command line.
 
 
 ## Argument parsing
@@ -77,8 +77,9 @@ FIBITMAP *get_freeimage_bitmap(char *filename) {
 ```
 
 Here we use the ``FreeImage_GetFileType()`` function to determine the image
-file type by analysing the bitmap signature. According to the FreeImage
-documentation the second parameter (``size``) is currently not in use and can
+file type by analysing the bitmap signature. According to the
+[FreeImage documentation](http://freeimage.sourceforge.net/documentation.html)
+the second parameter (``size``) is currently not in use and can
 be set to ``0``.
 
 We then use the ``FreeImage_Load()`` function to initialise the bitmap from the
@@ -102,10 +103,11 @@ It is time to start using SDL. Let us therefore include the SDL header.
 #include <SDL2/SDL.h>
 ```
 
-Now we will create a function that takes our FreeImage bitmap and returns a SDL
-surface. Later on we will use this surface to create a texture that we can
-render in a SDL window. However, now we need to focus on creating a SDL surface.
-We can achieve this using ``SDL_CreateRGBSurfaceFrom()`` function.
+Now we will create a function that takes our FreeImage bitmap and returns a
+[``SDL_Surface``](https://wiki.libsdl.org/SDL_Surface) (a structure containing
+pixel information).  To achieve this we will make use of the
+[``SDL_CreateRGBSurfaceFrom()``](https://wiki.libsdl.org/SDL_CreateRGBSurfaceFrom)
+function.
 
 ```c
 /** Initialise a SDL surface and return a pointer to it.
@@ -155,7 +157,8 @@ SDL_Surface *get_sdl_surface(FIBITMAP *freeimage_bitmap, int is_grayscale) {
 We start off by flipping the bitmap vertically. Since this is done in memory it
 is a side-effect of the function.
 
-We then create the SDL surface using the ``SDL_CreateRGBSurfaceFrom()``
+We then create the SDL surface using the
+[``SDL_CreateRGBSurfaceFrom()``](https://wiki.libsdl.org/SDL_CreateRGBSurfaceFrom)
 function, which (amongst others) takes as input the red, green and blue masks
 of the FreeImage bitmap. The functions for accessing these masks
 (``FreeImage_GetRedMask()``, etc) work even if the FreeImage bitmap comes from a
@@ -165,7 +168,7 @@ SDL surface that we have created.
 
 ## Creating a SDL window
 
-Our image viewer will display the image in a SDL window. For sakes of
+Our image viewer will display the image in a SDL window. For sake of
 minimalism (and simplicity) this will be a border-less window displayed in the
 centre of the screen.
 
@@ -196,6 +199,14 @@ code we will do this back to front, by using the window to generate a renderer
 and using the renderer to generate a texture. Finally, the renderer is cleared
 before adding the texture and presenting it.
 
+It is worth noting that a
+[``SDL_Texture``](https://wiki.libsdl.org/SDL_Texture) is <q>a structure that
+contains an efficient, driver-specific representation of pixel data</q>.
+Which means that, unlike a
+[``SDL_Surface``](https://wiki.libsdl.org/SDL_Surface),
+it can be processed by the GPU.
+
+
 ```c
 /** Display the image by rendering the surface as a texture in the window. */
 void render_image(SDL_Window *window, SDL_Surface *surface) {
@@ -217,8 +228,9 @@ void render_image(SDL_Window *window, SDL_Surface *surface) {
 }
 ```
 
-Note that the third parameter of the ``SDL_RenderCopy()`` function
-(``srcrect``) is a pointer to the source rectangle and can be used to
+Note that the third parameter of the
+[``SDL_RenderCopy()``](https://wiki.libsdl.org/SDL_CreateTextureFromSurface)
+function (``srcrect``) is a pointer to the source rectangle and can be used to
 implement zooming. However, here we set it to ``NULL`` to display the entire
 texture.
 
@@ -283,7 +295,9 @@ int main(int argc, char *argv[]) {
 ```
 
 Note that we free up the dynamically allocated bitmap and surface memory using
-``FreeImage_Unload()`` and ``SDL_FreeSurface()`` before we exit the program.
+``FreeImage_Unload()`` and
+[``SDL_FreeSurface()``](https://wiki.libsdl.org/SDL_FreeSurface)
+before we exit the program.
 
 
 ## Compiling and linking
