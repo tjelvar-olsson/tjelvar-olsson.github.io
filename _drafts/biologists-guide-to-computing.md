@@ -10,6 +10,11 @@ tags:
   - systems biology
 ---
 
+<figure>
+  <img src="/images/biologists-guide-to-computing.png" alt="Binary tree." />
+</figure>
+
+
 The reason there has been a bit of a radio silence on this blog for the past
 couple of months is that I have been spending most of my spare time working on
 a booklet about computing.
