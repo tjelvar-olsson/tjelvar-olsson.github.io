@@ -26,7 +26,7 @@ as outlining basic principles of programming it will introduce some best
 practices for keeping track of work and collaborating on projects.
 
 These days many parts of the biological sciences are become more and more data
-driven. Technological advancements have lead to a huge increase in the
+driven. Technological advancements have led to a huge increase in the
 generation of biological data. Data analysis is required to extract biological
 insights from this data. To a large extent the rate limiting factor in
 generating biological insight is the lack of appropriate data analysis tools.
