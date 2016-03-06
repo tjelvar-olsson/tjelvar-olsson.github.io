@@ -215,7 +215,7 @@ And the code below into the file ``roles/bio_perl/tasks/main.yml``.
 
 Finally let us update the ``playbook.yml`` file so that it looks like the below.
 
-```
+```yaml
 ---
 - hosts: all
   sudo: True
@@ -245,7 +245,7 @@ $ mkdir roles/bio_perl/meta
 
 Now copy and paste the code below into the file ``roles/bio_perl/meta/main.yml``.
 
-```
+```yaml
 ---
 dependencies:
   - { role: build_tools}
@@ -256,7 +256,7 @@ At this point one can reduce the ``playbook.yml`` file to include only the
 ``bio_perl`` module as the ``build_tools`` and ``cpanm`` modules will be
 pulled in as dependencies.
 
-```
+```yaml
 ---
 - hosts: all
   sudo: True
