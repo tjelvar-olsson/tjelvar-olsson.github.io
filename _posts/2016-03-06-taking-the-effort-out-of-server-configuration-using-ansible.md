@@ -8,8 +8,7 @@ tags:
   - systems adminstration
 ---
 
-*This article was originally published in the
-[NorDevCon](http://www.nordevcon.com/) 2016 conference programme.*
+*This article was originally published in the [NorDevCon](http://www.nordevcon.com/) 2016 conference programme.*
 
 Ansible is an IT automation tool that is growing in popularity. It is ideally
 suited for configuration management, i.e. automating the configuration of your
@@ -109,7 +108,6 @@ Below is a basic playbook for configuring a firewall using ``firewalld``. In
 real life a playbook would be written to configuration the entire system.
 
 ```yaml
-
 ---
 
 - name: configure a web server firewall using firewalld
@@ -152,7 +150,7 @@ If you liked this article you may also be interested in the other Ansible
 tutorials on this site, which illustrate the use of Ansible as a tool to install
 scientific software.
 
-- [How to create automated and reproducible work flows for installing scientific software]({ post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software })
-- [How to create reusable Ansible components]({ post_url 2015-04-11-how-to-create-reusable-ansible-components })
-- [How to manage firewalls using ferm and Ansible]({ post_url 2015-04-24-how-to-manage-firewalls-using-ferm-and-ansible })
-- [Ansible playbook for installing the Gbrowse genome browser]({ post_url 2015-04-18-ansible-playbook-for-installing-the-gbrowse-genome-browser })
+- [How to create automated and reproducible work flows for installing scientific software]({% post_url 2015-04-02-how-to-create-automated-and-reproducible-work-flows-for-installing-scientific-software %})
+- [How to create reusable Ansible components]({% post_url 2015-04-11-how-to-create-reusable-ansible-components %})
+- [How to manage firewalls using ferm and Ansible]({% post_url 2015-04-24-how-to-manage-firewalls-using-ferm-and-ansible %})
+- [Ansible playbook for installing the Gbrowse genome browser]({% post_url 2015-04-18-ansible-playbook-for-installing-the-gbrowse-genome-browser %})
