@@ -6,7 +6,7 @@ kramdown:
   hard_wrap: false
 
 # Permalinks
-permalink:           /blog/:title
+permalink:           /blog/:title/
 
 # Setup
 title:               Tjelvar Olsson
