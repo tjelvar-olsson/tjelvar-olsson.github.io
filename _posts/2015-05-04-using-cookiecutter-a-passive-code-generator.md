@@ -74,8 +74,8 @@ Let us have a look at the directory structure we have created.
 $ tree mypyproject/
 mypyproject/
 ├── cookiecutter.json
-└── {{cookiecutter.repo_name}}
-    └── {{cookiecutter.repo_name}}
+└── {{ "{{cookiecutter.repo_name"}}}}
+    └── {{ "{{cookiecutter.repo_name"}}}}
 
 2 directories, 1 file
 ```
