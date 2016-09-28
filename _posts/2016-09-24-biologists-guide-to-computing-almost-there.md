@@ -25,7 +25,7 @@ The first draft of the book is finished. Yay! In its current form
 it has 47,000 words, spread over 195 pages, split into 14 chapters.
 
 Although, I call it the first draft each chapter has undergone several
-revisions as I have received feedback from many of my collogues, to whom I am
+revisions as I have received feedback from many of my colleague, to whom I am
 very grateful. Thanks to Nadia Radzman, Sam Mugford and Anna Stavrinides for
 providing feedback on early versions of the initial chapters. Many thanks to
 Tyler McCleary for continued in depth feedback and suggestions for
