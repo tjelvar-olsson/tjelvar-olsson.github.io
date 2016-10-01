@@ -79,7 +79,7 @@ method, which converts the string to lower case.
 True
 ```
 
-Another common use case is to want to search for a particular string
+Another common use case is to search for a particular string
 within another string. For example one might want to find out if the
 UniProt identifier "Q6GZX4" is present in a FASTA description line. To
 achieve this one can use the `find()` method, which returns the index
@@ -134,9 +134,9 @@ expression does and why it is constructed the way it is.
 
 *Warning: only use regular expression as a last resort!*
 
-A good rule of thumb is to always try to use regular string operations to
+A good rule of thumb is to always try to use string operations to
 implement the desired functionality and only switch to regular expressions when
-the code implemented using regular string operations becomes more difficult to
+the code implemented using these become more difficult to
 understand than the equivalent regular expression.
 
 To use regular expressions in Python we need to import the `re` module.
@@ -167,7 +167,7 @@ There are two things to note here:
 2.  The regular expression `search()` method returns a match object (or
     None if no match is found)
 
-*What is a "raw string"?* In Python "raw" strings differ from regular strings
+*What is a "raw" string?* In Python "raw" strings differ from regular strings
 in that the bashslash `\` character is interpreted literally. For example the
 regular string equivalent of `r"\n"` would be `"\\n"` where the first backslash
 is used to escape the effect of the second (remember that `\n` represents a
@@ -201,8 +201,7 @@ matches more than one thing. For example a regular expression that could
 match all the patterns `id0`, `id1`, ..., `id9`.
 
 Now suppose that we had a list containing FASTA description lines with
-these types of identifiers. Note that the list below also contains a sequence
-line that we never want to match.
+these types of identifiers.
 
 ```python
 >>> fasta_desc_list = [">id0 match this",
@@ -211,6 +210,9 @@ line that we never want to match.
 ...                    "AATCG"]
 ...
 ```
+
+Note that the list above also contains a sequence
+line that we never want to match.
 
 Let us loop over the items in this list and print out the lines that
 match our identifier regular expression.
@@ -224,11 +226,9 @@ match our identifier regular expression.
 >id9 and this
 ```
 
-There are several things to note in the above. First of all we are using
-the concept of a `for` loop to iterate over all the items in the
-`fasta_desc_list`. Secondly, there are two noteworthy aspects of the
-regular expression. The `[0-9]` syntax means match any digit. The `\s`
-regular expression meta character means match any white space character.
+There are two noteworthy aspects of the regular expression. Firstly, the
+`[0-9]` syntax means match any digit. Secondly, the `\s` regular expression
+meta character means match any white space character.
 
 If one wanted to create a regular expression to match an identifier with
 an arbitrary number of digits one can make use of the `*` meta
@@ -263,7 +263,7 @@ I forgot that `|` is a regular expression meta character that needs to
 be escaped using a backslash `\`.
 
 The regular expression representing the UniProt idendifier `[A-Z,0-9]*` means
-match capital letter (``A-Z``) and digits (``0-9``) zero or more times (``*``).
+match capital letters (``A-Z``) and digits (``0-9``) zero or more times (``*``).
 The UniProt regular expression is enclosed in parenthesis. The parenthesis
 denote that the UniProt identifier is a group that we would like access to. In
 other words, the purpose of a group is to give the user access to a section of
@@ -282,7 +282,7 @@ Note that there is a difference between the `groups()` and the `group()`
 methods. The former returns a tuple containing all the groups defined in the
 regular expression. The latter takes an integer as input and returns a specific
 group. However, confusingly `group(0)` returns everything matched by the
-regular expression and `group(1)` returns the first group making the `group()`
+regular expression and `group(1)` returns the first group; making the `group()`
 method appear as if it used a one-based indexing scheme.
 
 Finally, let us have a look at a common pitfall when using regular
