@@ -49,3 +49,6 @@ these types of group data management sessions.
 ## Principle 4: Provide metadata
 
 ## Discussion
+
+The first two of these principles can be implemented relatively
+easily.
