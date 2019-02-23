@@ -89,7 +89,59 @@ champion. The data champion then becomes responsible for ensuring that the
 existing and new members of the group are aware of the group data management
 processes.*
 
-## Principle 2: Keep raw data separate, safe and findable 
+## Principle 2: Keep raw data safe and separate from derived data
+
+Most researchers are aware that they should keep their data safe by backing it
+up. If possible it is also worth write protecting raw data by making it read
+only. This means that you cannot accidentally delete or modify it. More good
+suggestion on this topic can be found in [Ten Simple Rules for Digital Data
+Storage](https://doi.org/10.1371/journal.pcbi.1005097).
+
+However, here I would like to emphasize another point, *the importance of
+keeping raw data separate from derived data*.
+
+Let's illustrate this with another story. Once upon a time Binary Beatrice was
+making the transition from experimental biology to bioinformatics. She had got
+her first sequencing data and was eager to analyse it.
+
+Binary Beatrice wanted to run a tool called The Latest & Greatest Aligner,
+which after she had spent three weeks installing it, was ready for her to use.
+Half a year earlier, as preparation, Binary Beatrice had attended the
+institute's High-Performance Computing course and she had learnt how to write a
+batch submission script to submit jobs to the cluster. She therefore wrote such
+a batch submission script to run her Latest & Greatest Aligner. The Latest &
+Greatest Aligner needed to know where the data was so she put the batch
+submission script next to the raw data. That way Binary Beatrice did not have
+to worry about file paths (the bane of scientific computing).
+
+To Binary Beatrice's surprise The Latest & Greatest Aligner worked out of the
+box and produced great results. It also produced lots and lots of files.
+However, her analysis did not end there she also had to run The Latest &
+Greatest Normaliser and The Greatest and Latest Plotter. These tools produced
+even more files.
+
+Then something terrible happened. Binary Beatrice hit her storage quota and
+could not write any more files. At this point she had a directory filled with
+millions of files. Some of them were raw data, some of them were batch
+submission scripts, some of them were intermediate files and some of them were
+figures that she wanted to use in her paper.
+
+Because all the derived file names were based on the names of the raw data
+files Binary Beatrice did not dare create an expression for deleting files in
+bulk. She therefore spent two weeks cleaning up her data.
+
+At this point Binary Beatrice made a promise to herself to always keep raw data
+separate from derived data. In fact all her new projects have a structure with
+four directories: ``raw_data``, ``scripts``, ``intermediate_data``, and
+``final_data``. When she hits her quota it is now easy for her to remove the
+files in the ``intermediate_data`` directory.
+
+In the example above Binary Beatrice learnt from her mistake immediately. This is
+not always the case. In real life many people ask to get their storage quota
+increased and don't learn the lesson of separating raw data from derived data.
+Eventually when these people leave the group no one can work out what their
+raw/derived data is.
+
 
 ## Principle 3: Standardise the location and structure of data
 
