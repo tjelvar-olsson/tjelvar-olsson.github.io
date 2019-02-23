@@ -136,14 +136,67 @@ four directories: ``raw_data``, ``scripts``, ``intermediate_data``, and
 ``final_data``. When she hits her quota it is now easy for her to remove the
 files in the ``intermediate_data`` directory.
 
-In the example above Binary Beatrice learnt from her mistake immediately. This is
-not always the case. In real life many people ask to get their storage quota
-increased and don't learn the lesson of separating raw data from derived data.
-Eventually when these people leave the group no one can work out what their
-raw/derived data is.
+In the fictional example above Binary Beatrice learnt from her mistake
+immediately. This is not always the case. In real life many people ask to get
+their storage quota increased and don't learn the lesson of separating raw data
+from derived data.  Eventually when these people leave the group no one can
+work out what their raw/derived data is.
 
 
 ## Principle 3: Standardise the location and structure of data
+
+It is natural, and common, for PhD students and post docs to think of the data
+that they generate as their own. This tends to lead to a situation where the
+data is organised per research group member. For example, Ambitious Anna might
+have a shared folder for her group and at the top level are the folders with
+names of the group members ``Fastidious-Fatima``, ``Binary-Beatrice``, etc.
+
+Fastidious Fatima then organises her work and her data in the
+``Fastidious-Fatima`` folder and Binary Beatrice organises her work and her
+data in the ``Binary-Beatrice`` folder.
+
+This is not necessarily a bad way to organise data.  However, if the group has
+not got a common understanding of how to organise the data each PhD student and
+post-doc will invent their own system for organising their files. In these
+situations it is easy for files and data to become incomprehensible once the
+person who organised the structure leaves.
+
+It is therefore highly recommended that the location and structure of data is
+standardised, and ideally that this standard is recorded in a document that can
+be read by everyone at the top level of the shared folder. If a data champion
+has been nominated it is his/her responsibility to ensure that this document is
+kept up to date and that the other members of the group know that they need to
+follow the standards for organising data outlined in this document.
+
+I also highly recommend having a separate folder at the top level of the shared
+folder dedicated to storing raw data, see Principle 2 above. Below is an example
+that still gives individuals their own working space.
+
+```
+Ambitious-Anna
+├── GROUP-MEMBERS
+│   ├── Binary-Beatrice
+│   └── Fastidious-Fatima
+├── RAW-DATA
+└── README.txt
+```
+
+Below is an example that structures work based on projects rather than individuals.
+This can be useful if more than one person is working on a project.
+
+```
+Ambitious-Anna
+├── PROJECTS
+│   ├── Cure-Cancer
+│   └── Feed-The-World
+├── RAW-DATA
+└── README.txt
+```
+
+Obviously it is possible to mix and match according to need. However, it is
+useful to document the rational of the structure and how it is intended to be
+used. In the examples above this information is recorded in the ``README.txt``
+
 
 ## Principle 4: Provide metadata
 
