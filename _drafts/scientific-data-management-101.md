@@ -200,7 +200,56 @@ used. In the examples above this information is recorded in the ``README.txt``
 
 ## Principle 4: Provide metadata
 
+Metadata is data about the data. Without metadata the raw data is meaningless.
+
+It is important to think about what metadata one needs to capture. Often this
+is closely linked to the design of the experiment. For example, if one is
+performing a time series study, it is important to associate the date/time with
+each data point.
+
+This type of metadata is called descriptive metadata. Descriptive metadata is
+important to be able to put the raw data into the context of a scientific
+question. For example, if one performs a RNA sequencing experiment to compare
+expression profiles in different tissues it is important to record which data
+are associated with which tissues.
+
+When thinking about how to organise data it is worth thinking about how
+descriptive metadata should be recorded and associated with the data.
+This is a non-trivial problem. It is not uncommon for metadata to be stored
+in an individual's memory. This is not a safe strategy! Another common approach
+is to store descriptive metadata in file names and directory structures. This is
+better, but is also fragile as it is easy to loose metadata when moving and/or
+renaming files.
+
+Another type of metadata is structural metadata and includes things such as
+sizes and checksums of files.  Structural metadata can be used to
+verify that the raw data files have not become corrupted.  For example,
+sequencing companies typically provide MD5 checksums along side the raw data files
+so that one can verify that the downloaded files contain the expected
+content.
+
+
 ## Discussion
 
-The first two of these principles can be implemented relatively
-easily.
+Using these principles to mediate discussions about working practises can result in
+a much more coherent strategy to managing data.
+
+The first three principles are relatively easy for a research group to implement.
+They can be implemented by discussing how the group think things should be done
+and by coming to a mutual understanding and agreement on how data should be
+structured and organised.
+
+The fourth principle, is more complicated. Although, it is easy to understand
+that metadata is important there is currently not an easy way to bundle
+arbitrary metadata with files on disk. The poor mans solution is to capture
+this metadata using some sort of directory structure. However, this is fragile
+and makes it difficult to add more meta data on an *ad-hoc* basis.
+
+Furthermore, there is not really a neat solution for capturing structural
+metadata such as sizes and checksums of files. It is therefore rarely done
+within research groups. Ideally this is something that should be automated
+as it is not a productive use of researchers time to calculate and record
+these types of file properties.
+
+In the next post I will describe our solution to this problem of providing and
+persisting metadata with the data it describes.
