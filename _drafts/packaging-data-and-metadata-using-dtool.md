@@ -17,8 +17,8 @@ In the previous post I described four principles for effective data management.
 3. Standardise the location and structure of data
 4. Provide metadata
 
-Getting a research group together and discussing these can lead to a much more
-coherent strategy to managing data. However, the fourth principle presents a
+Getting a research group together and discussing these can lead to a more
+coherent strategy for managing data. However, the fourth principle presents a
 challenge in that there is not a perfect solution for packaging metadata with
 data.
 
@@ -26,20 +26,25 @@ data.
 
 Metadata is data about data. Take, for example, an experiment comparing the
 expression profiles of different tissues in the plant *Arabidopisis thaliana*.
-One key piece of metadata here is the species. Another key piece of metadata to
-capture would be which expressions profiles were associated with which tissue
-samples. These types of metadata are called descriptive metadata. Without this
+In this example the species, *A. thaliana*, is a key piece of metadata that needs
+to be recorded and associated with the data.
+Another key piece of metadata to make sense of the data in this example is the tissue.
+In other words one would need to record the tissue associated each expression profile.
+These types of metadata are called descriptive metadata. Without these
 descriptive metadata it would be impossible to draw any conclusions from the
 data.
 
-When working with digital files one can also think of file sizes and checksums
+When working with digital files one can also think of sizes and checksums
 of the files themselves as metadata. This type of metadata is called structural
-metadata and it can be useful to ensure that files have not become corrupted.
-For example, sequencing companies typically provide MD5 checksums along side
-the raw data files so that one can verify that the downloaded files contain the
+metadata. Structural metadata can be useful to ensure that files have not become corrupted.
+For example, sequencing companies typically provide MD5 checksums alongside
+the raw data files so that one can verify that the downloaded sequence files contain the
 expected content.
 
-INTRODUCE ADMIN METADATA...
+There is also a third type of metadata called administrative metadata.
+Administrative metadata is used to manage data as a resource. For example a
+UniProt identifier is a piece of administrative metadata used manage a protein
+in the UniProt database.
 
 Although metadata is essential for making sense of data finding solutions for
 packaging it with the data can be difficult. In some cases metadata resides
