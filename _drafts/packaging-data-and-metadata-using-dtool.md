@@ -47,14 +47,14 @@ UniProt identifier is a piece of administrative metadata used manage a protein
 in the UniProt database.
 
 Although metadata is essential for making sense of data finding solutions for
-packaging it with the data can be difficult. In some cases metadata resides
+managing metadata can be difficult. In some cases metadata resides
 inside the head of individuals. Have you ever found yourself asking one of your
 colleagues a question along the lines of:
 
 *What buffer did you use in this experiment?*
 
-One strategy for associating metadata with files is to store it in directory
-structures and file names. This takes the form of file names along the lines of
+One strategy for associating metadata with files is to include it in directory
+structures and file names. This takes the form of file paths along the lines of
 ``replicate_1/chitin/col0_leaf_1.tif``. Here the file name tells us that the
 image is from leaf sample one from the Colombia-0 ecotype of *A. thaliana*.
 The directory structure encodes that this is replicate one and that the sample
@@ -64,7 +64,7 @@ Using file names and directory structures to store metadata is better than
 keeping it in ones head. However, it is also fragile in that the metadata can
 easily be lost if one moves or renames the file.
 
-In this post I will describe one approach to overcoming this problem.
+In this post I will describe our approach to overcoming this problem.
 
 
 ## Treating metadata and data as a unified whole
@@ -100,7 +100,7 @@ index_build_cmd: bowtie2-build U00096.3.fasta reference
 From this metadata one can discern that this dataset contains an *E. coli*
 reference genome with Bowtie2 indices.
 
-Now let us list the files in the dataset.
+Using dtool it is possible to list the files in the dataset.
 
 ```
 $ dtool ls http://bit.ly/Ecoli-ref-genome
@@ -113,8 +113,8 @@ b445ff5a1e468ab48628a00a944cac2e007fb9bc  U00096.3.fasta
 828ebf503926b7c1b8b07c1995b4ca818814b404  reference.rev.2.bt2
 ```
 
-The output above lists the identifer and the relative path of all the files in
-the dataset. In dtool terminolgy the data files in a dataset are referred to as
+The output above lists identifers and the relative paths of all the files in
+the dataset. In dtool terminolgy the files in a dataset are referred to as
 items.
 
 It is also possible to get administrative and structural metadata from a dataset.
@@ -130,10 +130,15 @@ size: 18.8MiB
 frozen_at: 2018-09-26
 ```
 
-From this one can discern, amongst other things, that the data is 18.8MiB in size.
+From this one can discern, amongst other things, that the data is 18.8MiB in
+size and that it has been given the Universally Unique Identifier (UUID)
+``8ecd8e05-558a-48e2-b563-0c9ea273e71e``.
 
-Some of you might be getting impatient. I can find out about the metadata, so
-what?  *I want to access to the data!*
+Suppose that you had recieved some *E. coli* RNA sequencing data and you wanted
+to align it using Bowtie2. In that case
+this dataset would be useful as it contains both the reference genome
+and Bowtie2 generated indices. Below we create a directory
+for storing datasets, and use dtool to download the dataset.
 
 ```
 $ mkdir datasets
@@ -143,10 +148,13 @@ Dataset copied to:
 file:///Users/olssont/datasets/Escherichia-coli-ref-genome
 ```
 
-In the above we created a directory called ``datasets`` to store datasets in
-and we copied the dataset from the cloud to it. All the commands that we have
-been using on the dataset hosted in the cloud work the same on the dataset
-stored on local disk.
+The command above achieved a lot. It downloaded all the data and metadata from
+a dataset stored in the cloud, in an Amazon S3 bucket to be precise, and
+reconstructed the dataset on local disk. Note that this involved working with
+two different storage technologies, both S3 object storage and file system disk.
+
+All the commands that we have been using on the dataset hosted in the cloud
+work the same on the dataset stored on local file system.
 
 ```
 $ dtool readme show datasets/Escherichia-coli-ref-genome
@@ -158,7 +166,7 @@ index_builder: bowtie2-build version 2.3.3
 index_build_cmd: bowtie2-build U00096.3.fasta reference
 ```
 
-Let's look at the structure of a dataset on local disk.
+Let's look at the structure of a dataset on the local file system.
 
 ```
 $ tree datasets/Escherichia-coli-ref-genome
@@ -176,7 +184,8 @@ datasets/Escherichia-coli-ref-genome
 1 directory, 8 files
 ```
 
-On local disk the descriptive metadata is stored in the ``README.yml`` file.
+From the above we can see that the data files are stored in a subdirectory
+named ``data``.  The descriptive metadata is stored in the ``README.yml`` file.
 
 ```
 $ cat datasets/Escherichia-coli-ref-genome/README.yml
@@ -188,9 +197,28 @@ index_builder: bowtie2-build version 2.3.3
 index_build_cmd: bowtie2-build U00096.3.fasta reference
 ```
 
-## What just happened?
+On file system the data and metadata are stored in files. Furthermore, the
+metadata files are plain text and make use of open standards. This makes it
+possible to read and understand them without the need for specialised tools.
 
-RECAP, HIGHLIGHT BENEFITS!
+In summary, dtool treats data and metadata as a unified whole. The dtool
+command  line interface (CLI) can be used to inspect a dataset's metadata allowing
+one to understand the content of the dataset.
+
+
+In this section three important features of dtool have been highlighted:
+
+1. The dtool command line interface can be used to inspect a dataset's metadata
+   allowing one to understand the content of the dataset.
+
+2. When copying a dataset with dtool both the data and the metadata are copied
+   across. This means that it is possible to copy datasets, for example to
+   long-term storage systems, without fear of loosing metadata.
+
+3. dtool supports several storage systems including both file system and Amazon
+   S3 object storage. This make it possible to copy datasets between different
+   storage systems without having to learn the specifics (and quirks) of the
+   storage systems.
 
 ## Creating a dataset from scratch
 
