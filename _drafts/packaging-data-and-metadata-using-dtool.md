@@ -220,9 +220,76 @@ In this section three important features of dtool have been highlighted:
    storage systems without having to learn the specifics (and quirks) of the
    storage systems.
 
-## Creating a dataset from scratch
+## Creating a dataset
 
-SHOW THAT IT IS PAINLESS!
+So far we have been illustrating the benefits of packaging data and metadata
+into unified whole using an existing dataset. Now we will go through the
+process of creating a dataset.
+
+The creation of a dataset happens in three stages:
+
+1. One creates a "proto" dataset that one can add data and metadata to
+2. One adds the data and metadata to the proto dataset
+3. One converts the proto dataset into a dataset by "freezing" it
+
+This can be likened to creating an open box (the proto dataset), putting items
+(data) into it, sticking a label (metadata) on it, and closing the box
+(freezing the dataset).
+
+![Packaging data and metadata into a beautiful box.](/images/package_data_and_metadata_into_beautiful_box.png)
+
+Now we will create a minimal dataset containing a single file with the content
+``Hola Mundo``. The command below creates a dataset named ``hello-world`` in
+the ``datasets`` directory.
+
+```
+$ dtool create hello-world datasets/
+Created proto dataset file:///Users/olssont/datasets/hello-world
+Next steps:
+1. Add raw data, eg:
+   dtool add item my_file.txt file:///Users/olssont/datasets/hello-world
+   Or use your system commands, e.g:
+   mv my_data_directory /Users/olssont/datasets/hello-world/data/
+2. Add descriptive metadata, e.g:
+   dtool readme interactive file:///Users/olssont/datasets/hello-world
+3. Convert the proto dataset into a dataset:
+   dtool freeze file:///Users/olssont/datasets/hello-world
+```
+
+Now we add a file named ``greeting.txt`` to the proto dataset.
+
+```
+$ echo "Hola Mundo" > datasets/hello-world/data/greeting.txt
+```
+
+There are several ways to add descriptive metadata to a dataset. Below we make
+use of dtool's built-in template to interactively prompt for metadata to
+describe the dataset.
+
+```
+$ dtool readme interactive datasets/hello-world
+description [Dataset description]: Hello World greeting in Spanish
+project [Project name]: dtool demo
+confidential [False]:
+personally_identifiable_information [False]:
+name [Tjelvar Olsson]:
+email [tjelvar.olsson@dtool-solutions.com]:
+username [olssont]:
+Updated readme
+To edit the readme using your default editor:
+dtool readme edit file:///Users/olssont/datasets/hello-world
+```
+
+Finally, we need to convert the proto dataset into a dataset by freezing it.
+
+```
+$ dtool freeze datasets/hello-world
+Generating manifest  [####################################]  100%  greeting.txt
+Dataset frozen file:///Users/olssont/datasets/hello-world
+```
+
+Congratulations, you have just created your first dtool dataset!
+
 
 ## Validating the integrity of a dataset
 
