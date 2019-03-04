@@ -293,8 +293,83 @@ Congratulations, you have just created your first dtool dataset!
 
 ## Validating the integrity of a dataset
 
-BONUS MATERIAL!
+The ``dtool freeze`` command generates a manifest containing structural metadata.
+In the manifest each file in the data directory is given an identifier that is
+the SHA1 checksum of the file's relative path in the data directory. The identifiers
+are used to creat one record for each data item containing the file's relative path,
+size, checksum and timestamp. Below is the content of the manifest file.
+
+```
+$ cat datasets/hello-world/.dtool/manifest.json
+{
+  "dtoolcore_version": "3.8.0",
+  "hash_function": "md5sum_hexdigest",
+  "items": {
+    "0ce56d0a6e9baa0c5d170001592c9b9c65d19276": {
+      "hash": "b4b9e397fb7e08bfeaa54090d2989e53",
+      "relpath": "greeting.txt",
+      "size_in_bytes": 11,
+      "utc_timestamp": 1551631241.827989
+    }
+  }
+} 
+```
+
+This information can be used to verify the integrity of the dataset by checking
+that the expected items are present and that they have the correct size and content.
+
+![Verify the items in a box.](/images/verify_items_in_box.png)
+
+Using dtool this type of integrity check can be performed using the ``dtool
+verify`` command.
+
+```
+$ dtool verify --full datasets/hello-world
+All good :)
+```
+
+In the command above we use the ``--full`` flag to include the step to compute and
+compare the checksum. Only item identifiers and sizes are verified by default as
+computing checksums can be time consuming for datasets that contain lots of large
+files.
+
+We can simulate data corruption by editing the ``data/greeting.txt`` file in the dataset.
+
+```
+$ echo "Bonjour le Monde" > datasets/hello-world/data/greeting.txt
+```
+
+The ``data/greeting.txt`` file no longer contains the expected content, it has
+been corrupted. Let's see the output of the ``dtool verify`` command.
+
+```
+$ dtool verify --full datasets/hello-world
+Altered item size: 0ce56d0a6e9baa0c5d170001592c9b9c65d19276 greeting.txt
+Altered item hash: 0ce56d0a6e9baa0c5d170001592c9b9c65d19276 greeting.txt
+```
+
+In the above the content of the ``hello-world/data`` directory is compared against
+the expected content stored in the manifest. In this case both the file size and
+checksum of the ``greeting.txt`` file are different and this is reported back
+to the user.
 
 ## DISCUSSION
 
-LINK TO PAPER AND DOCUMENTATION!
+In this post I have shown how one can use dtool to package data and metadata
+into a unified whole. Using dtool to manage data provides several benefits:
+
+1. It prompts people to add metadata to describe their data, making the data
+   more re-usable
+2. It standardises the structure of the metadata, making it easier to access
+   the metadata
+3. It makes it possible to verify the integrity of dataset, providing peace of mind that data is intact
+4. It makes it possible to copy a dataset without fear of loosing metadata
+5. It makes it possible to copy a dataset between different types of storage
+   systems, e.g. from file system to Amazon S3 object storage
+
+There are several aspects of dtool this post did not go into. For example, it
+is possible to customise the template used to prompt for descriptive metadata.
+This, and other more advanced topics, will be the topics of future blog posts.
+
+If you are keen to find out more about dtool have a look at the paper
+[LINK TO PEERJ]() and the dtool documentaiton [LINK to READTHEDOCS]().
