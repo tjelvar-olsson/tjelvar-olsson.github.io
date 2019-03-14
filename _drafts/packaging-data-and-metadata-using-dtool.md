@@ -19,16 +19,16 @@ In the previous post I described four principles for effective data management.
 
 Getting a research group together and discussing these can lead to a more
 coherent strategy for managing data. However, the fourth principle presents a
-challenge in that there is not a perfect solution for packaging metadata with
+challenge in that currently there is no perfect solution for associating metadata with
 data.
 
 *What is metadata anyway?*
 
 Metadata is data about data. Take, for example, an experiment comparing the
-expression profiles of different tissues in the plant *Arabidopisis thaliana*.
-In this example the species, *A. thaliana*, is a key piece of metadata that needs
+expression profiles of different tissues in mouse.
+In this example the species, *Mus musculus*, is a key piece of metadata that needs
 to be recorded and associated with the data.
-Another key piece of metadata to make sense of the data in this example is the tissue.
+Another key piece of metadata to make sense of the data, in this example, is the tissue.
 In other words one would need to record the tissue associated each expression profile.
 These types of metadata are called descriptive metadata. Without these
 descriptive metadata it would be impossible to draw any conclusions from the
@@ -51,7 +51,7 @@ managing metadata can be difficult. In some cases metadata resides
 inside the head of individuals. Have you ever found yourself asking one of your
 colleagues a question along the lines of:
 
-*What buffer did you use in this experiment?*
+*What antibody did you use in this western blot?*
 
 One strategy for associating metadata with files is to include it in directory
 structures and file names. This takes the form of file paths along the lines of
@@ -66,15 +66,26 @@ easily be lost if one moves or renames the file.
 
 In this post I will describe our approach to overcoming this problem.
 
+## Executive summary
 
-## Treating metadata and data as a unified whole
+Our solution to this problem was to develop a tool to package data with
+metadata and treat the two as a unified whole, from here on referred to
+as a *dataset*.
 
-One way to work around the problem of potentially loosing metadata is to
-package the metadata with the data. This can be achieved by using a command
-line utility called [dtool](https://dtool.readthedocs.io).  dtool centres
-around the concept of packaging data and metadata into a unified whole, from
-here on in referred to as a dataset. Datasets can be moved around and organised
-without loosing metadata.
+A dataset can be likened to a box with items in it and a label on it describing
+its content. The items in the box are the data and the label the metadata.
+
+![Packaging data and metadata into a beautiful box.](/images/package_data_and_metadata_into_beautiful_box.png)
+
+There are several benefits to this approach. First and foremost it
+prevents accidental loss of metadata when moving data around.
+
+## The hairy details
+
+Our tool for packaging data and metadata and working with it as a unified whole
+is a command line utility called [dtool](https://dtool.readthedocs.io).  dtool
+centres around the concept of packaging data and metadata into a unified whole,
+a dataset. Datasets can be moved around and organised without loosing metadata.
 
 Let's see this in practise. First of all one needs to install the dtool
 software.  This can be done using the Python package installer
@@ -113,9 +124,9 @@ b445ff5a1e468ab48628a00a944cac2e007fb9bc  U00096.3.fasta
 828ebf503926b7c1b8b07c1995b4ca818814b404  reference.rev.2.bt2
 ```
 
-The output above lists identifers and the relative paths of all the files in
-the dataset. In dtool terminolgy the files in a dataset are referred to as
-items.
+The output above lists identifiers and the relative paths of all the files in
+the dataset. In dtool terminology the files in a dataset are referred to as
+*items*.
 
 It is also possible to get administrative and structural metadata from a dataset.
 This can be done using the ``dtool summary`` command.
@@ -223,7 +234,7 @@ In this section three important features of dtool have been highlighted:
 ## Creating a dataset
 
 So far we have been illustrating the benefits of packaging data and metadata
-into unified whole using an existing dataset. Now we will go through the
+into a unified whole using an existing dataset. Now we will go through the
 process of creating a dataset.
 
 The creation of a dataset happens in three stages:
@@ -235,8 +246,6 @@ The creation of a dataset happens in three stages:
 This can be likened to creating an open box (the proto dataset), putting items
 (data) into it, sticking a label (metadata) on it, and closing the box
 (freezing the dataset).
-
-![Packaging data and metadata into a beautiful box.](/images/package_data_and_metadata_into_beautiful_box.png)
 
 Now we will create a minimal dataset containing a single file with the content
 ``Hola Mundo``. The command below creates a dataset named ``hello-world`` in
@@ -372,4 +381,7 @@ is possible to customise the template used to prompt for descriptive metadata.
 This, and other more advanced topics, will be the topics of future blog posts.
 
 If you are keen to find out more about dtool have a look at the paper
-[LINK TO PEERJ]() and the dtool documentaiton [LINK to READTHEDOCS]().
+[Lightweight data management with dtool](https://doi.org/10.7717/peerj.6562)
+and the [dtool docs](https://dtool.readthedocs.io).
+
+Finally, if you have made it this far you deserve a lollipop.
