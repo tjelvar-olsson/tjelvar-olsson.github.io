@@ -10,17 +10,18 @@ tags:
 
 ## Introduction
 
-In the previous post I described four principles for effective data management.
+In the [previous post]({% post_url 2019-02-26-data-management-for-biologists%})
+I described four principles for effective data management.
 
 1. Make it clear who is responsible for what
 2. Keep raw data safe and separate from derived data
 3. Standardise the location and structure of data
 4. Provide metadata
 
-Getting a research group together and discussing these can lead to a more
-coherent strategy for managing data. However, the fourth principle presents a
-challenge in that currently there is no perfect solution for associating metadata with
-data.
+Getting a research group together and discussing these principles can lead to a
+more coherent strategy for managing data. However, the fourth principle
+presents a challenge in that currently there is no perfect solution for
+associating metadata with data.
 
 *What is metadata anyway?*
 
@@ -28,7 +29,7 @@ Metadata is data about data. Take, for example, an experiment comparing the
 expression profiles of different tissues in mouse.
 In this example the species, *Mus musculus*, is a key piece of metadata that needs
 to be recorded and associated with the data.
-Another key piece of metadata to make sense of the data, in this example, is the tissue.
+Another key piece of metadata to make sense of the data is the tissue.
 In other words one would need to record the tissue associated each expression profile.
 These types of metadata are called descriptive metadata. Without these
 descriptive metadata it would be impossible to draw any conclusions from the
@@ -38,7 +39,7 @@ When working with digital files one can also think of sizes and checksums
 of the files themselves as metadata. This type of metadata is called structural
 metadata. Structural metadata can be useful to ensure that files have not become corrupted.
 For example, sequencing companies typically provide MD5 checksums alongside
-the raw data files so that one can verify that the downloaded sequence files contain the
+the raw data files so that the downloaded sequence files can be verified to contain the
 expected content.
 
 There is also a third type of metadata called administrative metadata.
@@ -47,13 +48,10 @@ UniProt identifier is a piece of administrative metadata used manage a protein
 in the UniProt database.
 
 Although metadata is essential for making sense of data finding solutions for
-managing metadata can be difficult. In some cases metadata resides
-inside the head of individuals. Have you ever found yourself asking one of your
-colleagues a question along the lines of:
+managing metadata can be difficult. In some cases metadata resides inside the heads
+of individuals. This is not a sustainable solution!
 
-*What antibody did you use in this western blot?*
-
-One strategy for associating metadata with files is to include it in directory
+One strategy for associating metadata with files is to include the metadata in directory
 structures and file names. This takes the form of file paths along the lines of
 ``replicate_1/chitin/col0_leaf_1.tif``. Here the file name tells us that the
 image is from leaf sample one from the Colombia-0 ecotype of *A. thaliana*.
@@ -68,26 +66,30 @@ In this post I will describe our approach to overcoming this problem.
 
 ## Executive summary
 
-Our solution to this problem was to develop a tool to package data with
-metadata and treat the two as a unified whole, from here on referred to
-as a *dataset*.
+Our solution was to develop
+[dtool](https://dtool.readthedocs.io), a utility  to package data with metadata and treat
+the two as a unified whole, from here on referred to as a *dataset*.
 
 A dataset can be likened to a box with items in it and a label on it describing
 its content. The items in the box are the data and the label the metadata.
 
 ![Packaging data and metadata into a beautiful box.](/images/package_data_and_metadata_into_beautiful_box.png)
 
-There are several benefits to this approach. First and foremost it
-prevents accidental loss of metadata when moving data around.
+There are several benefits to this approach, some of which only become apparent
+once one has spent some time using dtool to manage data. However, in brief,
+dtool prevents accidental loss of metadata when moving data around. It
+also enables researchers to work with data in different types storage
+platforms, and it has built in support for verifying the integrity
+of a dataset. In other words automating a lot of tedious work associated with
+data management, and giving researchers peace of mind that their data are safe
+and secure.
 
 ## The hairy details
 
-Our tool for packaging data and metadata and working with it as a unified whole
-is a command line utility called [dtool](https://dtool.readthedocs.io).  dtool
-centres around the concept of packaging data and metadata into a unified whole,
-a dataset. Datasets can be moved around and organised without loosing metadata.
+At its core dtool is a command line utility (with a Python API) that can be used
+to create and interact with datasets.
 
-Let's see this in practise. First of all one needs to install the dtool
+First of all one needs to install the dtool
 software.  This can be done using the Python package installer
 [pip](https://pip.pypa.io/en/stable/installing/).
 
@@ -95,8 +97,8 @@ software.  This can be done using the Python package installer
 $ pip install dtool
 ```
 
-Let us use dtool to look at the descriptive metadata of a dataset stored
-in the cloud.
+dtool can be used to retrieve and display the descriptive metadata of a
+dataset. In the example below the URL refers to a dataset hosted in the cloud.
 
 ```
 $ dtool readme show http://bit.ly/Ecoli-ref-genome
@@ -129,7 +131,7 @@ the dataset. In dtool terminology the files in a dataset are referred to as
 *items*.
 
 It is also possible to get administrative and structural metadata from a dataset.
-This can be done using the ``dtool summary`` command.
+This can be achieved using the ``dtool summary`` command.
 
 ```
 $ dtool summary http://bit.ly/Ecoli-ref-genome
@@ -141,31 +143,29 @@ size: 18.8MiB
 frozen_at: 2018-09-26
 ```
 
-From this one can discern, amongst other things, that the data is 18.8MiB in
+From this one can see, amongst other things, that the data is 18.8MiB in
 size and that it has been given the Universally Unique Identifier (UUID)
 ``8ecd8e05-558a-48e2-b563-0c9ea273e71e``.
 
-Suppose that you had recieved some *E. coli* RNA sequencing data and you wanted
-to align it using Bowtie2. In that case
-this dataset would be useful as it contains both the reference genome
-and Bowtie2 generated indices. Below we create a directory
-for storing datasets, and use dtool to download the dataset.
+This particular dataset can be useful if one has *E. coli* RNA sequencing data
+that one wants to align using Bowtie2. However, in order to make use of the
+dataset one needs to download it from the cloud to local filesystem. In the
+example below a directory for storing datasets is created, and dtool is used to
+download the dataset.
 
 ```
 $ mkdir datasets
-$ dtool cp http://bit.ly/Ecoli-ref-genome datasets/
-Generating manifest  [####################################]  100%  reference.rev.1.bt2
-Dataset copied to:
+$ dtool cp -q http://bit.ly/Ecoli-ref-genome datasets/
 file:///Users/olssont/datasets/Escherichia-coli-ref-genome
 ```
 
 The command above achieved a lot. It downloaded all the data and metadata from
 a dataset stored in the cloud, in an Amazon S3 bucket to be precise, and
 reconstructed the dataset on local disk. Note that this involved working with
-two different storage technologies, both S3 object storage and file system disk.
+two different storage technologies, both S3 object storage and filesystem.
 
 All the commands that we have been using on the dataset hosted in the cloud
-work the same on the dataset stored on local file system.
+work the same on the dataset stored on local filesystem.
 
 ```
 $ dtool readme show datasets/Escherichia-coli-ref-genome
@@ -177,7 +177,7 @@ index_builder: bowtie2-build version 2.3.3
 index_build_cmd: bowtie2-build U00096.3.fasta reference
 ```
 
-Let's look at the structure of a dataset on the local file system.
+The structure the dataset on the local filesystem is shown below.
 
 ```
 $ tree datasets/Escherichia-coli-ref-genome
@@ -208,14 +208,9 @@ index_builder: bowtie2-build version 2.3.3
 index_build_cmd: bowtie2-build U00096.3.fasta reference
 ```
 
-On file system the data and metadata are stored in files. Furthermore, the
+On filesystem the data and metadata are stored in files. Furthermore, the
 metadata files are plain text and make use of open standards. This makes it
 possible to read and understand them without the need for specialised tools.
-
-In summary, dtool treats data and metadata as a unified whole. The dtool
-command  line interface (CLI) can be used to inspect a dataset's metadata allowing
-one to understand the content of the dataset.
-
 
 In this section three important features of dtool have been highlighted:
 
@@ -226,15 +221,15 @@ In this section three important features of dtool have been highlighted:
    across. This means that it is possible to copy datasets, for example to
    long-term storage systems, without fear of loosing metadata.
 
-3. dtool supports several storage systems including both file system and Amazon
+3. dtool supports several storage systems including both filesystem and Amazon
    S3 object storage. This make it possible to copy datasets between different
    storage systems without having to learn the specifics (and quirks) of the
-   storage systems.
+   various storage systems.
 
 ## Creating a dataset
 
-So far we have been illustrating the benefits of packaging data and metadata
-into a unified whole using an existing dataset. Now we will go through the
+So far the use and benefits of dtool have been illustrated
+using an existing dataset. Now we will go through the
 process of creating a dataset.
 
 The creation of a dataset happens in three stages:
@@ -247,28 +242,30 @@ This can be likened to creating an open box (the proto dataset), putting items
 (data) into it, sticking a label (metadata) on it, and closing the box
 (freezing the dataset).
 
+![Packaging data and metadata into a beautiful box.](/images/package_data_and_metadata_into_beautiful_box.png)
+
 Now we will create a minimal dataset containing a single file with the content
-``Hola Mundo``. The command below creates a dataset named ``hello-world`` in
+``Hola Mundo``. The command below creates a dataset named ``hello`` in
 the ``datasets`` directory.
 
 ```
-$ dtool create hello-world datasets/
-Created proto dataset file:///Users/olssont/datasets/hello-world
+$ dtool create hello datasets/
+Created proto dataset file:///Users/olssont/datasets/hello
 Next steps:
 1. Add raw data, eg:
-   dtool add item my_file.txt file:///Users/olssont/datasets/hello-world
+   dtool add item my_file.txt file:///Users/olssont/datasets/hello
    Or use your system commands, e.g:
-   mv my_data_directory /Users/olssont/datasets/hello-world/data/
+   mv my_data_directory /Users/olssont/datasets/hello/data/
 2. Add descriptive metadata, e.g:
-   dtool readme interactive file:///Users/olssont/datasets/hello-world
+   dtool readme interactive file:///Users/olssont/datasets/hello
 3. Convert the proto dataset into a dataset:
-   dtool freeze file:///Users/olssont/datasets/hello-world
+   dtool freeze file:///Users/olssont/datasets/hello
 ```
 
 Now we add a file named ``greeting.txt`` to the proto dataset.
 
 ```
-$ echo "Hola Mundo" > datasets/hello-world/data/greeting.txt
+$ echo "Hola Mundo" > datasets/hello/data/greeting.txt
 ```
 
 There are several ways to add descriptive metadata to a dataset. Below we make
@@ -276,7 +273,7 @@ use of dtool's built-in template to interactively prompt for metadata to
 describe the dataset.
 
 ```
-$ dtool readme interactive datasets/hello-world
+$ dtool readme interactive datasets/hello
 description [Dataset description]: Hello World greeting in Spanish
 project [Project name]: dtool demo
 confidential [False]:
@@ -286,15 +283,15 @@ email [tjelvar.olsson@dtool-solutions.com]:
 username [olssont]:
 Updated readme
 To edit the readme using your default editor:
-dtool readme edit file:///Users/olssont/datasets/hello-world
+dtool readme edit file:///Users/olssont/datasets/hello
 ```
 
 Finally, we need to convert the proto dataset into a dataset by freezing it.
 
 ```
-$ dtool freeze datasets/hello-world
+$ dtool freeze datasets/hello
 Generating manifest  [####################################]  100%  greeting.txt
-Dataset frozen file:///Users/olssont/datasets/hello-world
+Dataset frozen file:///Users/olssont/datasets/hello
 ```
 
 Congratulations, you have just created your first dtool dataset!
@@ -305,11 +302,11 @@ Congratulations, you have just created your first dtool dataset!
 The ``dtool freeze`` command generates a manifest containing structural metadata.
 In the manifest each file in the data directory is given an identifier that is
 the SHA1 checksum of the file's relative path in the data directory. The identifiers
-are used to creat one record for each data item containing the file's relative path,
+are used to create one record for each data item containing the file's relative path,
 size, checksum and timestamp. Below is the content of the manifest file.
 
 ```
-$ cat datasets/hello-world/.dtool/manifest.json
+$ cat datasets/hello/.dtool/manifest.json
 {
   "dtoolcore_version": "3.8.0",
   "hash_function": "md5sum_hexdigest",
@@ -333,7 +330,7 @@ Using dtool this type of integrity check can be performed using the ``dtool
 verify`` command.
 
 ```
-$ dtool verify --full datasets/hello-world
+$ dtool verify --full datasets/hello
 All good :)
 ```
 
@@ -345,19 +342,19 @@ files.
 We can simulate data corruption by editing the ``data/greeting.txt`` file in the dataset.
 
 ```
-$ echo "Bonjour le Monde" > datasets/hello-world/data/greeting.txt
+$ echo "Bonjour le Monde" > datasets/hello/data/greeting.txt
 ```
 
 The ``data/greeting.txt`` file no longer contains the expected content, it has
 been corrupted. Let's see the output of the ``dtool verify`` command.
 
 ```
-$ dtool verify --full datasets/hello-world
+$ dtool verify --full datasets/hello
 Altered item size: 0ce56d0a6e9baa0c5d170001592c9b9c65d19276 greeting.txt
 Altered item hash: 0ce56d0a6e9baa0c5d170001592c9b9c65d19276 greeting.txt
 ```
 
-In the above the content of the ``hello-world/data`` directory is compared against
+In the above the content of the ``hello/data`` directory is compared against
 the expected content stored in the manifest. In this case both the file size and
 checksum of the ``greeting.txt`` file are different and this is reported back
 to the user.
@@ -367,21 +364,21 @@ to the user.
 In this post I have shown how one can use dtool to package data and metadata
 into a unified whole. Using dtool to manage data provides several benefits:
 
-1. It prompts people to add metadata to describe their data, making the data
-   more re-usable
-2. It standardises the structure of the metadata, making it easier to access
-   the metadata
-3. It makes it possible to verify the integrity of dataset, providing peace of mind that data is intact
-4. It makes it possible to copy a dataset without fear of loosing metadata
-5. It makes it possible to copy a dataset between different types of storage
-   systems, e.g. from file system to Amazon S3 object storage
+- It prompts people to add metadata to describe their data, making the data
+  more reusable
+- It standardises the structure of the metadata, making it easier to access
+  the metadata
+- It makes it possible to verify the integrity of dataset, providing peace of mind that data is intact
+- It makes it possible to copy a dataset without fear of loosing metadata
+- It makes it possible to copy a dataset between different types of storage
+  systems, e.g. from filesystem to Amazon S3 object storage
 
 There are several aspects of dtool this post did not go into. For example, it
 is possible to customise the template used to prompt for descriptive metadata.
 This, and other more advanced topics, will be the topics of future blog posts.
 
-If you are keen to find out more about dtool have a look at the paper
+If you are keen to find out more about dtool I suggest having a look at the paper
 [Lightweight data management with dtool](https://doi.org/10.7717/peerj.6562)
-and the [dtool docs](https://dtool.readthedocs.io).
+and the [dtool documentation](https://dtool.readthedocs.io).
 
-Finally, if you have made it this far you deserve a lollipop.
+If you have made it this far you deserve a lollipop!
