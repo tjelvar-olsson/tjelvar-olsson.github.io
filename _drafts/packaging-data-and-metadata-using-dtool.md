@@ -67,8 +67,9 @@ In this post I will describe our approach to overcoming this problem.
 ## Executive summary
 
 Our solution was to develop
-[dtool](https://dtool.readthedocs.io), a utility  to package data with metadata and treat
-the two as a unified whole, from here on referred to as a *dataset*.
+[dtool](https://dtool.readthedocs.io), a utility  to package metadata with data and treat
+the two as a unified whole. In dtool terminology the packaged data and metadata is
+referred to as a *dataset*.
 
 A dataset can be likened to a box with items in it and a label on it describing
 its content. The items in the box are the data and the label the metadata.
@@ -78,18 +79,21 @@ its content. The items in the box are the data and the label the metadata.
 There are several benefits to this approach, some of which only become apparent
 once one has spent some time using dtool to manage data. However, in brief,
 dtool prevents accidental loss of metadata when moving data around. It
-also enables researchers to work with data in different types storage
-platforms, and it has built in support for verifying the integrity
-of a dataset. In other words automating a lot of tedious work associated with
-data management, and giving researchers peace of mind that their data are safe
+also enables researchers to store and work with data in a variety of
+storage solutions, and it has built in support for verifying the integrity
+of a dataset. In other words dtool automates a lot of tedious work associated with
+data management, and gives researchers peace of mind that their data are safe
 and secure.
+
+The dtool software was recently published in PeerJ [Lightweight data management
+with dtool](https://doi.org/10.7717/peerj.6562).
 
 ## The hairy details
 
 At its core dtool is a command line utility (with a Python API) that can be used
 to create and interact with datasets.
 
-First of all one needs to install the dtool
+First of all one needs to install the
 software.  This can be done using the Python package installer
 [pip](https://pip.pypa.io/en/stable/installing/).
 
@@ -151,7 +155,7 @@ This particular dataset can be useful if one has *E. coli* RNA sequencing data
 that one wants to align using Bowtie2. However, in order to make use of the
 dataset one needs to download it from the cloud to local filesystem. In the
 example below a directory for storing datasets is created, and dtool is used to
-download the dataset.
+download the dataset into this directory.
 
 ```
 $ mkdir datasets
