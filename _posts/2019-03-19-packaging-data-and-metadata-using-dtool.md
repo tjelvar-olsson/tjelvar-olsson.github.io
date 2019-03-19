@@ -86,7 +86,7 @@ data management, and gives researchers peace of mind that their data are safe
 and secure.
 
 The dtool software was recently published in PeerJ [Lightweight data management
-with dtool](https://doi.org/10.7717/peerj.6562).
+with dtool](https://peerj.com/articles/6562/?td=bl).
 
 ## The hairy details
 
@@ -383,6 +383,6 @@ This, and other more advanced topics, will be the topics of future blog posts.
 
 If you are keen to find out more about dtool I suggest having a look at the paper
 [Lightweight data management with dtool](https://doi.org/10.7717/peerj.6562)
-and the [dtool documentation](https://dtool.readthedocs.io).
+and the [dtool documentation](https://peerj.com/articles/6562/?td=bl).
 
 If you have made it this far you deserve a lollipop!
