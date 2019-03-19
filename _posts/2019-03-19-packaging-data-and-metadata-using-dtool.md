@@ -382,7 +382,7 @@ is possible to customise the template used to prompt for descriptive metadata.
 This, and other more advanced topics, will be the topics of future blog posts.
 
 If you are keen to find out more about dtool I suggest having a look at the paper
-[Lightweight data management with dtool](https://doi.org/10.7717/peerj.6562)
-and the [dtool documentation](https://peerj.com/articles/6562/?td=bl).
+[Lightweight data management with dtool](https://peerj.com/articles/6562/?td=bl)
+and the [dtool documentation](https://dtool.readthedocs.io).
 
 If you have made it this far you deserve a lollipop!
