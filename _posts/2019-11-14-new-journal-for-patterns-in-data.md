@@ -6,6 +6,8 @@ tags:
   - data management
 ---
 
+![Patterns.](/images/patterns.jpg)
+
 This summer I went to a Research Data Alliance meeting in London. The meeting
 was about persistent identifiers, and my goal was to meet like-minded people
 that care about data. During the meeting I got talking to Sarah Callaghan.
