@@ -11,7 +11,7 @@ how to make use of the command line in Linux. In this post I will explain
 what paths are, and the difference between absolute and relative paths.
 By the end of this post you should be able to understand the diagram below.
 
-![Linux paths](images/linux_paths.png)
+![Linux paths](/images/linux_paths.png)
 
 The file system on Unix-like systems is built up like a tree starting from the
 root directory (``/``). One can view the content of the root directory by
