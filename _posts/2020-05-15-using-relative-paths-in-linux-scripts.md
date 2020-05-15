@@ -151,7 +151,7 @@ Fudged data is baked data
 ```
 
 
-In a [previous post]({% post_url 2019-02-26-data-management-for-biologists %}])
+In a [previous post]({% post_url 2019-02-26-data-management-for-biologists %})
 about data management I talked about the need to keep raw data separate from
 derived data. In this post I have given you some tips on how you can accomplish
 this. Setting up scripts in the fashion outlined above also has the benefit

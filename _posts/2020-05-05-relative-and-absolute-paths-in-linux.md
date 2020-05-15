@@ -168,5 +168,5 @@ To summarise:
   means the parent's parent directory, and so forth
 
 This should be enough to get you started with paths in the Linux command line.
-In the next post I will show how relative paths can be used to make scripts
+In the [next post]({% post_url 2020-05-15-using-relative-paths-in-linux-scripts %}) I will show how relative paths can be used to make scripts
 more portable, and how they can be used to improve your data management.

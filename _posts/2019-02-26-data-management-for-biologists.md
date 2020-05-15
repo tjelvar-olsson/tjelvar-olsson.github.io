@@ -142,6 +142,9 @@ their storage quota increased and don't learn the lesson of separating raw data
 from derived data.  Eventually, when these people leave the group, no one can
 work out what their raw/derived data is.
 
+If you are interested in some practical tips on how to do this in Linux have
+a look at [this post]({% post_url 2020-05-15-using-relative-paths-in-linux-scripts %}).
+
 
 ## Principle 3: Standardise the location and structure of data
 
