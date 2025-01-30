@@ -5,45 +5,32 @@ permalink: about/
 tinyletter_signup: true
 ---
 
-My name is Tjelvar and I am a Swede enjoying life in Norwich. I help people
-use computers to do better science.
+I'm Tjelvar, a Swede enjoying life in Norwich. I help people use computers to do better science.  
 
 ![Tjelvar Olsson.](/images/tjelvar2.jpg)
 
-I'm a Senior Scientific Data and Infrastructure Manager at the John Innes
-Centre. It's a great place to work as I get to participate in cutting edge
-science and play with the latest technology. My role involves providing
-services and training in areas such as data management, bioinformatics and
-programming.
-
-It is a job that requires excessive use of Post-it notes to keep track of projects.
+With a background in life sciences and over 20 years of experience at the intersection of science and computing, I specialize in leveraging technology to unlock scientific potential, increase automation, and improve decision-making.  
 
 ![Tjelvar Olsson.](/images/TaskBoard.jpg)
 
-And some infrastructure for compute and storage.
+After earning a PhD in Biochemistry, I developed software and databases for drug design at the Cambridge Crystallographic Data Centre. I then spent seven years at the John Innes Centre, supporting plant researchers—first with image analysis, then with data management, high-performance computing, and infrastructure. Most recently, I spent four years at Exscientia, a Fortune 50 pharmatech AI company, where I built high-performing teams and led projects to create scalable platforms for scientific computing in the cloud.  
 
 ![Tjelvar Olsson.](/images/server_room.jpg)
 
-I did my undergraduate and PhD in biochemistry at University College London,
-where I spent most of my spare time practising Shorinji Kempo (a Japanese
-martial art).
+If you're interested in how technology can enhance scientific research, feel free to reach out: [tolsson@cyborginterfaces.com](mailto:tolsson@cyborginterfaces.com).  
 
-After finishing my PhD I got a job as an applications scientist at the
-Cambridge Crystallographic Data Centre where I learnt lots about molecular
-modelling and software development. However, after six years Cambridge was no
-longer the city for me so I moved on to Norwich.
+## Coaching  
 
-I am interested in how science and technology impact individuals and society at
-large. In particular how we can use computers and software to do better
-research and make life easier for ourselves.
+In addition to my technical work, I'm a certified coach with a Level 5 Certificate and Diploma in Effective Coaching and Mentoring from the Institute of Leadership and Management. I help scientists and engineers navigate non-technical challenges with confidence.  
 
-I hope you find this blog useful. If you need in-depth help with scientific
-data management I'm available for consultancy.
+Learn more: [https://olsson.coach/](https://olsson.coach/).  
 
-Below are links to my presence on other media.
+## Connect with Me  
 
-- [LinkedIn](https://www.linkedin.com/in/tjelvarolsson/)
-- [GitHub](https://github.com/tjelvar-olsson)
-- [Google Scholar](https://scholar.google.co.uk/citations?user=C6zQlvoAAAAJ&hl)
-- [ORCID](https://orcid.org/0000-0001-8791-4531)
-- [Twitter](https://twitter.com/tjelvar_olsson)
+You can find me on:  
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/tjelvarolsson/)  
+- 🐙 [GitHub](https://github.com/tjelvar-olsson)  
+- 📚 [Google Scholar](https://scholar.google.co.uk/citations?user=C6zQlvoAAAAJ&hl)  
+- 🆔 [ORCID](https://orcid.org/0000-0001-8791-4531)  
+
